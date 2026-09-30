@@ -1,0 +1,366 @@
+{
+ "moteur": "espeak-ng",
+ "dureeMs": 28634,
+ "mots": [
+  {
+   "mot": "Bordeaux",
+   "debut": 0,
+   "fin": 588
+  },
+  {
+   "mot": "1949",
+   "debut": 692,
+   "fin": 1067
+  },
+  {
+   "mot": "Un",
+   "debut": 1133,
+   "fin": 1347
+  },
+  {
+   "mot": "jeune",
+   "debut": 1384,
+   "fin": 1759
+  },
+  {
+   "mot": "Bordelais",
+   "debut": 1825,
+   "fin": 2413
+  },
+  {
+   "mot": "se",
+   "debut": 2517,
+   "fin": 2731
+  },
+  {
+   "mot": "lance",
+   "debut": 2769,
+   "fin": 3143
+  },
+  {
+   "mot": "dans",
+   "debut": 3209,
+   "fin": 3530
+  },
+  {
+   "mot": "le",
+   "debut": 3587,
+   "fin": 3801
+  },
+  {
+   "mot": "vin",
+   "debut": 3839,
+   "fin": 4106
+  },
+  {
+   "mot": "avec",
+   "debut": 4678,
+   "fin": 4912
+  },
+  {
+   "mot": "ses",
+   "debut": 4953,
+   "fin": 5148
+  },
+  {
+   "mot": "frères",
+   "debut": 5182,
+   "fin": 5494
+  },
+  {
+   "mot": "et",
+   "debut": 5549,
+   "fin": 5705
+  },
+  {
+   "mot": "sœurs",
+   "debut": 5732,
+   "fin": 6044
+  },
+  {
+   "mot": "Soixante-dix",
+   "debut": 6099,
+   "fin": 6645
+  },
+  {
+   "mot": "ans",
+   "debut": 6741,
+   "fin": 6936
+  },
+  {
+   "mot": "plus",
+   "debut": 6971,
+   "fin": 7205
+  },
+  {
+   "mot": "tard",
+   "debut": 7246,
+   "fin": 7519
+  },
+  {
+   "mot": "son",
+   "debut": 7567,
+   "fin": 7762
+  },
+  {
+   "mot": "nom",
+   "debut": 7796,
+   "fin": 7991
+  },
+  {
+   "mot": "est",
+   "debut": 8025,
+   "fin": 8220
+  },
+  {
+   "mot": "sur",
+   "debut": 8255,
+   "fin": 8450
+  },
+  {
+   "mot": "des",
+   "debut": 8484,
+   "fin": 8679
+  },
+  {
+   "mot": "centaines",
+   "debut": 8713,
+   "fin": 9142
+  },
+  {
+   "mot": "de",
+   "debut": 9218,
+   "fin": 9374
+  },
+  {
+   "mot": "millions",
+   "debut": 9401,
+   "fin": 9791
+  },
+  {
+   "mot": "de",
+   "debut": 9860,
+   "fin": 10016
+  },
+  {
+   "mot": "bouteilles",
+   "debut": 10043,
+   "fin": 10550
+  },
+  {
+   "mot": "Des",
+   "debut": 10639,
+   "fin": 10834
+  },
+  {
+   "mot": "vins",
+   "debut": 10869,
+   "fin": 11142
+  },
+  {
+   "mot": "Des",
+   "debut": 11190,
+   "fin": 11385
+  },
+  {
+   "mot": "bières",
+   "debut": 11419,
+   "fin": 11770
+  },
+  {
+   "mot": "Des",
+   "debut": 11832,
+   "fin": 12027
+  },
+  {
+   "mot": "sodas",
+   "debut": 12061,
+   "fin": 12373
+  },
+  {
+   "mot": "De",
+   "debut": 12428,
+   "fin": 12584
+  },
+  {
+   "mot": "Paris",
+   "debut": 12611,
+   "fin": 12884
+  },
+  {
+   "mot": "jusqu'au",
+   "debut": 13456,
+   "fin": 13894
+  },
+  {
+   "mot": "cœur",
+   "debut": 13972,
+   "fin": 14234
+  },
+  {
+   "mot": "de",
+   "debut": 14281,
+   "fin": 14456
+  },
+  {
+   "mot": "l'Afrique",
+   "debut": 14487,
+   "fin": 15013
+  },
+  {
+   "mot": "Sa",
+   "debut": 15106,
+   "fin": 15281
+  },
+  {
+   "mot": "fortune",
+   "debut": 15312,
+   "fin": 15706
+  },
+  {
+   "mot": "",
+   "debut": 15776,
+   "fin": 15907
+  },
+  {
+   "mot": "Plus",
+   "debut": 15930,
+   "fin": 16193
+  },
+  {
+   "mot": "d'un",
+   "debut": 16240,
+   "fin": 16502
+  },
+  {
+   "mot": "milliard",
+   "debut": 16549,
+   "fin": 16987
+  },
+  {
+   "mot": "d'euros",
+   "debut": 17064,
+   "fin": 17502
+  },
+  {
+   "mot": "Largement",
+   "debut": 17580,
+   "fin": 18062
+  },
+  {
+   "mot": "plus",
+   "debut": 18147,
+   "fin": 18453
+  },
+  {
+   "mot": "Et",
+   "debut": 18508,
+   "fin": 18683
+  },
+  {
+   "mot": "pourtant",
+   "debut": 18714,
+   "fin": 19152
+  },
+  {
+   "mot": "vous",
+   "debut": 19759,
+   "fin": 19980
+  },
+  {
+   "mot": "n'avez",
+   "debut": 20019,
+   "fin": 20314
+  },
+  {
+   "mot": "probablement",
+   "debut": 20366,
+   "fin": 20883
+  },
+  {
+   "mot": "jamais",
+   "debut": 20974,
+   "fin": 21269
+  },
+  {
+   "mot": "entendu",
+   "debut": 21321,
+   "fin": 21653
+  },
+  {
+   "mot": "son",
+   "debut": 21711,
+   "fin": 21896
+  },
+  {
+   "mot": "nom",
+   "debut": 21928,
+   "fin": 22149
+  },
+  {
+   "mot": "Il",
+   "debut": 22618,
+   "fin": 22810
+  },
+  {
+   "mot": "s'appelle",
+   "debut": 22844,
+   "fin": 23371
+  },
+  {
+   "mot": "Pierre",
+   "debut": 23464,
+   "fin": 23848
+  },
+  {
+   "mot": "Castel",
+   "debut": 23916,
+   "fin": 24347
+  },
+  {
+   "mot": "Discret",
+   "debut": 24424,
+   "fin": 24903
+  },
+  {
+   "mot": "Très",
+   "debut": 24988,
+   "fin": 25276
+  },
+  {
+   "mot": "discret",
+   "debut": 25326,
+   "fin": 25806
+  },
+  {
+   "mot": "Et",
+   "debut": 25891,
+   "fin": 26083
+  },
+  {
+   "mot": "aujourd'hui",
+   "debut": 26116,
+   "fin": 26740
+  },
+  {
+   "mot": "on",
+   "debut": 27397,
+   "fin": 27568
+  },
+  {
+   "mot": "ouvre",
+   "debut": 27598,
+   "fin": 27897
+  },
+  {
+   "mot": "son",
+   "debut": 27950,
+   "fin": 28163
+  },
+  {
+   "mot": "dossier",
+   "debut": 28201,
+   "fin": 28628
+  }
+ ]
+}

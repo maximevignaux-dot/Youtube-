@@ -1,0 +1,13 @@
+node_modules/
+out/
+public/
+.env
+*.log
+__pycache__/
+# Rendus lourds : on ne les met pas sur GitHub
+videos/*/sortie.mp4
+videos/*/apercu.mp4
+videos/*/shorts/
+mes-rushs/*
+!mes-rushs/.gitkeep
+videos/*/demo-hook.mp4
