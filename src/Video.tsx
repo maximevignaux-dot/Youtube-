@@ -29,7 +29,7 @@ import {FPS, HAUTEUR, LARGEUR} from './theme/palette';
 type Scene = {composant: string; debutMs: number; finMs: number; props: Record<string, unknown>};
 export type Plan = {
   slug: string;
-  voix: {fichier: string; test: boolean};
+  voix: {fichier: string; test: boolean; motsFichier?: string};
   dureeMs: number;
   fond: Scene[];
   calques: Scene[];
@@ -108,7 +108,7 @@ const Musiques: React.FC<{plan: Plan}> = ({plan}) => {
   );
 };
 
-const Pistes: React.FC<{plan: Plan; slug: string}> = ({plan, slug}) => (
+export const Pistes: React.FC<{plan: Plan; slug: string; sansFiligrane?: boolean}> = ({plan, slug, sansFiligrane}) => (
   <AbsoluteFill style={{background: '#0D0D0D'}}>
     {plan.fond.map((s, i) => {
       const C = COMPOSANTS[s.composant];
@@ -150,7 +150,7 @@ const Pistes: React.FC<{plan: Plan; slug: string}> = ({plan, slug}) => (
     <Audio src={staticFile(`videos/${slug}/${plan.voix.fichier}`)} />
     <Musiques plan={plan} />
     <GrainVignette />
-    {plan.voix.test ? <FiligraneVoixTest /> : null}
+    {plan.voix.test && !sansFiligrane ? <FiligraneVoixTest /> : null}
   </AbsoluteFill>
 );
 

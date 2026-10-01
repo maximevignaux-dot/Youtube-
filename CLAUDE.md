@@ -213,3 +213,16 @@ Session 3 — Finitions
 
 Quand le pipeline est fini, écris un fichier MODE-EMPLOI.md d'une page, en français simple,
 avec uniquement les phrases que je dois taper pour chaque situation.
+
+## Mémo technique (pour Claude Code, ajouté après la construction)
+Phrase de Maxime → ce que tu fais :
+- « Nouvelle vidéo : <script> » → choisir un slug court, écrire videos/<slug>/script.md (+ a-chercher.md et sa
+  version PDF si besoin), puis `npm run video <slug>` ; envoyer apercu.mp4 et shotlist.html.
+- « J'ai ajouté des images… » / « J'ai modifié le script… » → `npm run video <slug>` (le montage est réutilisé
+  si le script n'a pas changé ; `-- --refaire` pour tout recalculer).
+- « Ma voix est prête pour <slug> » → `npm run revoice <slug>` puis montrer rapport-voix.txt ; enchaîner
+  `npm run final <slug>` si tout est prêt (visuels + assets/sources.txt), sinon dire ce qui manque.
+- « Fais les Shorts de <slug> » → `npm run shorts <slug>`.
+Code : scripts/video.py, revoice.py, final.py, shorts.py (orchestration) ; scripts/dossiers/ (script_md, voix,
+scenes, assets_auto, shotlist, revoix, decoupes) ; src/ (Remotion : Video, Short, Miniature, components/).
+Visuels : assets/<ID>.ext (fournis) passent devant assets/auto/<ID>.ext (trouvés) ; détourages dans assets/decoupes/.

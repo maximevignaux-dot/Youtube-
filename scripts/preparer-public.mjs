@@ -18,7 +18,7 @@ for (const slug of existsSync(videos) ? readdirSync(videos) : []) {
   const dst = join(pub, 'videos', slug);
   mkdirSync(dst, {recursive: true});
   for (const f of readdirSync(src)) {
-    if (/^(voix.*\.(mp3|wav)|scenes\.json|assets)$/.test(f)) cpSync(join(src, f), join(dst, f), {recursive: true});
+    if (/^(voix(?!-propre).*\.(mp3|wav|json)|scenes\.json|assets)$/.test(f)) cpSync(join(src, f), join(dst, f), {recursive: true});
   }
 }
 console.log('public/ prêt');

@@ -114,6 +114,7 @@ def lire(chemin: str) -> dict:
                 if b["type"] == "OUVERTURE_DOSSIER":
                     ajouter_pause(len(tokens), OUVERTURE, True)
                 if dernier is not None and b["type"] not in ("PIECE", "OUVERTURE_DOSSIER"):
+                    b["apres"] = True  # la balise suit le texte qu'elle illustre
                     dernier["balises"].append(b)
                 else:
                     en_attente.append(b)
@@ -143,6 +144,8 @@ def lire(chemin: str) -> dict:
             morceaux.append(dernier)
 
     if en_attente and morceaux:
+        for b in en_attente:
+            b["apres"] = True
         morceaux[-1]["balises"].extend(en_attente)
     ajouter_pause(len(tokens), FIN, True)
     for m in morceaux:

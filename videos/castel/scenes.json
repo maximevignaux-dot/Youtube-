@@ -12,7 +12,8 @@
  "voix": {
   "fichier": "voix-test.mp3",
   "test": true,
-  "moteur": "mbrola"
+  "moteur": "mbrola",
+  "motsFichier": "voix-test.mots.json"
  },
  "dureeMs": 581885,
  "fond": [

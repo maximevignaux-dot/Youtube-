@@ -13,7 +13,9 @@ Chaîne YouTube « DOSSIERS » : les coulisses de l'argent. Montage automatique 
 - [x] Session 2 — chaîne complète (`npm run video <slug>`) : lecture du script et de a-chercher.md,
       voix test au mot près, découpage automatique, cartes, tableau d'enquête, graphiques, frises,
       chiffres, musique avec ducking, recherche auto des visuels, shotlist.html, chapitres, crédits.
-- [ ] Session 3 — `revoice`, `final`, `shorts`, miniatures
+- [x] Session 3 — `npm run revoice` (ta voix, ratés retirés, montage recalé), `npm run final`
+      (1080p, contrôles licences, miniatures), `npm run shorts` (9:16, sous-titres mot à mot), effet 2,5D.
+- 👉 Au quotidien : [MODE-EMPLOI.md](MODE-EMPLOI.md)
 
 ## Organisation
 ```

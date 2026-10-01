@@ -17,6 +17,7 @@ import {
 } from './components';
 import {FPS, HAUTEUR, LARGEUR} from './theme/palette';
 import {calculerMiniature, Miniature} from './Miniature';
+import {calculerShort, Short} from './Short';
 import {calculerMetadonnees, Video} from './Video';
 
 const avecGrain = (C: React.FC) => () => (
@@ -117,6 +118,16 @@ export const Racine: React.FC = () => (
       fps={FPS}
       width={1280}
       height={720}
+    />
+    <Composition
+      id="Short"
+      component={Short}
+      calculateMetadata={calculerShort}
+      defaultProps={{slug: 'castel', debutMs: 175000, finMs: 215000, motCle: 'La bière', plan: null, mots: null}}
+      durationInFrames={30}
+      fps={FPS}
+      width={1080}
+      height={1920}
     />
     <Folder name="Galerie">
       {galerie.map(([id, duree, C]) => (

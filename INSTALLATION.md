@@ -20,7 +20,10 @@ ffmpeg -version
 edge-tts --version
 ```
 
-Whisper (transcription de ta voix) et rembg (détourage) seront installés à la session 2.
+Pour ta vraie voix et le détourage des photos (une fois, ça télécharge environ 1 Go la première fois qu'ils servent) :
+```
+pip install faster-whisper "rembg[cpu]"
+```
 
 ## 2. Récupérer le projet
 

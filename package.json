@@ -9,7 +9,8 @@
     "sfx": "node scripts/py.mjs scripts/generer_sfx.py",
     "check": "tsc --noEmit",
     "revoice": "node scripts/py.mjs scripts/revoice.py",
-    "final": "node scripts/py.mjs scripts/final.py"
+    "final": "node scripts/py.mjs scripts/final.py",
+    "shorts": "node scripts/py.mjs scripts/shorts.py"
   },
   "dependencies": {
     "@remotion/cli": "4.0.531",
