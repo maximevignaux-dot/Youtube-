@@ -574,7 +574,20 @@ class Monteur:
             if propre and e["debutMs"] <= propre[-1]["debutMs"] and not e.get("fixe"):
                 e["debutMs"] = propre[-1]["debutMs"] + 1500
             propre.append(e)
+        # un plan ne déborde jamais sur un carton de pièce : s'il a été poussé dedans, on le ramène juste avant
+        fixes = [e for e in propre if e.get("fixe")]
+        for e in propre:
+            if e.get("fixe"):
+                continue
+            for f in fixes:
+                if self.ms(e["ancre"]) < f["debutMs"] <= e["debutMs"] < f.get("finMs", f["debutMs"]) + 1:
+                    e["debutMs"] = max(self.ms(e["ancre"]), f["debutMs"] - 1500)
         propre.sort(key=lambda e: e["debutMs"])
+        # pas de trou noir après un carton : le plan suivant démarre dès la fin du carton
+        for n in range(1, len(propre)):
+            p = propre[n - 1]
+            if p.get("fixe") and p.get("finMs") and propre[n]["debutMs"] > p["finMs"]:
+                propre[n]["debutMs"] = p["finMs"]
         fin_totale = self.c.duree
         # ouverture du dossier
         if getattr(self, "ouverture", None):
@@ -654,8 +667,25 @@ def cle_affichee(cle, texte):
     return noms.get(cle, cle.capitalize())
 
 
+def miniature(script, fond):
+    """Lit la ligne « **Miniature :** » du script : tampon, chiffre en vert, sujet détouré."""
+    texte = script["meta"].get("miniature", "")
+    q = re.findall(r"«\s*(.+?)\s*»", texte)
+    chiffre = next((x for x in q if re.search(r"\d", x)), None)
+    tampon = next((x for x in q if x != chiffre), None)
+    sujet_nom = script["meta"].get("sujet", "")
+    m = re.search(r"d[ée]tour[ée]e? de ([^(,]+)", texte)
+    if m:
+        sujet_nom = m.group(1).strip()
+    cle = normaliser(sujet_nom)
+    asset = next((e["asset"]["id"] for e in fond if e["composant"] == "FichePersonnage"
+                  and normaliser(e["props"]["nom"]) == cle), None)
+    return {"tampon": (tampon or "DOSSIER").upper(), "chiffre": chiffre, "sujet": sujet_nom, "assetId": asset,
+            "numero": script["meta"].get("numero") or 1}
+
+
 # ================================================================ point d'entrée
-def construire(script, voix, dossier, slug, voix_test=True):
+def construire(script, voix, dossier, slug, voix_test=True, fichier_voix=None):
     chrono = Chrono(voix["mots"], len(script["tokens"]), voix["dureeMs"])
     items = lire_a_chercher(os.path.join(dossier, "a-chercher.md"))
     mt = Monteur(script, chrono, items, slug)
@@ -686,8 +716,9 @@ def construire(script, voix, dossier, slug, voix_test=True):
         piece = re.search(r"PI[EÈ]CE\s*N?°?\s*(\d+)", sans_accents(nom).upper())
         sections.append({"nom": nom, "debutMs": chrono.t(sct["debut"]), "piece": int(piece.group(1)) if piece else None})
     donnees = {
+        "miniature": miniature(script, fond),
         "slug": slug, "numero": script["meta"]["numero"], "titre": script["meta"]["titre"],
-        "voix": {"fichier": "voix-test.mp3" if voix_test else "voix.mp3", "test": voix_test, "moteur": voix.get("moteur")},
+        "voix": {"fichier": fichier_voix or ("voix-test.mp3" if voix_test else "voix.mp3"), "test": voix_test, "moteur": voix.get("moteur")},
         "dureeMs": voix["dureeMs"], "fond": fond, "calques": sorted(mt.calques, key=lambda c: c["debutMs"]),
         "parole": parole, "silences": silences, "sections": sections,
     }

@@ -44,16 +44,30 @@ def main():
     s = script_md.lire(os.path.join(dossier, "script.md"))
     print(f"{len(s['tokens'])} mots, {len(s['morceaux'])} passages, {len(s['sections'])} parties.")
 
-    etape(2, "Voix test")
-    if os.path.exists(os.path.join(dossier, "voix.mp3")):
-        print("ℹ️  voix.mp3 trouvé : l'aperçu reste sur la voix test. Pour ta vraie voix : npm run revoice " + slug)
-    v = voix.fabriquer(s, dossier, forcer="--voix" in options)
-    if v["moteur"] != "edge-tts":
-        print("⚠️  Voix de secours utilisée (edge-tts injoignable). Vérifie ta connexion internet.")
+    chemin_plan = os.path.join(dossier, "scenes.json")
+    sources = [os.path.join(dossier, n) for n in ("script.md", "a-chercher.md") if os.path.exists(os.path.join(dossier, n))]
+    plan = json.load(open(chemin_plan, encoding="utf-8")) if os.path.exists(chemin_plan) else None
+    a_jour = plan is not None and all(os.path.getmtime(f) <= os.path.getmtime(chemin_plan) for f in sources)
+    sur_ta_voix = plan is not None and not plan["voix"].get("test", True)
 
-    etape(3, "Découpage en scènes")
-    plan = scenes.construire(s, v, dossier, slug, voix_test=True)
-    nb_auto = sum(1 for e in plan["fond"] if (e.get("asset") or {}).get("source") == "auto")
+    if a_jour and "--refaire" not in options and "--voix" not in options:
+        etape(2, "Voix")
+        print("Script inchangé : je garde le montage actuel"
+              + (" (calé sur TA voix)." if sur_ta_voix else " (voix test)."))
+        print("(Pour tout refaire quand même : npm run video " + slug + " -- --refaire)")
+    else:
+        if sur_ta_voix:
+            print("ℹ️  Ton script a changé depuis ton enregistrement : nouvel aperçu en voix test.")
+            print("   Quand tu auras réenregistré : « Ma voix est prête pour " + slug + " ».")
+        etape(2, "Voix test")
+        v = voix.fabriquer(s, dossier, forcer="--voix" in options)
+        if v["moteur"] != "edge-tts":
+            print("⚠️  Voix de secours utilisée (edge-tts injoignable). Vérifie ta connexion internet.")
+        etape(3, "Découpage en scènes")
+        plan = scenes.construire(s, v, dossier, slug, voix_test=True)
+        plan["voix"]["motsFichier"] = "voix-test.mots.json"
+        with open(chemin_plan, "w", encoding="utf-8") as f:
+            json.dump(plan, f, ensure_ascii=False, indent=1)
     print(f"{len(plan['fond'])} scènes + {len(plan['calques'])} incrustations, durée {plan['dureeMs'] / 60000:.1f} min.")
 
     etape(4, "Recherche automatique des images et vidéos")

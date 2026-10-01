@@ -108,7 +108,7 @@ const Musiques: React.FC<{plan: Plan}> = ({plan}) => {
   );
 };
 
-const Pistes: React.FC<{plan: Plan}> = ({plan}) => (
+const Pistes: React.FC<{plan: Plan; slug: string}> = ({plan, slug}) => (
   <AbsoluteFill style={{background: '#0D0D0D'}}>
     {plan.fond.map((s, i) => {
       const C = COMPOSANTS[s.composant];
@@ -147,7 +147,7 @@ const Pistes: React.FC<{plan: Plan}> = ({plan}) => (
         </Sequence>
       );
     })}
-    <Audio src={staticFile(`videos/${plan.slug}/${plan.voix.fichier}`)} />
+    <Audio src={staticFile(`videos/${slug}/${plan.voix.fichier}`)} />
     <Musiques plan={plan} />
     <GrainVignette />
     {plan.voix.test ? <FiligraneVoixTest /> : null}
@@ -162,7 +162,7 @@ export const Video: React.FC<PropsVideo> = ({slug, apercu, plan}) => {
     <ContexteVideo.Provider value={{slug}}>
       <AbsoluteFill style={{background: '#0D0D0D'}}>
         <div style={{width: LARGEUR, height: HAUTEUR, flexShrink: 0, transform: `scale(${echelle})`, transformOrigin: '0 0', position: 'relative'}}>
-          <Pistes plan={plan} />
+          <Pistes plan={plan} slug={slug} />
         </div>
       </AbsoluteFill>
     </ContexteVideo.Provider>

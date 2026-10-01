@@ -16,6 +16,7 @@ import {
   TimelineMachine,
 } from './components';
 import {FPS, HAUTEUR, LARGEUR} from './theme/palette';
+import {calculerMiniature, Miniature} from './Miniature';
 import {calculerMetadonnees, Video} from './Video';
 
 const avecGrain = (C: React.FC) => () => (
@@ -106,6 +107,16 @@ export const Racine: React.FC = () => (
       fps={FPS}
       width={LARGEUR}
       height={HAUTEUR}
+    />
+    <Composition
+      id="Miniature"
+      component={Miniature}
+      calculateMetadata={calculerMiniature}
+      defaultProps={{slug: 'castel', variante: 1, infos: null}}
+      durationInFrames={1}
+      fps={FPS}
+      width={1280}
+      height={720}
     />
     <Folder name="Galerie">
       {galerie.map(([id, duree, C]) => (

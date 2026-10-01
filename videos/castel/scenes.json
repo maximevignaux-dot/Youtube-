@@ -1,4 +1,11 @@
 {
+ "miniature": {
+  "tampon": "JÉSUS ?",
+  "chiffre": "13 Md€",
+  "sujet": "Pierre Castel",
+  "assetId": "P01",
+  "numero": 1
+ },
  "slug": "castel",
  "numero": 1,
  "titre": "DOSSIER N°001 — Pierre Castel",
@@ -345,7 +352,7 @@
   {
    "composant": "TimelineMachine",
    "ancre": 176,
-   "debutMs": 59429,
+   "debutMs": 58432,
    "props": {
     "date": "1926",
     "precedentes": []
@@ -1018,25 +1025,13 @@
     "acceleration": false
    },
    "minMs": 4000.0,
-   "finMs": 165651,
+   "finMs": 164151,
    "scene": "#046"
-  },
-  {
-   "composant": "CartonPiece",
-   "ancre": 542,
-   "fixe": true,
-   "debutMs": 165651,
-   "finMs": 166641.0,
-   "props": {
-    "numero": 2,
-    "titre": "L'empire africain"
-   },
-   "scene": "#047"
   },
   {
    "composant": "Media",
    "ancre": 536,
-   "debutMs": 166641.0,
+   "debutMs": 164151,
    "props": {
     "assetId": "V08",
     "genre": "video",
@@ -1051,7 +1046,19 @@
     "source": "a-chercher"
    },
    "item": "V08",
+   "finMs": 165651,
+   "scene": "#047"
+  },
+  {
+   "composant": "CartonPiece",
+   "ancre": 542,
+   "fixe": true,
+   "debutMs": 165651,
    "finMs": 168351,
+   "props": {
+    "numero": 2,
+    "titre": "L'empire africain"
+   },
    "scene": "#048"
   },
   {
@@ -1864,7 +1871,7 @@
   {
    "composant": "TimelineMachine",
    "ancre": 899,
-   "debutMs": 287031,
+   "debutMs": 283678,
    "props": {
     "date": "1981",
     "precedentes": [
@@ -1874,8 +1881,29 @@
      "1990"
     ]
    },
-   "finMs": 289231.0,
+   "finMs": 286478.0,
    "scene": "#081"
+  },
+  {
+   "composant": "Media",
+   "ancre": 899,
+   "debutMs": 286478.0,
+   "finMs": 289231.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Mai 1981. »",
+    "mouvement": "auto",
+    "assetId": "S019"
+   },
+   "asset": {
+    "id": "S019",
+    "genre": "video",
+    "description": "Illustrer : « Mai 1981. »",
+    "requetes": "mai, 1981",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#082"
   },
   {
    "composant": "Media",
@@ -1897,7 +1925,7 @@
    "depuis_balise": true,
    "item": "P09",
    "finMs": 294031.0,
-   "scene": "#082"
+   "scene": "#083"
   },
   {
    "composant": "Media",
@@ -1920,7 +1948,7 @@
     "source": "a-chercher"
    },
    "copie": true,
-   "scene": "#083"
+   "scene": "#084"
   },
   {
    "composant": "CarteFlux",
@@ -1959,7 +1987,7 @@
    },
    "minMs": 4000.0,
    "finMs": 298652.0,
-   "scene": "#084"
+   "scene": "#085"
   },
   {
    "composant": "Media",
@@ -1980,7 +2008,7 @@
    },
    "item": "V14",
    "finMs": 303561,
-   "scene": "#085"
+   "scene": "#086"
   },
   {
    "composant": "TableauEnquete",
@@ -1994,7 +2022,7 @@
     "mode": "nouveau"
    },
    "finMs": 308797,
-   "scene": "#086"
+   "scene": "#087"
   },
   {
    "composant": "TimelineMachine",
@@ -2010,7 +2038,7 @@
     ]
    },
    "finMs": 310997.0,
-   "scene": "#087"
+   "scene": "#088"
   },
   {
    "composant": "DocumentCaviarde",
@@ -2030,7 +2058,7 @@
     "tampon": "CONFIDENTIEL"
    },
    "finMs": 317364,
-   "scene": "#088"
+   "scene": "#089"
   },
   {
    "composant": "TableauEnquete",
@@ -2050,7 +2078,7 @@
     "mode": "ajout"
    },
    "finMs": 321364.0,
-   "scene": "#089"
+   "scene": "#090"
   },
   {
    "composant": "Media",
@@ -2071,7 +2099,7 @@
    },
    "item": "V15",
    "finMs": 322964.0,
-   "scene": "#090"
+   "scene": "#091"
   },
   {
    "composant": "TimelineMachine",
@@ -2087,7 +2115,7 @@
     ]
    },
    "finMs": 325164.0,
-   "scene": "#091"
+   "scene": "#092"
   },
   {
    "composant": "TableauEnquete",
@@ -2112,7 +2140,7 @@
     "mode": "ajout"
    },
    "finMs": 329164.0,
-   "scene": "#092"
+   "scene": "#093"
   },
   {
    "composant": "Media",
@@ -2133,7 +2161,7 @@
    },
    "item": "V16",
    "finMs": 330764.0,
-   "scene": "#093"
+   "scene": "#094"
   },
   {
    "composant": "TableauEnquete",
@@ -2163,7 +2191,7 @@
     "mode": "ajout"
    },
    "finMs": 334764.0,
-   "scene": "#094"
+   "scene": "#095"
   },
   {
    "composant": "Media",
@@ -2184,7 +2212,7 @@
    },
    "item": "V17",
    "finMs": 336364.0,
-   "scene": "#095"
+   "scene": "#096"
   },
   {
    "composant": "Schema",
@@ -2198,7 +2226,7 @@
     "pas": 900
    },
    "finMs": 344364.0,
-   "scene": "#096"
+   "scene": "#097"
   },
   {
    "composant": "Media",
@@ -2209,17 +2237,17 @@
     "genre": "video",
     "description": "Illustrer : « Vous êtes, au mieux… bénéficiaire. »",
     "mouvement": "auto",
-    "assetId": "S019"
+    "assetId": "S020"
    },
    "asset": {
-    "id": "S019",
+    "id": "S020",
     "genre": "video",
     "description": "Illustrer : « Vous êtes, au mieux… bénéficiaire. »",
     "requetes": "êtes, mieux, bénéficiaire",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#097"
+   "scene": "#098"
   },
   {
    "composant": "CarteFlux",
@@ -2283,7 +2311,7 @@
    },
    "minMs": 4000.0,
    "finMs": 357347.0,
-   "scene": "#098"
+   "scene": "#099"
   },
   {
    "composant": "Media",
@@ -2294,17 +2322,17 @@
     "genre": "video",
     "description": "Illustrer : « Attention, tout ça peut être parfaitement légal. »",
     "mouvement": "auto",
-    "assetId": "S020"
+    "assetId": "S021"
    },
    "asset": {
-    "id": "S020",
+    "id": "S021",
     "genre": "video",
     "description": "Illustrer : « Attention, tout ça peut être parfaitement légal. »",
     "requetes": "attention, peut, parfaitement, légal",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#099"
+   "scene": "#100"
   },
   {
    "composant": "Media",
@@ -2315,17 +2343,17 @@
     "genre": "video",
     "description": "Illustrer : « Et c'est exactement là que ça coince. »",
     "mouvement": "auto",
-    "assetId": "S021"
+    "assetId": "S022"
    },
    "asset": {
-    "id": "S021",
+    "id": "S022",
     "genre": "video",
     "description": "Illustrer : « Et c'est exactement là que ça coince. »",
     "requetes": "exactement, coince",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#100"
+   "scene": "#101"
   },
   {
    "composant": "TimelineMachine",
@@ -2341,7 +2369,7 @@
     ]
    },
    "finMs": 366924.0,
-   "scene": "#101"
+   "scene": "#102"
   },
   {
    "composant": "Media",
@@ -2352,17 +2380,17 @@
     "genre": "video",
     "description": "Illustrer : « Et d'après la justice genevoise, les autorités fiscales n'auraient compris qui se cachait vraiment derrière ce fameux Jésus… qu'en lisant des articles de presse »",
     "mouvement": "auto",
-    "assetId": "S022"
+    "assetId": "S023"
    },
    "asset": {
-    "id": "S022",
+    "id": "S023",
     "genre": "video",
     "description": "Illustrer : « Et d'après la justice genevoise, les autorités fiscales n'auraient compris qui se cachait vraiment derrière ce fameux Jésus… qu'en lisant des articles de presse »",
     "requetes": "d'après, justice, genevoise, autorités, fiscales",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#102"
+   "scene": "#103"
   },
   {
    "composant": "DocumentCaviarde",
@@ -2382,7 +2410,7 @@
     "tampon": null
    },
    "finMs": 374928,
-   "scene": "#103"
+   "scene": "#104"
   },
   {
    "composant": "Media",
@@ -2403,7 +2431,7 @@
    },
    "item": "V18",
    "finMs": 378149,
-   "scene": "#104"
+   "scene": "#105"
   },
   {
    "composant": "Citation",
@@ -2414,7 +2442,7 @@
     "auteur": "sa défense"
    },
    "finMs": 383233,
-   "scene": "#105"
+   "scene": "#106"
   },
   {
    "composant": "TimelineMachine",
@@ -2430,7 +2458,7 @@
     ]
    },
    "finMs": 385433.0,
-   "scene": "#106"
+   "scene": "#107"
   },
   {
    "composant": "Media",
@@ -2451,7 +2479,7 @@
    },
    "item": "V19",
    "finMs": 387568,
-   "scene": "#107"
+   "scene": "#108"
   },
   {
    "composant": "CompteurBillets",
@@ -2465,7 +2493,7 @@
     "libelle": null
    },
    "finMs": 391168.0,
-   "scene": "#108"
+   "scene": "#109"
   },
   {
    "composant": "Media",
@@ -2487,7 +2515,7 @@
    "depuis_balise": true,
    "item": "P10",
    "finMs": 393734,
-   "scene": "#109"
+   "scene": "#110"
   },
   {
    "composant": "DocumentCaviarde",
@@ -2519,7 +2547,7 @@
     "tampon": null
    },
    "finMs": 401234.0,
-   "scene": "#110"
+   "scene": "#111"
   },
   {
    "composant": "Media",
@@ -2530,17 +2558,17 @@
     "genre": "video",
     "description": "Illustrer : « Et il écrit même, en substance, qu'il voit mal quel autre motif que l'évasion fiscale pourrait expliquer ces déclarations. »",
     "mouvement": "auto",
-    "assetId": "S023"
+    "assetId": "S024"
    },
    "asset": {
-    "id": "S023",
+    "id": "S024",
     "genre": "video",
     "description": "Illustrer : « Et il écrit même, en substance, qu'il voit mal quel autre motif que l'évasion fiscale pourrait expliquer ces déclarations. »",
     "requetes": "écrit, substance, voit, mal, quel",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#111"
+   "scene": "#112"
   },
   {
    "composant": "Media",
@@ -2551,17 +2579,17 @@
     "genre": "video",
     "description": "Illustrer : « Cerise sur le gâteau : il trouve la sanction… plutôt légère. »",
     "mouvement": "auto",
-    "assetId": "S024"
+    "assetId": "S025"
    },
    "asset": {
-    "id": "S024",
+    "id": "S025",
     "genre": "video",
     "description": "Illustrer : « Cerise sur le gâteau : il trouve la sanction… plutôt légère. »",
     "requetes": "cerise, gâteau, trouve, sanction, plutôt",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#112"
+   "scene": "#113"
   },
   {
    "composant": "Media",
@@ -2572,17 +2600,17 @@
     "genre": "video",
     "description": "Illustrer : « Presque trop clémente. »",
     "mouvement": "auto",
-    "assetId": "S025"
+    "assetId": "S026"
    },
    "asset": {
-    "id": "S025",
+    "id": "S026",
     "genre": "video",
     "description": "Illustrer : « Presque trop clémente. »",
     "requetes": "presque, trop, clémente",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#113"
+   "scene": "#114"
   },
   {
    "composant": "Media",
@@ -2593,17 +2621,17 @@
     "genre": "video",
     "description": "Illustrer : « Quand la justice suisse vous trouve trop bien traité par le fisc suisse… c'est que vous avez vraiment tiré sur la corde. »",
     "mouvement": "auto",
-    "assetId": "S026"
+    "assetId": "S027"
    },
    "asset": {
-    "id": "S026",
+    "id": "S027",
     "genre": "video",
     "description": "Illustrer : « Quand la justice suisse vous trouve trop bien traité par le fisc suisse… c'est que vous avez vraiment tiré sur la corde. »",
     "requetes": "justice, suisse, trouve, trop, traité",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#114"
+   "scene": "#115"
   },
   {
    "composant": "Media",
@@ -2614,17 +2642,17 @@
     "genre": "video",
     "description": "Illustrer : « Et ce n'est pas le seul dossier sensible. »",
     "mouvement": "auto",
-    "assetId": "S027"
+    "assetId": "S028"
    },
    "asset": {
-    "id": "S027",
+    "id": "S028",
     "genre": "video",
     "description": "Illustrer : « Et ce n'est pas le seul dossier sensible. »",
     "requetes": "n'est, seul, dossier, sensible",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#115"
+   "scene": "#116"
   },
   {
    "composant": "CarteFlux",
@@ -2648,7 +2676,7 @@
    },
    "minMs": 4000.0,
    "finMs": 422653.0,
-   "scene": "#116"
+   "scene": "#117"
   },
   {
    "composant": "DocumentCaviarde",
@@ -2668,7 +2696,7 @@
     "tampon": null
    },
    "finMs": 427653.0,
-   "scene": "#117"
+   "scene": "#118"
   },
   {
    "composant": "Media",
@@ -2689,14 +2717,14 @@
    },
    "item": "P11",
    "finMs": 429253.0,
-   "scene": "#118"
+   "scene": "#119"
   },
   {
    "composant": "FichePersonnage",
    "ancre": 1331,
    "debutMs": 429253.0,
    "props": {
-    "assetId": "S028",
+    "assetId": "S029",
     "descriptionPhoto": "Portrait ou photo de : UPC",
     "nom": "UPC",
     "champs": [
@@ -2712,7 +2740,7 @@
     "tampon": null
    },
    "asset": {
-    "id": "S028",
+    "id": "S029",
     "genre": "photo",
     "description": "Portrait ou photo de : UPC",
     "requetes": "UPC",
@@ -2720,7 +2748,7 @@
     "source": "auto"
    },
    "finMs": 435775,
-   "scene": "#119"
+   "scene": "#120"
   },
   {
    "composant": "TimelineMachine",
@@ -2736,7 +2764,7 @@
     ]
    },
    "finMs": 437975.0,
-   "scene": "#120"
+   "scene": "#121"
   },
   {
    "composant": "DocumentCaviarde",
@@ -2756,7 +2784,7 @@
     "tampon": "CONFIDENTIEL"
    },
    "finMs": 442975.0,
-   "scene": "#121"
+   "scene": "#122"
   },
   {
    "composant": "TimelineMachine",
@@ -2772,7 +2800,7 @@
     ]
    },
    "finMs": 445775.0,
-   "scene": "#122"
+   "scene": "#123"
   },
   {
    "composant": "Media",
@@ -2783,17 +2811,17 @@
     "genre": "video",
     "description": "Illustrer : « Les infractions sont jugées « insuffisamment caractérisées ». »",
     "mouvement": "auto",
-    "assetId": "S029"
+    "assetId": "S030"
    },
    "asset": {
-    "id": "S029",
+    "id": "S030",
     "genre": "video",
     "description": "Illustrer : « Les infractions sont jugées « insuffisamment caractérisées ». »",
     "requetes": "infractions, jugées, insuffisamment, caractérisées",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#123"
+   "scene": "#124"
   },
   {
    "composant": "Media",
@@ -2804,17 +2832,17 @@
     "genre": "video",
     "description": "Illustrer : « Les enquêteurs n'ont pas pu accéder aux témoins clés, dans un pays toujours en conflit. »",
     "mouvement": "auto",
-    "assetId": "S030"
+    "assetId": "S031"
    },
    "asset": {
-    "id": "S030",
+    "id": "S031",
     "genre": "video",
     "description": "Illustrer : « Les enquêteurs n'ont pas pu accéder aux témoins clés, dans un pays toujours en conflit. »",
     "requetes": "enquêteurs, n'ont, accéder, témoins, clés",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#124"
+   "scene": "#125"
   },
   {
    "composant": "Media",
@@ -2825,17 +2853,17 @@
     "genre": "video",
     "description": "Illustrer : « Et selon l'organisation à l'origine de la plainte, le principal d'entre eux est mort. »",
     "mouvement": "auto",
-    "assetId": "S031"
+    "assetId": "S032"
    },
    "asset": {
-    "id": "S031",
+    "id": "S032",
     "genre": "video",
     "description": "Illustrer : « Et selon l'organisation à l'origine de la plainte, le principal d'entre eux est mort. »",
     "requetes": "selon, l'organisation, l'origine, plainte, principal",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#125"
+   "scene": "#126"
   },
   {
    "composant": "CartonPiece",
@@ -2847,7 +2875,7 @@
     "numero": 4,
     "titre": "La succession"
    },
-   "scene": "#126"
+   "scene": "#127"
   },
   {
    "composant": "FichePersonnage",
@@ -2878,7 +2906,7 @@
     "source": "a-chercher"
    },
    "finMs": 466031,
-   "scene": "#127"
+   "scene": "#128"
   },
   {
    "composant": "CarteFlux",
@@ -2966,7 +2994,7 @@
    },
    "minMs": 4000.0,
    "finMs": 473834,
-   "scene": "#128"
+   "scene": "#129"
   },
   {
    "composant": "Media",
@@ -2988,7 +3016,7 @@
    "depuis_balise": true,
    "item": "I02",
    "finMs": 478634.0,
-   "scene": "#129"
+   "scene": "#130"
   },
   {
    "composant": "Media",
@@ -3011,7 +3039,7 @@
     "source": "a-chercher"
    },
    "copie": true,
-   "scene": "#130"
+   "scene": "#131"
   },
   {
    "composant": "TimelineMachine",
@@ -3027,14 +3055,14 @@
     ]
    },
    "finMs": 483197.0,
-   "scene": "#131"
+   "scene": "#132"
   },
   {
    "composant": "FichePersonnage",
    "ancre": 1497,
    "debutMs": 483197.0,
    "props": {
-    "assetId": "S032",
+    "assetId": "S033",
     "descriptionPhoto": "Portrait ou photo de : Gregory Clerc",
     "nom": "Gregory Clerc",
     "champs": [
@@ -3050,7 +3078,7 @@
     "tampon": null
    },
    "asset": {
-    "id": "S032",
+    "id": "S033",
     "genre": "photo",
     "description": "Portrait ou photo de : Gregory Clerc",
     "requetes": "Gregory Clerc",
@@ -3058,7 +3086,7 @@
     "source": "auto"
    },
    "finMs": 488197.0,
-   "scene": "#132"
+   "scene": "#133"
   },
   {
    "composant": "Media",
@@ -3079,7 +3107,7 @@
    },
    "item": "V20",
    "finMs": 492997.0,
-   "scene": "#133"
+   "scene": "#134"
   },
   {
    "composant": "Media",
@@ -3102,7 +3130,7 @@
     "source": "a-chercher"
    },
    "copie": true,
-   "scene": "#134"
+   "scene": "#135"
   },
   {
    "composant": "TableauEnquete",
@@ -3117,7 +3145,7 @@
     "mode": "nouveau"
    },
    "finMs": 504041,
-   "scene": "#135"
+   "scene": "#136"
   },
   {
    "composant": "GraphiqueAnime",
@@ -3139,7 +3167,7 @@
     "titre": ""
    },
    "finMs": 510541.0,
-   "scene": "#136"
+   "scene": "#137"
   },
   {
    "composant": "Media",
@@ -3150,17 +3178,17 @@
     "genre": "video",
     "description": "Illustrer : « Romy Castel, la fille du fondateur, qui détient environ 20 % du groupe, part en guerre. »",
     "mouvement": "auto",
-    "assetId": "S033"
+    "assetId": "S034"
    },
    "asset": {
-    "id": "S033",
+    "id": "S034",
     "genre": "video",
     "description": "Illustrer : « Romy Castel, la fille du fondateur, qui détient environ 20 % du groupe, part en guerre. »",
     "requetes": "romy, castel, fille, fondateur, détient",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#137"
+   "scene": "#138"
   },
   {
    "composant": "FichePersonnage",
@@ -3191,19 +3219,19 @@
     "source": "a-chercher"
    },
    "finMs": 516252.0,
-   "scene": "#138"
+   "scene": "#139"
   },
   {
    "composant": "Media",
    "ancre": 1595,
    "debutMs": 516252.0,
    "props": {
-    "assetId": "S034",
+    "assetId": "S035",
     "genre": "ia",
     "description": "silhouette en contre-jour, pas de visage"
    },
    "asset": {
-    "id": "S034",
+    "id": "S035",
     "genre": "ia",
     "description": "silhouette en contre-jour, pas de visage",
     "requetes": "silhouette, contre-jour, visage",
@@ -3212,7 +3240,7 @@
    },
    "depuis_balise": true,
    "finMs": 517852.0,
-   "scene": "#139"
+   "scene": "#140"
   },
   {
    "composant": "TimelineMachine",
@@ -3228,7 +3256,7 @@
     ]
    },
    "finMs": 520652.0,
-   "scene": "#140"
+   "scene": "#141"
   },
   {
    "composant": "Media",
@@ -3239,17 +3267,17 @@
     "genre": "video",
     "description": "Illustrer : « Raté, sur un problème de procédure. »",
     "mouvement": "auto",
-    "assetId": "S035"
+    "assetId": "S036"
    },
    "asset": {
-    "id": "S035",
+    "id": "S036",
     "genre": "video",
     "description": "Illustrer : « Raté, sur un problème de procédure. »",
     "requetes": "raté, problème, procédure",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#141"
+   "scene": "#142"
   },
   {
    "composant": "TimelineMachine",
@@ -3265,7 +3293,7 @@
     ]
    },
    "finMs": 525701.0,
-   "scene": "#142"
+   "scene": "#143"
   },
   {
    "composant": "Media",
@@ -3276,17 +3304,17 @@
     "genre": "video",
     "description": "Illustrer : « Plus de 70 % des voix pour le virer. »",
     "mouvement": "auto",
-    "assetId": "S036"
+    "assetId": "S037"
    },
    "asset": {
-    "id": "S036",
+    "id": "S037",
     "genre": "video",
     "description": "Illustrer : « Plus de 70 % des voix pour le virer. »",
     "requetes": "voix, virer",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#143"
+   "scene": "#144"
   },
   {
    "composant": "Media",
@@ -3297,17 +3325,17 @@
     "genre": "video",
     "description": "Illustrer : « Et le conseil d'administration répond… que le vote n'est pas valable. »",
     "mouvement": "auto",
-    "assetId": "S037"
+    "assetId": "S038"
    },
    "asset": {
-    "id": "S037",
+    "id": "S038",
     "genre": "video",
     "description": "Illustrer : « Et le conseil d'administration répond… que le vote n'est pas valable. »",
     "requetes": "conseil, d'administration, répond, vote, n'est",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#144"
+   "scene": "#145"
   },
   {
    "composant": "TableauEnquete",
@@ -3322,7 +3350,7 @@
     "mode": "coupe"
    },
    "finMs": 535347.0,
-   "scene": "#145"
+   "scene": "#146"
   },
   {
    "composant": "Media",
@@ -3343,7 +3371,7 @@
    },
    "item": "V21",
    "finMs": 540147.0,
-   "scene": "#146"
+   "scene": "#147"
   },
   {
    "composant": "Media",
@@ -3366,7 +3394,7 @@
     "source": "a-chercher"
    },
    "copie": true,
-   "scene": "#147"
+   "scene": "#148"
   },
   {
    "composant": "TableauEnquete",
@@ -3436,7 +3464,7 @@
     "mode": "ensemble"
    },
    "finMs": 547417.0,
-   "scene": "#148"
+   "scene": "#149"
   },
   {
    "composant": "ChiffreCle",
@@ -3454,7 +3482,7 @@
    },
    "morceau": 1697,
    "finMs": 550217.0,
-   "scene": "#149"
+   "scene": "#150"
   },
   {
    "composant": "Media",
@@ -3476,7 +3504,7 @@
    "depuis_balise": true,
    "item": "V22",
    "finMs": 555017.0,
-   "scene": "#150"
+   "scene": "#151"
   },
   {
    "composant": "Media",
@@ -3499,7 +3527,7 @@
     "source": "a-chercher"
    },
    "copie": true,
-   "scene": "#151"
+   "scene": "#152"
   },
   {
    "composant": "Media",
@@ -3510,17 +3538,17 @@
     "genre": "video",
     "description": "Illustrer : « Les plus grandes fortunes ne sont pas toujours celles qui font le plus de bruit. »",
     "mouvement": "auto",
-    "assetId": "S038"
+    "assetId": "S039"
    },
    "asset": {
-    "id": "S038",
+    "id": "S039",
     "genre": "video",
     "description": "Illustrer : « Les plus grandes fortunes ne sont pas toujours celles qui font le plus de bruit. »",
     "requetes": "grandes, fortunes, toujours, celles, font",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#152"
+   "scene": "#153"
   },
   {
    "composant": "Media",
@@ -3531,17 +3559,17 @@
     "genre": "video",
     "description": "Illustrer : « Ce sont parfois celles qui ont appris… à disparaître. »",
     "mouvement": "auto",
-    "assetId": "S039"
+    "assetId": "S040"
    },
    "asset": {
-    "id": "S039",
+    "id": "S040",
     "genre": "video",
     "description": "Illustrer : « Ce sont parfois celles qui ont appris… à disparaître. »",
     "requetes": "parfois, celles, ont, appris, disparaître",
     "ou": "Pexels, Pixabay",
     "source": "auto"
    },
-   "scene": "#153"
+   "scene": "#154"
   },
   {
    "composant": "Teaser",
@@ -3561,7 +3589,7 @@
     "source": "a-chercher"
    },
    "finMs": 581885,
-   "scene": "#154"
+   "scene": "#155"
   }
  ],
  "calques": [

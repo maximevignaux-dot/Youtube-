@@ -1,8 +1,9 @@
 import React from 'react';
 import {AbsoluteFill, Img, interpolate, OffthreadVideo, useCurrentFrame, useVideoConfig} from 'remotion';
-import {trouverAsset} from '../lib/assets';
+import {trouverAsset, trouverDecoupe} from '../lib/assets';
 import {useSlug} from '../lib/contexte';
 import {filtreDossier} from './Habillage';
+import {Parallaxe25D} from './Parallaxe25D';
 import {Placeholder} from './Placeholder';
 
 export type MouvementMedia = 'zoom-avant' | 'zoom-arriere' | 'gauche' | 'droite' | 'serre' | 'auto';
@@ -20,6 +21,10 @@ export const Media: React.FC<{assetId: string; genre: 'photo' | 'video' | 'ia'; 
   const {durationInFrames} = useVideoConfig();
   const slug = useSlug();
   const asset = trouverAsset(slug, assetId);
+  const decoupe = asset && !asset.video ? trouverDecoupe(slug, assetId) : undefined;
+  if (asset && decoupe && mouvement !== 'serre') {
+    return <Parallaxe25D fond={asset.src} sujet={decoupe} sens={assetId.charCodeAt(assetId.length - 1) % 2 ? 1 : -1} />;
+  }
   // mouvement « auto » : varie selon l'identifiant pour éviter la monotonie
   const m = mouvement === 'auto' ? MOUVEMENTS[[...assetId].reduce((a, c) => a + c.charCodeAt(0), 0) % 4] : mouvement;
   const p = interpolate(frame, [0, durationInFrames], [0, 1], {extrapolateRight: 'clamp'});

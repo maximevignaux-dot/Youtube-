@@ -17,3 +17,10 @@ export const trouverAsset = (slug: string, id: string): {src: string; video: boo
   }
   return undefined;
 };
+
+/** Sujet détouré (rembg) pour l'effet 2,5D et les miniatures : assets/decoupes/<ID>.png. */
+export const trouverDecoupe = (slug: string, id: string): string | undefined => {
+  cache = cache ?? new Set(getStaticFiles().map((f) => f.name));
+  const nom = `videos/${slug}/assets/decoupes/${id}.png`;
+  return cache.has(nom) ? staticFile(nom) : undefined;
+};

@@ -56,8 +56,12 @@ def lire(chemin: str) -> dict:
     meta = {"numero": None, "titre": "", "sujet": "", "sousTitre": ""}
     section = None  # tout ce qui précède le premier « ## » (titres, miniature…) n'est pas lu
 
-    def ajouter_pause(k, s):
+    imposees = {}          # pauses que la vraie voix doit aussi respecter (cartons, [PAUSE], fin)
+
+    def ajouter_pause(k, s, imposee=False):
         pauses[k] = round(pauses.get(k, 0) + s, 2)
+        if imposee:
+            imposees[k] = round(imposees.get(k, 0) + s, 2)
 
     for ligne in lignes:
         l = ligne.strip()
@@ -81,6 +85,8 @@ def lire(chemin: str) -> dict:
                 if not sections and re.match(r"^[«\"“]", titre):
                     meta["sousTitre"] = titre.strip("«»\"“” ")
             continue
+        if l.startswith("**Miniature"):
+            meta["miniature"] = re.sub(r"^\*\*Miniature\s*:?\*\*\s*:?", "", l).strip()
         if section is None or not l or l.startswith((">", "⚠", "**", "---", "(", "|", "- ")):
             continue
 
@@ -100,13 +106,13 @@ def lire(chemin: str) -> dict:
             if genre == "balise":
                 p = RE_PAUSE.match(valeur.strip())
                 if p:
-                    ajouter_pause(len(tokens), float(p.group(1).replace(",", ".")))
+                    ajouter_pause(len(tokens), float(p.group(1).replace(",", ".")), True)
                     continue
                 b = lire_balise(valeur)
                 if b["type"] == "PIECE":
-                    ajouter_pause(len(tokens), CARTON_PIECE)
+                    ajouter_pause(len(tokens), CARTON_PIECE, True)
                 if b["type"] == "OUVERTURE_DOSSIER":
-                    ajouter_pause(len(tokens), OUVERTURE)
+                    ajouter_pause(len(tokens), OUVERTURE, True)
                 if dernier is not None and b["type"] not in ("PIECE", "OUVERTURE_DOSSIER"):
                     dernier["balises"].append(b)
                 else:
@@ -138,10 +144,10 @@ def lire(chemin: str) -> dict:
 
     if en_attente and morceaux:
         morceaux[-1]["balises"].extend(en_attente)
-    ajouter_pause(len(tokens), FIN)
+    ajouter_pause(len(tokens), FIN, True)
     for m in morceaux:
         m["texte"] = " ".join(t["brut"] for t in tokens[m["debut"]:m["fin"]])
-    return {"meta": meta, "tokens": tokens, "morceaux": morceaux, "pauses": pauses, "sections": sections}
+    return {"meta": meta, "tokens": tokens, "morceaux": morceaux, "pauses": pauses, "pausesImposees": imposees, "sections": sections}
 
 
 if __name__ == "__main__":

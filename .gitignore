@@ -13,3 +13,8 @@ mes-rushs/*
 videos/*/demo-hook.mp4
 videos/*/assets/auto/
 videos/*/shotlist.html
+videos/*/voix-propre.wav
+videos/*/voix.transcription.json
+videos/*/sortie.mp4
+videos/*/miniature-*.jpg
+videos/*/assets/decoupes/
