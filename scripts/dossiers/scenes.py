@@ -23,7 +23,7 @@ MIN = {  # temps minimum à l'écran pour avoir le temps de lire
 MAX = {  # au-delà, on enchaîne sur un autre visuel (jamais d'image fixe > 5 s)
     "Media": 4.8, "FichePersonnage": 7.5, "DocumentCaviarde": 7.5, "CarteFlux": 10.0, "TableauEnquete": 8.0,
     "GraphiqueAnime": 6.5, "CompteurBillets": 5.5, "ChiffreCle": 5.0, "TimelineMachine": 2.8, "Citation": 6.5,
-    "Schema": 8.0, "Teaser": 12.0,
+    "Schema": 8.0, "Teaser": 60.0,
 }
 HOOK_MAX_MEDIA = 2.4      # dans le hook : un visuel toutes les 1,5–2,5 s
 CALQUE_MIN, CALQUE_MAX = 1.5, 2.6
@@ -434,7 +434,7 @@ class Monteur:
         tailles = {"petite": 1, "minuscule": 0.6, "moyenne": 4, "grande": 7, "enorme": 10, "geante": 10}
         if q:
             for lab in q:
-                apres = sans_accents(x.split(lab, 1)[1].split('"', 2)[-1]).lower() if lab in x else ""
+                apres = sans_accents(re.split(r'["“«]', x.split(lab, 1)[1].lstrip('"”» '))[0]).lower() if lab in x else ""
                 mot = next((w for w in tailles if w in apres.split(",")[0]), "moyenne")
                 barres.append({"label": lab.upper(), "valeur": tailles[mot], "texte": ""})
         else:

@@ -815,7 +815,7 @@
     "barres": [
      {
       "label": "GRAND CRU",
-      "valeur": 10,
+      "valeur": 1,
       "texte": ""
      },
      {
@@ -3560,29 +3560,8 @@
     "ou": "Pexels, Storyblocks",
     "source": "a-chercher"
    },
-   "finMs": 576945.0,
+   "finMs": 581885,
    "scene": "#154"
-  },
-  {
-   "composant": "Media",
-   "ancre": 1806,
-   "debutMs": 576945.0,
-   "finMs": 581885.0,
-   "props": {
-    "genre": "video",
-    "description": "Illustrer : « Abonnez-vous, le dossier N°002 arrive. »",
-    "mouvement": "auto",
-    "assetId": "S040"
-   },
-   "asset": {
-    "id": "S040",
-    "genre": "video",
-    "description": "Illustrer : « Abonnez-vous, le dossier N°002 arrive. »",
-    "requetes": "abonnez-vous, dossier, 002, arrive",
-    "ou": "Pexels, Pixabay",
-    "source": "auto"
-   },
-   "scene": "#155"
   }
  ],
  "calques": [
