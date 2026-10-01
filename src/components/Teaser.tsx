@@ -2,6 +2,8 @@ import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {couleurs} from '../theme/palette';
 import {anton, machine} from '../theme/polices';
+import {trouverAsset} from '../lib/assets';
+import {useSlug} from '../lib/contexte';
 import {Media} from './Media';
 import {Tampon} from './Tampon';
 import {Tape} from './Tape';
@@ -9,10 +11,12 @@ import {Tape} from './Tape';
 /** Teaser du prochain dossier : chemise fermée, tampon « DOSSIER N°00X », sujet tapé. */
 export const Teaser: React.FC<{numero: number; titre: string; fondAssetId?: string}> = ({numero, titre, fondAssetId}) => {
   const frame = useCurrentFrame();
+  const slug = useSlug();
+  const fondDispo = fondAssetId ? trouverAsset(slug, fondAssetId) : undefined;
   const entree = interpolate(frame, [0, 14], [600, 0], {extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{background: couleurs.noir}}>
-      {fondAssetId ? (
+      {fondAssetId && fondDispo ? (
         <AbsoluteFill style={{opacity: 0.35}}>
           <Media assetId={fondAssetId} genre="video" description="Fond du teaser" mouvement="gauche" />
         </AbsoluteFill>

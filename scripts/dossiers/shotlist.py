@@ -122,6 +122,8 @@ def generer(plan, script, dossier, slug):
 <style>
 :root {{ --noir:#0D0D0D; --papier:#EFE6D2; --vert:#1F8A5B; --rouge:#C8102E; --jaune:#F2D023; }}
 * {{ box-sizing:border-box; }}
+html, body {{ overflow-x:hidden; }}
+.item, .aide, .resume {{ overflow-wrap:anywhere; }}
 body {{ margin:0; background:var(--noir); color:var(--papier); font:16px/1.45 Inter, system-ui, sans-serif; padding:16px; max-width:820px; margin:auto; }}
 h1 {{ font-family:Anton, Impact, sans-serif; font-weight:400; font-size:34px; margin:8px 0 4px; letter-spacing:1px; }}
 h2 {{ font-family:Anton, Impact, sans-serif; font-weight:400; font-size:24px; margin:32px 0 8px; color:var(--jaune); }}
@@ -134,7 +136,8 @@ h2 {{ font-family:Anton, Impact, sans-serif; font-weight:400; font-size:24px; ma
 .tete input {{ width:24px; height:24px; accent-color:var(--vert); }}
 .id {{ font-family:Anton, Impact, sans-serif; font-size:26px; }}
 .genre {{ background:var(--rouge); color:#fff; font-size:12px; font-weight:600; padding:2px 8px; border-radius:4px; letter-spacing:1px; }}
-.tc {{ margin-left:auto; font-family:"Special Elite", monospace; opacity:.8; }}
+.tc {{ margin-left:auto; font-family:"Special Elite", monospace; opacity:.8; font-size:14px; }}
+@media (max-width:520px) {{ .tc {{ margin-left:0; width:100%; }} h1 {{ font-size:28px; }} }}
 .phrase {{ font-style:italic; opacity:.8; margin:10px 0 6px; }}
 .desc {{ font-weight:600; margin:6px 0; }}
 .meta, .note {{ font-size:14px; opacity:.75; margin:4px 0; }}

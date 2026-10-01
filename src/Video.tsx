@@ -120,12 +120,16 @@ const Pistes: React.FC<{plan: Plan}> = ({plan}) => (
       const flash = s.composant === 'CarteFlux' || precedent?.composant === 'CartonPiece';
       return (
         <React.Fragment key={i}>
-          <Sequence from={de} durationInFrames={duree} name={`${s.composant} ${(s as {scene?: string}).scene ?? ''}`}>
-            <C {...s.props} debutSceneMs={s.debutMs} />
+          <Sequence from={de} durationInFrames={duree} name={`${s.composant} ${(s as {scene?: string}).scene ?? ''}`} layout="none">
+            <AbsoluteFill>
+              <C {...s.props} debutSceneMs={s.debutMs} />
+            </AbsoluteFill>
           </Sequence>
           {flash ? (
-            <Sequence from={Math.max(0, de - 3)} durationInFrames={12} name="flash">
-              <Flash />
+            <Sequence from={Math.max(0, de - 3)} durationInFrames={12} name="flash" layout="none">
+              <AbsoluteFill>
+                <Flash />
+              </AbsoluteFill>
             </Sequence>
           ) : null}
         </React.Fragment>
@@ -136,8 +140,10 @@ const Pistes: React.FC<{plan: Plan}> = ({plan}) => (
       if (!C) return null;
       const de = ms(s.debutMs);
       return (
-        <Sequence key={'c' + i} from={de} durationInFrames={Math.max(1, ms(s.finMs) - de)} name={s.composant}>
-          <C {...s.props} />
+        <Sequence key={'c' + i} from={de} durationInFrames={Math.max(1, ms(s.finMs) - de)} name={s.composant} layout="none">
+          <AbsoluteFill>
+            <C {...s.props} />
+          </AbsoluteFill>
         </Sequence>
       );
     })}
@@ -155,7 +161,7 @@ export const Video: React.FC<PropsVideo> = ({slug, apercu, plan}) => {
   return (
     <ContexteVideo.Provider value={{slug}}>
       <AbsoluteFill style={{background: '#0D0D0D'}}>
-        <div style={{width: LARGEUR, height: HAUTEUR, transform: `scale(${echelle})`, transformOrigin: '0 0', position: 'relative'}}>
+        <div style={{width: LARGEUR, height: HAUTEUR, flexShrink: 0, transform: `scale(${echelle})`, transformOrigin: '0 0', position: 'relative'}}>
           <Pistes plan={plan} />
         </div>
       </AbsoluteFill>

@@ -10,7 +10,9 @@ Chaîne YouTube « DOSSIERS » : les coulisses de l'argent. Montage automatique 
 - [x] Session 1 — fondations : palette, polices, grain + vignettage, sons provisoires,
       composants OuvertureDossier, FichePersonnage, CompteurBillets, DocumentCaviarde,
       MotCle, PhotoKenBurns (+ placeholders), CartonPiece, Flash ; démo de 30 s (`DemoCastel`).
-- [ ] Session 2 — chaîne complète (`npm run video <slug>`)
+- [x] Session 2 — chaîne complète (`npm run video <slug>`) : lecture du script et de a-chercher.md,
+      voix test au mot près, découpage automatique, cartes, tableau d'enquête, graphiques, frises,
+      chiffres, musique avec ducking, recherche auto des visuels, shotlist.html, chapitres, crédits.
 - [ ] Session 3 — `revoice`, `final`, `shorts`, miniatures
 
 ## Organisation

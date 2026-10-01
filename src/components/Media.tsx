@@ -24,10 +24,11 @@ export const Media: React.FC<{assetId: string; genre: 'photo' | 'video' | 'ia'; 
   const m = mouvement === 'auto' ? MOUVEMENTS[[...assetId].reduce((a, c) => a + c.charCodeAt(0), 0) % 4] : mouvement;
   const p = interpolate(frame, [0, durationInFrames], [0, 1], {extrapolateRight: 'clamp'});
   const base = asset?.video ? 1.04 : 1.08;
-  const echelle =
-    m === 'serre' ? 1.32 + 0.06 * p : m === 'zoom-arriere' ? base + 0.14 - 0.12 * p : m === 'zoom-avant' ? base + 0.12 * p : base + 0.08;
-  const x = m === 'gauche' ? 50 - 100 * p : m === 'droite' ? -50 + 100 * p : m === 'serre' ? -60 : 0;
-  const y = m === 'serre' ? -30 : 0;
+  const echelle = !asset
+    ? 1 + 0.05 * p // carton « à fournir » : mouvement léger, rien n'est coupé
+    : m === 'serre' ? 1.32 + 0.06 * p : m === 'zoom-arriere' ? base + 0.14 - 0.12 * p : m === 'zoom-avant' ? base + 0.12 * p : base + 0.08;
+  const x = !asset ? 0 : m === 'gauche' ? 50 - 100 * p : m === 'droite' ? -50 + 100 * p : m === 'serre' ? -60 : 0;
+  const y = asset && m === 'serre' ? -30 : 0;
 
   return (
     <AbsoluteFill style={{overflow: 'hidden', background: '#000'}}>

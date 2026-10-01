@@ -354,7 +354,7 @@ class Monteur:
         q = guillemets(x)
         bas = sans_accents(x).lower()
         style = "journal" if "presse" in bas or "journal" in bas else "rapport" if "rapport" in bas else "document"
-        entete = q[0] if q else re.split(r",| recree", x)[0].strip()
+        entete = q[0] if q else re.split(r",|\s+recr[ée]{2}e?s?\b", x)[0].strip()
         if style == "journal" and not q:
             entete = "LA PRESSE EN PARLE"
         caviarde = "caviard" in bas
