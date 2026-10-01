@@ -9,7 +9,7 @@ const pub = join(racine, 'public');
 rmSync(pub, {recursive: true, force: true});
 mkdirSync(pub, {recursive: true});
 
-for (const dossier of ['sfx', 'musique', 'polices']) {
+for (const dossier of ['sfx', 'musique', 'polices', 'textures']) {
   if (existsSync(join(racine, dossier))) cpSync(join(racine, dossier), join(pub, dossier), {recursive: true});
 }
 const videos = join(racine, 'videos');
@@ -18,7 +18,7 @@ for (const slug of existsSync(videos) ? readdirSync(videos) : []) {
   const dst = join(pub, 'videos', slug);
   mkdirSync(dst, {recursive: true});
   for (const f of readdirSync(src)) {
-    if (/^(voix.*\.(mp3|wav)|assets)$/.test(f)) cpSync(join(src, f), join(dst, f), {recursive: true});
+    if (/^(voix.*\.(mp3|wav)|scenes\.json|assets)$/.test(f)) cpSync(join(src, f), join(dst, f), {recursive: true});
   }
 }
 console.log('public/ prêt');

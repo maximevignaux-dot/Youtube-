@@ -11,3 +11,5 @@ videos/*/shorts/
 mes-rushs/*
 !mes-rushs/.gitkeep
 videos/*/demo-hook.mp4
+videos/*/assets/auto/
+videos/*/shotlist.html

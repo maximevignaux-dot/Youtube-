@@ -36,6 +36,14 @@ Mon usage quotidien doit être aussi simple que ça :
 Tant qu'une image/vidéo manque, utiliser un placeholder dans le style maison (carton papier crème
 avec la description tapée à la machine + numéro de scène). L'aperçu est toujours regardable.
 
+### Liste de visuels préparée à la main (a-chercher.md)
+Si /videos/<slug>/a-chercher.md existe, il est PRIORITAIRE sur la recherche automatique.
+Les fichiers que je dépose dans assets/ sont nommés par l'ID de cette liste (V01.mp4, P03.jpg, I02.png).
+Pour chaque ID : retrouver la phrase de la colonne « Moment » dans script.md, placer le fichier
+sur la ou les scènes correspondantes, et le noter dans scenes.json. ID sans fichier → recherche auto
+avec ses mots-clés, sinon placeholder. Quand j'écris un nouveau script, générer aussi son a-chercher.md
+(même format) + une version PDF lisible sur téléphone.
+
 ## La ligne éditoriale
 Chaîne française faceless sur les coulisses de l'argent : arnaques et affaires oubliées,
 empires discrets, business models cachés, coups de génie marketing.

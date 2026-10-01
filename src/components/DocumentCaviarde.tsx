@@ -1,29 +1,38 @@
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
+import {ms} from '../lib/contexte';
 import {couleurs} from '../theme/palette';
-import {anton, machine} from '../theme/polices';
+import {anton, inter, machine} from '../theme/polices';
 import {Son} from './Son';
 import {Tampon} from './Tampon';
 
 export type LigneDocument = {
   texte: string;
   caviarde?: boolean; // barre noire par-dessus
-  revelerA?: number; // frame où la barre se retire (sinon reste caviardée)
-  surligner?: boolean; // surligneur jaune après révélation (l'info clé)
+  revelerAMs?: number | null; // moment (ms dans la vidéo) où la barre se retire
+  surligner?: boolean; // surligneur jaune (l'info clé)
 };
 
 type Props = {
-  entete: string; // ex. « FICHE D'IDENTIFICATION »
-  tampon?: string; // ex. « CONFIDENTIEL »
+  entete: string;
+  style?: 'document' | 'journal' | 'rapport';
+  tampon?: string | null;
   lignes: LigneDocument[];
+  debutSceneMs?: number;
 };
 
-/** Document recréé : les barres noires se retirent une par une, puis l'info clé est surlignée. */
-export const DocumentCaviarde: React.FC<Props> = ({entete, tampon, lignes}) => {
+/**
+ * Document recréé (contrat, arrêt, article…). Les barres noires se retirent au moment où la phrase
+ * est prononcée, puis l'info clé est surlignée. Mention « reconstitution » discrète, toujours.
+ */
+export const DocumentCaviarde: React.FC<Props> = ({entete, style = 'document', tampon, lignes, debutSceneMs = 0}) => {
   const frame = useCurrentFrame();
   const {durationInFrames} = useVideoConfig();
-  const zoom = interpolate(frame, [0, durationInFrames], [1, 1.12]);
-  const glisse = interpolate(frame, [0, 12], [80, 0], {extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)});
+  const zoom = interpolate(frame, [0, durationInFrames], [1, 1.08]);
+  const glisse = interpolate(frame, [0, 14], [120, 0], {extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)});
+  const longueur = lignes.reduce((a, l) => a + l.texte.length, 0);
+  const taille = longueur > 420 ? 34 : longueur > 260 ? 40 : 48;
+  const journal = style === 'journal';
 
   return (
     <AbsoluteFill style={{background: couleurs.noir, justifyContent: 'center', alignItems: 'center'}}>
@@ -31,64 +40,58 @@ export const DocumentCaviarde: React.FC<Props> = ({entete, tampon, lignes}) => {
       <div
         style={{
           position: 'relative',
-          width: 1180,
-          padding: '80px 100px',
-          background: `linear-gradient(170deg, ${couleurs.papier}, ${couleurs.papierOmbre})`,
+          width: 1360,
+          padding: journal ? '60px 90px 80px' : '70px 100px 80px',
+          background: journal ? 'linear-gradient(170deg, #E9E3D3, #CFC6B0)' : `linear-gradient(170deg, ${couleurs.papier}, ${couleurs.papierOmbre})`,
           boxShadow: '0 40px 100px rgba(0,0,0,0.8)',
-          transform: `translateY(${glisse}px) scale(${zoom}) rotate(1deg)`,
-          fontFamily: machine,
+          transform: `translateY(${glisse}px) scale(${zoom}) rotate(${journal ? -1.2 : 0.8}deg)`,
+          fontFamily: journal ? inter : machine,
           color: couleurs.encre,
         }}
       >
-        <div style={{fontFamily: anton, fontSize: 60, letterSpacing: 3, borderBottom: `3px solid ${couleurs.encre}`, paddingBottom: 16, marginBottom: 40}}>
-          {entete}
-        </div>
+        {journal ? (
+          <div style={{borderBottom: `4px double ${couleurs.encre}`, paddingBottom: 14, marginBottom: 30, textAlign: 'center'}}>
+            <div style={{fontFamily: anton, fontSize: 30, letterSpacing: 10, opacity: 0.6}}>ÉDITION DU JOUR</div>
+            <div style={{fontFamily: anton, fontSize: 74, lineHeight: 1.05}}>{entete}</div>
+          </div>
+        ) : (
+          <div style={{fontFamily: anton, fontSize: entete.length > 34 ? 46 : 58, letterSpacing: 2, borderBottom: `3px solid ${couleurs.encre}`, paddingBottom: 14, marginBottom: 34, paddingRight: tampon ? 330 : 0}}>
+            {style === 'rapport' ? <div style={{fontSize: 26, letterSpacing: 8, opacity: 0.6}}>RAPPORT</div> : null}
+            {entete}
+          </div>
+        )}
         {lignes.map((l, i) => {
-          const retrait =
-            l.caviarde && l.revelerA !== undefined
-              ? interpolate(frame, [l.revelerA, l.revelerA + 8], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.in(Easing.quad)})
-              : l.caviarde
-                ? 1
-                : 0;
-          const debutSurligne = (l.revelerA ?? 0) + 10;
-          const surligne = l.surligner
-            ? interpolate(frame, [debutSurligne, debutSurligne + 10], [0, 100], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})
-            : 0;
+          const a = l.revelerAMs != null ? Math.max(6, ms(l.revelerAMs - debutSceneMs)) : 8 + i * 6;
+          const retrait = l.caviarde ? interpolate(frame, [a, a + 9], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.in(Easing.quad)}) : 0;
+          const debutSurligne = (l.caviarde ? a + 10 : Math.max(a, 18)) + 6;
+          const surligne = l.surligner ? interpolate(frame, [debutSurligne, debutSurligne + 14], [0, 100], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}) : 0;
           return (
-            <div key={i} style={{position: 'relative', fontSize: 50, lineHeight: 1.25, margin: '22px 0', display: 'inline-block', width: '100%'}}>
-              {l.caviarde && l.revelerA !== undefined ? <Son nom="feuille" a={l.revelerA} volume={0.5} /> : null}
-              <span style={{position: 'relative', display: 'inline-block'}}>
-                <span
-                  style={{
-                    position: 'absolute',
-                    left: -8,
-                    top: '12%',
-                    height: '80%',
-                    width: `calc(${surligne}% + 16px)`,
-                    background: couleurs.jaune,
-                    opacity: surligne > 0 ? 0.9 : 0,
-                  }}
-                />
-                <span style={{position: 'relative'}}>{l.texte}</span>
-                <span
-                  style={{
-                    position: 'absolute',
-                    left: -10,
-                    right: -10,
-                    top: '-6%',
-                    bottom: '2%',
-                    background: '#050505',
-                    transformOrigin: 'right center',
-                    transform: `scaleX(${retrait})`,
-                  }}
-                />
+            <div key={i} style={{position: 'relative', fontSize: taille, lineHeight: 1.35, margin: '18px 0', fontWeight: journal ? 600 : 400}}>
+              {l.caviarde && l.revelerAMs != null ? <Son nom="feuille" a={a} volume={0.45} /> : null}
+              <span
+                style={{
+                  backgroundImage: `linear-gradient(${couleurs.jaune}, ${couleurs.jaune})`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: `${surligne}% 100%`,
+                  boxDecorationBreak: 'clone',
+                  WebkitBoxDecorationBreak: 'clone',
+                  padding: '0 6px',
+                }}
+              >
+                {l.texte}
               </span>
+              {l.caviarde ? (
+                <div style={{position: 'absolute', inset: '-4px -10px', background: '#050505', transformOrigin: 'right center', transform: `scaleX(${retrait})`}} />
+              ) : null}
             </div>
           );
         })}
+        <div style={{position: 'absolute', left: 30, bottom: 16, fontFamily: machine, fontSize: 20, opacity: 0.45, letterSpacing: 3}}>
+          RECONSTITUTION — DOCUMENT NON ORIGINAL
+        </div>
         {tampon ? (
-          <div style={{position: 'absolute', right: 60, top: 40}}>
-            <Tampon texte={tampon} taille={62} rotation={8} debut={10} />
+          <div style={{position: 'absolute', right: 60, top: 36}}>
+            <Tampon texte={tampon} taille={58} rotation={8} debut={12} />
           </div>
         ) : null}
       </div>

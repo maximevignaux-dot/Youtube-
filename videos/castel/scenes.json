@@ -1,0 +1,4168 @@
+{
+ "slug": "castel",
+ "numero": 1,
+ "titre": "DOSSIER N°001 — Pierre Castel",
+ "voix": {
+  "fichier": "voix-test.mp3",
+  "test": true,
+  "moteur": "mbrola"
+ },
+ "dureeMs": 581885,
+ "fond": [
+  {
+   "composant": "OuvertureDossier",
+   "ancre": 0,
+   "fixe": true,
+   "debutMs": 0,
+   "finMs": 3400,
+   "props": {
+    "numero": 1,
+    "titre": "Pierre Castel",
+    "sousTitre": "Le milliardaire français qui s'appelait Jésus"
+   },
+   "scene": "#001"
+  },
+  {
+   "composant": "Media",
+   "ancre": 0,
+   "debutMs": 3400,
+   "props": {
+    "assetId": "V01",
+    "genre": "video",
+    "description": "Genève de nuit, vue sur le lac et le jet d'eau, lumières de la ville"
+   },
+   "asset": {
+    "id": "V01",
+    "genre": "video",
+    "description": "Genève de nuit, vue sur le lac et le jet d'eau, lumières de la ville",
+    "requetes": "Genève nuit lac / Geneva night lake",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "V01",
+   "finMs": 5800.0,
+   "scene": "#002"
+  },
+  {
+   "composant": "Media",
+   "ancre": 7,
+   "debutMs": 5800.0,
+   "finMs": 9600.0,
+   "recadre": true,
+   "props": {
+    "assetId": "V01",
+    "genre": "video",
+    "description": "Genève de nuit, vue sur le lac et le jet d'eau, lumières de la ville",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "V01",
+    "genre": "video",
+    "description": "Genève de nuit, vue sur le lac et le jet d'eau, lumières de la ville",
+    "requetes": "Genève nuit lac / Geneva night lake",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#003"
+  },
+  {
+   "composant": "Media",
+   "ancre": 18,
+   "debutMs": 9600.0,
+   "finMs": 13400.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Un vieux monsieur, très discret, qui déclare ses revenus depuis des années. »",
+    "mouvement": "auto",
+    "assetId": "S001"
+   },
+   "asset": {
+    "id": "S001",
+    "genre": "video",
+    "description": "Illustrer : « Un vieux monsieur, très discret, qui déclare ses revenus depuis des années. »",
+    "requetes": "vieux, monsieur, discret, déclare, revenus",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#004"
+  },
+  {
+   "composant": "Media",
+   "ancre": 29,
+   "debutMs": 13400.0,
+   "finMs": 14827.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Jésus. »",
+    "mouvement": "auto",
+    "assetId": "S002"
+   },
+   "asset": {
+    "id": "S002",
+    "genre": "video",
+    "description": "Illustrer : « Jésus. »",
+    "requetes": "jésus",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#005"
+  },
+  {
+   "composant": "Media",
+   "ancre": 30,
+   "debutMs": 14827,
+   "props": {
+    "assetId": "S003",
+    "genre": "ia",
+    "description": "vitrail stylisé, ton ironique"
+   },
+   "asset": {
+    "id": "S003",
+    "genre": "ia",
+    "description": "vitrail stylisé, ton ironique",
+    "requetes": "vitrail, stylisé, ironique",
+    "ou": "",
+    "source": "auto"
+   },
+   "depuis_balise": true,
+   "finMs": 17453,
+   "scene": "#006"
+  },
+  {
+   "composant": "CompteurBillets",
+   "ancre": 38,
+   "debutMs": 17453,
+   "props": {
+    "montant": 9999999999,
+    "devise": "€",
+    "sens": "gain",
+    "emballe": true,
+    "libelle": null
+   },
+   "finMs": 21053.0,
+   "scene": "#007"
+  },
+  {
+   "composant": "DocumentCaviarde",
+   "ancre": 47,
+   "debutMs": 21053.0,
+   "props": {
+    "style": "journal",
+    "entete": "LA PRESSE EN PARLE",
+    "lignes": [
+     {
+      "texte": "Parce que ce petit contribuable tranquille, selon la justice suisse, le fisc ne comprendra qui il est vraiment… qu'en lisant le journal.",
+      "caviarde": false,
+      "revelerAMs": null,
+      "surligner": true
+     }
+    ],
+    "tampon": null
+   },
+   "finMs": 26462,
+   "scene": "#008"
+  },
+  {
+   "composant": "Media",
+   "ancre": 65,
+   "debutMs": 26462,
+   "props": {
+    "assetId": "V02",
+    "genre": "video",
+    "description": "Gros plan sur un journal qu'on déplie ou qu'on feuillette, lumière tamisée"
+   },
+   "asset": {
+    "id": "V02",
+    "genre": "video",
+    "description": "Gros plan sur un journal qu'on déplie ou qu'on feuillette, lumière tamisée",
+    "requetes": "journal lecture / reading newspaper close up",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "item": "V02",
+   "finMs": 28062.0,
+   "scene": "#009"
+  },
+  {
+   "composant": "CompteurBillets",
+   "ancre": 69,
+   "debutMs": 28062.0,
+   "props": {
+    "montant": 410000000.0,
+    "devise": "CHF",
+    "sens": "perte",
+    "emballe": false,
+    "libelle": null
+   },
+   "finMs": 31662.0,
+   "scene": "#010"
+  },
+  {
+   "composant": "FichePersonnage",
+   "ancre": 76,
+   "debutMs": 31662.0,
+   "props": {
+    "assetId": "P01",
+    "descriptionPhoto": "Portrait de Pierre Castel (âgé). Uniquement photo sous licence libre. Sinon : silhouette de dos, jamais de visage généré par IA",
+    "nom": "Pierre Castel",
+    "champs": [
+     {
+      "label": "RÔLE",
+      "valeur": "Fondateur du groupe Castel"
+     },
+     {
+      "label": "STATUT",
+      "valeur": "???"
+     }
+    ],
+    "tampon": null
+   },
+   "asset": {
+    "id": "P01",
+    "genre": "photo",
+    "description": "Portrait de Pierre Castel (âgé). Uniquement photo sous licence libre. Sinon : silhouette de dos, jamais de visage généré par IA",
+    "requetes": "Pierre Castel",
+    "ou": "Wikimedia Commons (vérifier la licence)",
+    "source": "a-chercher"
+   },
+   "finMs": 36662.0,
+   "scene": "#011"
+  },
+  {
+   "composant": "Media",
+   "ancre": 97,
+   "debutMs": 36662.0,
+   "props": {
+    "assetId": "V03",
+    "genre": "video",
+    "description": "Rayon de vin de supermarché, travelling lent le long des bouteilles"
+   },
+   "asset": {
+    "id": "V03",
+    "genre": "video",
+    "description": "Rayon de vin de supermarché, travelling lent le long des bouteilles",
+    "requetes": "rayon vin supermarché / supermarket wine aisle",
+    "ou": "Pexels, Storyblocks",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "V03",
+   "finMs": 38262.0,
+   "scene": "#012"
+  },
+  {
+   "composant": "Media",
+   "ancre": 106,
+   "debutMs": 38262.0,
+   "props": {
+    "assetId": "V04",
+    "genre": "video",
+    "description": "Chaîne d'embouteillage de bière, bouteilles brunes qui défilent"
+   },
+   "asset": {
+    "id": "V04",
+    "genre": "video",
+    "description": "Chaîne d'embouteillage de bière, bouteilles brunes qui défilent",
+    "requetes": "embouteillage bière / beer bottling line",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "V04",
+   "finMs": 41575,
+   "scene": "#013"
+  },
+  {
+   "composant": "CompteurBillets",
+   "ancre": 124,
+   "debutMs": 41575,
+   "props": {
+    "montant": 6900000000.0,
+    "devise": "€",
+    "sens": "gain",
+    "emballe": false,
+    "libelle": null
+   },
+   "finMs": 47075.0,
+   "scene": "#014"
+  },
+  {
+   "composant": "Media",
+   "ancre": 146,
+   "debutMs": 47075.0,
+   "finMs": 50875.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Aujourd'hui, on ouvre le dossier d'un fils d'ouvriers agricoles qui a construit, sans jamais faire de bruit, un empire qui pèse près de 7 milliards d'euros de c »",
+    "mouvement": "auto",
+    "assetId": "S004"
+   },
+   "asset": {
+    "id": "S004",
+    "genre": "video",
+    "description": "Illustrer : « Aujourd'hui, on ouvre le dossier d'un fils d'ouvriers agricoles qui a construit, sans jamais faire de bruit, un empire qui pèse près de 7 milliards d'euros de c »",
+    "requetes": "aujourd'hui, ouvre, dossier, fils, d'ouvriers",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#015"
+  },
+  {
+   "composant": "Media",
+   "ancre": 161,
+   "debutMs": 50875.0,
+   "finMs": 55732.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Un empire qui, à l'approche de ses 100 ans… est en train de s'entre-déchirer. »",
+    "mouvement": "auto",
+    "assetId": "S005"
+   },
+   "asset": {
+    "id": "S005",
+    "genre": "video",
+    "description": "Illustrer : « Un empire qui, à l'approche de ses 100 ans… est en train de s'entre-déchirer. »",
+    "requetes": "empire, l'approche, 100, ans, train",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#016"
+  },
+  {
+   "composant": "CartonPiece",
+   "ancre": 174,
+   "fixe": true,
+   "debutMs": 55732,
+   "finMs": 58432,
+   "props": {
+    "numero": 1,
+    "titre": "Les origines"
+   },
+   "scene": "#017"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 176,
+   "debutMs": 59429,
+   "props": {
+    "date": "1926",
+    "precedentes": []
+   },
+   "finMs": 61629.0,
+   "scene": "#018"
+  },
+  {
+   "composant": "CarteFlux",
+   "ancre": 177,
+   "debutMs": 61629.0,
+   "props": {
+    "points": [
+     {
+      "nom": "Gironde",
+      "lon": -0.6,
+      "lat": 44.9
+     },
+     {
+      "nom": "Berson",
+      "lon": -0.58,
+      "lat": 45.1
+     }
+    ],
+    "flux": [
+     [
+      0,
+      1
+     ]
+    ],
+    "pays": [
+     {
+      "nom": "France",
+      "aMs": 0
+     }
+    ],
+    "regions": [],
+    "zoom": {
+     "nom": "Berson",
+     "lon": -0.58,
+     "lat": 45.1
+    },
+    "accent": "vert",
+    "acceleration": false
+   },
+   "minMs": 4000.0,
+   "finMs": 65629.0,
+   "scene": "#019"
+  },
+  {
+   "composant": "Media",
+   "ancre": 177,
+   "debutMs": 65629.0,
+   "props": {
+    "assetId": "P02",
+    "genre": "photo",
+    "description": "Le village de Berson ou des vignes du Blayais"
+   },
+   "asset": {
+    "id": "P02",
+    "genre": "photo",
+    "description": "Le village de Berson ou des vignes du Blayais",
+    "requetes": "Berson Gironde / vignoble Blaye",
+    "ou": "Wikimedia Commons, ou TES plans drone",
+    "source": "a-chercher"
+   },
+   "item": "P02",
+   "finMs": 67229.0,
+   "scene": "#020"
+  },
+  {
+   "composant": "Media",
+   "ancre": 202,
+   "debutMs": 67229.0,
+   "props": {
+    "assetId": "P03",
+    "genre": "photo",
+    "description": "Vendanges des années 1920-1930 en noir et blanc, ouvriers dans les vignes"
+   },
+   "asset": {
+    "id": "P03",
+    "genre": "photo",
+    "description": "Vendanges des années 1920-1930 en noir et blanc, ouvriers dans les vignes",
+    "requetes": "vendanges 1920 / grape harvest 1920s",
+    "ou": "Wikimedia Commons, Gallica (domaine public)",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "P03",
+   "finMs": 72029.0,
+   "scene": "#021"
+  },
+  {
+   "composant": "Media",
+   "ancre": 221,
+   "debutMs": 72029.0,
+   "finMs": 74651.0,
+   "recadre": true,
+   "props": {
+    "assetId": "P03",
+    "genre": "photo",
+    "description": "Vendanges des années 1920-1930 en noir et blanc, ouvriers dans les vignes",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "P03",
+    "genre": "photo",
+    "description": "Vendanges des années 1920-1930 en noir et blanc, ouvriers dans les vignes",
+    "requetes": "vendanges 1920 / grape harvest 1920s",
+    "ou": "Wikimedia Commons, Gallica (domaine public)",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#022"
+  },
+  {
+   "composant": "FichePersonnage",
+   "ancre": 228,
+   "debutMs": 74651,
+   "props": {
+    "assetId": "S006",
+    "descriptionPhoto": "Portrait ou photo de : Jésus Sebastián Castel",
+    "nom": "Jésus Sebastián Castel",
+    "champs": [
+     {
+      "label": "RÔLE",
+      "valeur": "6e de 9 enfants"
+     },
+     {
+      "label": "DÉTAIL",
+      "valeur": "Berson, 1926"
+     }
+    ],
+    "tampon": null
+   },
+   "asset": {
+    "id": "S006",
+    "genre": "photo",
+    "description": "Portrait ou photo de : Jésus Sebastián Castel",
+    "requetes": "Jésus Sebastián Castel",
+    "ou": "Wikimedia Commons",
+    "source": "auto"
+   },
+   "finMs": 82151.0,
+   "scene": "#023"
+  },
+  {
+   "composant": "Media",
+   "ancre": 252,
+   "debutMs": 82151.0,
+   "finMs": 85951.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Dans la France des années 30, s'appeler Jésus et être fils d'immigrés espagnols, c'est pas exactement le combo idéal pour passer inaperçu dans la cour de récré. »",
+    "mouvement": "auto",
+    "assetId": "S007"
+   },
+   "asset": {
+    "id": "S007",
+    "genre": "video",
+    "description": "Illustrer : « Dans la France des années 30, s'appeler Jésus et être fils d'immigrés espagnols, c'est pas exactement le combo idéal pour passer inaperçu dans la cour de récré. »",
+    "requetes": "dans, france, années, s'appeler, jésus",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#024"
+  },
+  {
+   "composant": "Media",
+   "ancre": 264,
+   "debutMs": 85951.0,
+   "finMs": 89751.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Dans la France des années 30, s'appeler Jésus et être fils d'immigrés espagnols, c'est pas exactement le combo idéal pour passer inaperçu dans la cour de récré. »",
+    "mouvement": "auto",
+    "assetId": "S008"
+   },
+   "asset": {
+    "id": "S008",
+    "genre": "video",
+    "description": "Illustrer : « Dans la France des années 30, s'appeler Jésus et être fils d'immigrés espagnols, c'est pas exactement le combo idéal pour passer inaperçu dans la cour de récré. »",
+    "requetes": "dans, france, années, s'appeler, jésus",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#025"
+  },
+  {
+   "composant": "Media",
+   "ancre": 277,
+   "debutMs": 89751.0,
+   "finMs": 93551.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Alors, selon ses avocats, il se choisit un autre prénom : Pierre. »",
+    "mouvement": "auto",
+    "assetId": "S009"
+   },
+   "asset": {
+    "id": "S009",
+    "genre": "video",
+    "description": "Illustrer : « Alors, selon ses avocats, il se choisit un autre prénom : Pierre. »",
+    "requetes": "selon, avocats, choisit, autre, prénom",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#026"
+  },
+  {
+   "composant": "Media",
+   "ancre": 291,
+   "debutMs": 93551.0,
+   "finMs": 94990.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Et il va coûter très cher. »",
+    "mouvement": "auto",
+    "assetId": "S010"
+   },
+   "asset": {
+    "id": "S010",
+    "genre": "video",
+    "description": "Illustrer : « Et il va coûter très cher. »",
+    "requetes": "coûter, cher",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#027"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 297,
+   "debutMs": 94990,
+   "props": {
+    "date": "1947",
+    "precedentes": [
+     "1926"
+    ]
+   },
+   "finMs": 97190.0,
+   "scene": "#028"
+  },
+  {
+   "composant": "Media",
+   "ancre": 297,
+   "debutMs": 97190.0,
+   "props": {
+    "assetId": "V05",
+    "genre": "video",
+    "description": "Chai avec rangées de tonneaux en bois, lumière chaude"
+   },
+   "asset": {
+    "id": "V05",
+    "genre": "video",
+    "description": "Chai avec rangées de tonneaux en bois, lumière chaude",
+    "requetes": "chai tonneaux / wine barrels cellar",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "V05",
+   "finMs": 101990.0,
+   "scene": "#029"
+  },
+  {
+   "composant": "Media",
+   "ancre": 324,
+   "debutMs": 101990.0,
+   "finMs": 105790.0,
+   "recadre": true,
+   "props": {
+    "assetId": "V05",
+    "genre": "video",
+    "description": "Chai avec rangées de tonneaux en bois, lumière chaude",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "V05",
+    "genre": "video",
+    "description": "Chai avec rangées de tonneaux en bois, lumière chaude",
+    "requetes": "chai tonneaux / wine barrels cellar",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#030"
+  },
+  {
+   "composant": "Media",
+   "ancre": 336,
+   "debutMs": 105790.0,
+   "finMs": 107487.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Deux ans plus tard, en 1949, il embarque ses frères et sœurs dans l'aventure et ils fondent ensemble une petite boîte familiale : Castel Frères. »",
+    "mouvement": "auto",
+    "assetId": "S011"
+   },
+   "asset": {
+    "id": "S011",
+    "genre": "video",
+    "description": "Illustrer : « Deux ans plus tard, en 1949, il embarque ses frères et sœurs dans l'aventure et ils fondent ensemble une petite boîte familiale : Castel Frères. »",
+    "requetes": "deux, ans, tard, 1949, embarque",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#031"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 341,
+   "debutMs": 107487,
+   "props": {
+    "date": "1949",
+    "precedentes": [
+     "1926",
+     "1947"
+    ]
+   },
+   "finMs": 109687.0,
+   "scene": "#032"
+  },
+  {
+   "composant": "DocumentCaviarde",
+   "ancre": 341,
+   "debutMs": 109687.0,
+   "props": {
+    "style": "document",
+    "entete": "STATUTS — CASTEL FRÈRES — 1949",
+    "lignes": [
+     {
+      "texte": "Deux ans plus tard, en 1949, il embarque ses frères et sœurs dans l'aventure et ils fondent ensemble une petite boîte familiale :",
+      "caviarde": false,
+      "revelerAMs": null,
+      "surligner": false
+     },
+     {
+      "texte": "Castel Frères.",
+      "caviarde": false,
+      "revelerAMs": null,
+      "surligner": true
+     }
+    ],
+    "tampon": null
+   },
+   "finMs": 115705,
+   "scene": "#033"
+  },
+  {
+   "composant": "Media",
+   "ancre": 370,
+   "debutMs": 115705,
+   "props": {
+    "assetId": "P04",
+    "genre": "photo",
+    "description": "Façade d'un château bordelais prestigieux"
+   },
+   "asset": {
+    "id": "P04",
+    "genre": "photo",
+    "description": "Façade d'un château bordelais prestigieux",
+    "requetes": "château Bordeaux Médoc / Bordeaux chateau",
+    "ou": "Wikimedia Commons, Pexels",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "P04",
+   "finMs": 120505.0,
+   "scene": "#034"
+  },
+  {
+   "composant": "Media",
+   "ancre": 389,
+   "debutMs": 120505.0,
+   "finMs": 124141.0,
+   "recadre": true,
+   "props": {
+    "assetId": "P04",
+    "genre": "photo",
+    "description": "Façade d'un château bordelais prestigieux",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "P04",
+    "genre": "photo",
+    "description": "Façade d'un château bordelais prestigieux",
+    "requetes": "château Bordeaux Médoc / Bordeaux chateau",
+    "ou": "Wikimedia Commons, Pexels",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#035"
+  },
+  {
+   "composant": "Media",
+   "ancre": 395,
+   "debutMs": 124141,
+   "props": {
+    "assetId": "V06",
+    "genre": "video",
+    "description": "Caddie qui avance dans un rayon vin, main qui prend une bouteille"
+   },
+   "asset": {
+    "id": "V06",
+    "genre": "video",
+    "description": "Caddie qui avance dans un rayon vin, main qui prend une bouteille",
+    "requetes": "caddie supermarché vin / shopping cart wine",
+    "ou": "Pexels, Storyblocks",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "V06",
+   "finMs": 129128,
+   "scene": "#036"
+  },
+  {
+   "composant": "Media",
+   "ancre": 411,
+   "debutMs": 129128,
+   "props": {
+    "assetId": "V07",
+    "genre": "video",
+    "description": "Ligne d'embouteillage de vin à grande vitesse"
+   },
+   "asset": {
+    "id": "V07",
+    "genre": "video",
+    "description": "Ligne d'embouteillage de vin à grande vitesse",
+    "requetes": "embouteillage vin / wine bottling line",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "V07",
+   "finMs": 133928.0,
+   "scene": "#037"
+  },
+  {
+   "composant": "Media",
+   "ancre": 433,
+   "debutMs": 133928.0,
+   "finMs": 135965.0,
+   "recadre": true,
+   "props": {
+    "assetId": "V07",
+    "genre": "video",
+    "description": "Ligne d'embouteillage de vin à grande vitesse",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "V07",
+    "genre": "video",
+    "description": "Ligne d'embouteillage de vin à grande vitesse",
+    "requetes": "embouteillage vin / wine bottling line",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#038"
+  },
+  {
+   "composant": "GraphiqueAnime",
+   "ancre": 438,
+   "debutMs": 135965,
+   "props": {
+    "barres": [
+     {
+      "label": "GRAND CRU",
+      "valeur": 10,
+      "texte": ""
+     },
+     {
+      "label": "CASTEL",
+      "valeur": 10,
+      "texte": ""
+     }
+    ],
+    "titre": ""
+   },
+   "finMs": 142465.0,
+   "scene": "#039"
+  },
+  {
+   "composant": "Media",
+   "ancre": 460,
+   "debutMs": 142465.0,
+   "finMs": 145645.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Une ONG qui a épluché le groupe évoque plus de 570 millions de bouteilles vendues chaque année. »",
+    "mouvement": "auto",
+    "assetId": "S012"
+   },
+   "asset": {
+    "id": "S012",
+    "genre": "video",
+    "description": "Illustrer : « Une ONG qui a épluché le groupe évoque plus de 570 millions de bouteilles vendues chaque année. »",
+    "requetes": "ong, épluché, groupe, évoque, 570",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#040"
+  },
+  {
+   "composant": "ChiffreCle",
+   "ancre": 473,
+   "debutMs": 145645,
+   "props": {
+    "items": [
+     {
+      "valeur": 571000000.0,
+      "texte": "571 000 000",
+      "unite": "BOUTEILLES",
+      "aMs": 145645
+     }
+    ]
+   },
+   "morceau": 460,
+   "finMs": 148445.0,
+   "scene": "#041"
+  },
+  {
+   "composant": "Media",
+   "ancre": 477,
+   "debutMs": 148445.0,
+   "props": {
+    "assetId": "P05",
+    "genre": "photo",
+    "description": "Devanture d'un magasin Nicolas"
+   },
+   "asset": {
+    "id": "P05",
+    "genre": "photo",
+    "description": "Devanture d'un magasin Nicolas",
+    "requetes": "Nicolas caviste / Nicolas wine shop",
+    "ou": "Wikimedia Commons, ou photo au téléphone",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "P05",
+   "finMs": 153245.0,
+   "scene": "#042"
+  },
+  {
+   "composant": "Media",
+   "ancre": 498,
+   "debutMs": 153245.0,
+   "finMs": 157045.0,
+   "recadre": true,
+   "props": {
+    "assetId": "P05",
+    "genre": "photo",
+    "description": "Devanture d'un magasin Nicolas",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "P05",
+    "genre": "photo",
+    "description": "Devanture d'un magasin Nicolas",
+    "requetes": "Nicolas caviste / Nicolas wine shop",
+    "ou": "Wikimedia Commons, ou photo au téléphone",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#043"
+  },
+  {
+   "composant": "Media",
+   "ancre": 511,
+   "debutMs": 157045.0,
+   "finMs": 160845.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Mais — et c'est là que ça devient intéressant — le vin, ce n'est même pas le vrai trésor de Pierre Castel. »",
+    "mouvement": "auto",
+    "assetId": "S013"
+   },
+   "asset": {
+    "id": "S013",
+    "genre": "video",
+    "description": "Illustrer : « Mais — et c'est là que ça devient intéressant — le vin, ce n'est même pas le vrai trésor de Pierre Castel. »",
+    "requetes": "devient, intéressant, vin, n'est, vrai",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#044"
+  },
+  {
+   "composant": "Media",
+   "ancre": 530,
+   "debutMs": 160845.0,
+   "finMs": 162641.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Mais — et c'est là que ça devient intéressant — le vin, ce n'est même pas le vrai trésor de Pierre Castel. »",
+    "mouvement": "auto",
+    "assetId": "S014"
+   },
+   "asset": {
+    "id": "S014",
+    "genre": "video",
+    "description": "Illustrer : « Mais — et c'est là que ça devient intéressant — le vin, ce n'est même pas le vrai trésor de Pierre Castel. »",
+    "requetes": "devient, intéressant, vin, n'est, vrai",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#045"
+  },
+  {
+   "composant": "CarteFlux",
+   "ancre": 531,
+   "debutMs": 162641,
+   "props": {
+    "points": [
+     {
+      "nom": "Bordeaux",
+      "lon": -0.58,
+      "lat": 44.84
+     },
+     {
+      "nom": "",
+      "lon": -17.47,
+      "lat": 14.72,
+      "secondaire": true
+     },
+     {
+      "nom": "",
+      "lon": -4.03,
+      "lat": 5.36,
+      "secondaire": true
+     },
+     {
+      "nom": "",
+      "lon": 9.7,
+      "lat": 4.05,
+      "secondaire": true
+     },
+     {
+      "nom": "",
+      "lon": 9.45,
+      "lat": 0.39,
+      "secondaire": true
+     }
+    ],
+    "flux": [
+     [
+      0,
+      1
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      0,
+      4
+     ]
+    ],
+    "pays": [],
+    "regions": [
+     "afrique"
+    ],
+    "zoom": null,
+    "accent": "vert",
+    "acceleration": false
+   },
+   "minMs": 4000.0,
+   "finMs": 165651,
+   "scene": "#046"
+  },
+  {
+   "composant": "CartonPiece",
+   "ancre": 542,
+   "fixe": true,
+   "debutMs": 165651,
+   "finMs": 166641.0,
+   "props": {
+    "numero": 2,
+    "titre": "L'empire africain"
+   },
+   "scene": "#047"
+  },
+  {
+   "composant": "Media",
+   "ancre": 536,
+   "debutMs": 166641.0,
+   "props": {
+    "assetId": "V08",
+    "genre": "video",
+    "description": "Plan aérien des vignes de Bordeaux (transition vers la carte)"
+   },
+   "asset": {
+    "id": "V08",
+    "genre": "video",
+    "description": "Plan aérien des vignes de Bordeaux (transition vers la carte)",
+    "requetes": "vignes Bordeaux drone / Bordeaux vineyard aerial",
+    "ou": "TES plans drone, Pexels",
+    "source": "a-chercher"
+   },
+   "item": "V08",
+   "finMs": 168351,
+   "scene": "#048"
+  },
+  {
+   "composant": "Media",
+   "ancre": 542,
+   "debutMs": 168351,
+   "props": {
+    "assetId": "P06",
+    "genre": "photo",
+    "description": "Port africain dans les années 1950 (Dakar, Abidjan, Douala), bateaux et dockers"
+   },
+   "asset": {
+    "id": "P06",
+    "genre": "photo",
+    "description": "Port africain dans les années 1950 (Dakar, Abidjan, Douala), bateaux et dockers",
+    "requetes": "port Dakar 1950 / African port 1950s",
+    "ou": "Wikimedia Commons (archives)",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "P06",
+   "finMs": 173151.0,
+   "scene": "#049"
+  },
+  {
+   "composant": "Media",
+   "ancre": 561,
+   "debutMs": 173151.0,
+   "finMs": 176951.0,
+   "recadre": true,
+   "props": {
+    "assetId": "P06",
+    "genre": "photo",
+    "description": "Port africain dans les années 1950 (Dakar, Abidjan, Douala), bateaux et dockers",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "P06",
+    "genre": "photo",
+    "description": "Port africain dans les années 1950 (Dakar, Abidjan, Douala), bateaux et dockers",
+    "requetes": "port Dakar 1950 / African port 1950s",
+    "ou": "Wikimedia Commons (archives)",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#050"
+  },
+  {
+   "composant": "Media",
+   "ancre": 575,
+   "debutMs": 176951.0,
+   "finMs": 179599.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « En Afrique, la boisson de l'avenir, ce n'est pas le vin. »",
+    "mouvement": "auto",
+    "assetId": "S015"
+   },
+   "asset": {
+    "id": "S015",
+    "genre": "video",
+    "description": "Illustrer : « En Afrique, la boisson de l'avenir, ce n'est pas le vin. »",
+    "requetes": "afrique, boisson, l'avenir, n'est, vin",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#051"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 585,
+   "debutMs": 179599,
+   "props": {
+    "centres": [
+     "CASTEL"
+    ],
+    "elements": [],
+    "mode": "nouveau"
+   },
+   "finMs": 183599.0,
+   "scene": "#052"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 593,
+   "debutMs": 183599.0,
+   "props": {
+    "centres": [
+     "CASTEL"
+    ],
+    "elements": [
+     {
+      "label": "POPULATION JEUNE",
+      "nouveau": true,
+      "filRouge": false
+     }
+    ],
+    "mode": "ajout"
+   },
+   "finMs": 187599.0,
+   "scene": "#053"
+  },
+  {
+   "composant": "Media",
+   "ancre": 602,
+   "debutMs": 187599.0,
+   "props": {
+    "assetId": "V09",
+    "genre": "video",
+    "description": "Terrasse de bar animée en Afrique de l'Ouest, le soir, ambiance festive"
+   },
+   "asset": {
+    "id": "V09",
+    "genre": "video",
+    "description": "Terrasse de bar animée en Afrique de l'Ouest, le soir, ambiance festive",
+    "requetes": "maquis Abidjan / African bar night",
+    "ou": "Storyblocks, Envato, Pexels",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "V09",
+   "finMs": 189199.0,
+   "scene": "#054"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 602,
+   "debutMs": 189199.0,
+   "props": {
+    "centres": [
+     "CASTEL"
+    ],
+    "elements": [
+     {
+      "label": "POPULATION JEUNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "CONSO QUOTIDIENNE",
+      "nouveau": true,
+      "filRouge": false
+     }
+    ],
+    "mode": "ajout"
+   },
+   "finMs": 193199.0,
+   "scene": "#055"
+  },
+  {
+   "composant": "Media",
+   "ancre": 620,
+   "debutMs": 193199.0,
+   "props": {
+    "assetId": "I01",
+    "genre": "ia",
+    "description": "Camion chargé de caisses de bière sur une piste de terre rouge, style photo réaliste"
+   },
+   "asset": {
+    "id": "I01",
+    "genre": "ia",
+    "description": "Camion chargé de caisses de bière sur une piste de terre rouge, style photo réaliste",
+    "requetes": "(prompt IA)",
+    "ou": "Générateur d'images IA",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "I01",
+   "finMs": 194799.0,
+   "scene": "#056"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 620,
+   "debutMs": 194799.0,
+   "props": {
+    "centres": [
+     "CASTEL"
+    ],
+    "elements": [
+     {
+      "label": "POPULATION JEUNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "CONSO QUOTIDIENNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "IMPOSSIBLE À IMPORTER",
+      "nouveau": true,
+      "filRouge": false
+     }
+    ],
+    "mode": "ajout"
+   },
+   "finMs": 202799.0,
+   "scene": "#057"
+  },
+  {
+   "composant": "Media",
+   "ancre": 662,
+   "debutMs": 202799.0,
+   "finMs": 205230.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « D'après l'association Survie, qui a consacré un rapport entier au groupe, tout commence au Gabon en 1965, après une rencontre avec Omar Bongo, futur président d »",
+    "mouvement": "auto",
+    "assetId": "S016"
+   },
+   "asset": {
+    "id": "S016",
+    "genre": "video",
+    "description": "Illustrer : « D'après l'association Survie, qui a consacré un rapport entier au groupe, tout commence au Gabon en 1965, après une rencontre avec Omar Bongo, futur président d »",
+    "requetes": "d'après, l'association, survie, consacré, rapport",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#058"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 669,
+   "debutMs": 205230,
+   "props": {
+    "date": "1965",
+    "precedentes": [
+     "1926",
+     "1947",
+     "1949"
+    ]
+   },
+   "finMs": 207430.0,
+   "scene": "#059"
+  },
+  {
+   "composant": "FichePersonnage",
+   "ancre": 669,
+   "debutMs": 207430.0,
+   "props": {
+    "assetId": "P07",
+    "descriptionPhoto": "Portrait d'Omar Bongo",
+    "nom": "Omar Bongo",
+    "champs": [
+     {
+      "label": "RÔLE",
+      "valeur": "Président du Gabon"
+     },
+     {
+      "label": "DÉTAIL",
+      "valeur": "1967-2009"
+     }
+    ],
+    "tampon": null
+   },
+   "asset": {
+    "id": "P07",
+    "genre": "photo",
+    "description": "Portrait d'Omar Bongo",
+    "requetes": "Omar Bongo",
+    "ou": "Wikimedia Commons (vérifier la licence)",
+    "source": "a-chercher"
+   },
+   "finMs": 212430.0,
+   "scene": "#060"
+  },
+  {
+   "composant": "Media",
+   "ancre": 680,
+   "debutMs": 212430.0,
+   "props": {
+    "assetId": "V10",
+    "genre": "video",
+    "description": "Cuves de brassage en inox, brasserie industrielle"
+   },
+   "asset": {
+    "id": "V10",
+    "genre": "video",
+    "description": "Cuves de brassage en inox, brasserie industrielle",
+    "requetes": "brasserie cuves / brewery tanks",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "V10",
+   "finMs": 216466,
+   "scene": "#061"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 702,
+   "debutMs": 216466,
+   "props": {
+    "date": "1990",
+    "precedentes": [
+     "1926",
+     "1947",
+     "1949",
+     "1965"
+    ]
+   },
+   "finMs": 218829,
+   "scene": "#062"
+  },
+  {
+   "composant": "DocumentCaviarde",
+   "ancre": 708,
+   "debutMs": 218829,
+   "props": {
+    "style": "document",
+    "entete": "ACTE DE CESSION — BGI — 1990",
+    "lignes": [
+     {
+      "texte": "Il rachète BGI, les Brasseries et Glacières Internationales.",
+      "caviarde": false,
+      "revelerAMs": null,
+      "surligner": true
+     }
+    ],
+    "tampon": null
+   },
+   "finMs": 223829.0,
+   "scene": "#063"
+  },
+  {
+   "composant": "CarteFlux",
+   "ancre": 716,
+   "debutMs": 223829.0,
+   "props": {
+    "points": [],
+    "flux": [],
+    "pays": [
+     {
+      "nom": "Cameroon",
+      "aMs": 224836,
+      "clic": true
+     },
+     {
+      "nom": "Senegal",
+      "aMs": 226411,
+      "clic": true
+     },
+     {
+      "nom": "Burkina Faso",
+      "aMs": 227913,
+      "clic": true
+     },
+     {
+      "nom": "Niger",
+      "aMs": 229399,
+      "clic": true
+     },
+     {
+      "nom": "Mauritania",
+      "aMs": 231128,
+      "clic": true
+     }
+    ],
+    "regions": [
+     "afrique"
+    ],
+    "zoom": null,
+    "accent": "vert",
+    "acceleration": false
+   },
+   "minMs": 10386,
+   "finMs": 234215.0,
+   "scene": "#064"
+  },
+  {
+   "composant": "Media",
+   "ancre": 725,
+   "debutMs": 234215.0,
+   "props": {
+    "assetId": "P08",
+    "genre": "photo",
+    "description": "Une brasserie en Afrique (bâtiment, usine, camions de livraison)"
+   },
+   "asset": {
+    "id": "P08",
+    "genre": "photo",
+    "description": "Une brasserie en Afrique (bâtiment, usine, camions de livraison)",
+    "requetes": "brasserie Douala, Dakar / brewery Cameroon",
+    "ou": "Wikimedia Commons, Storyblocks",
+    "source": "a-chercher"
+   },
+   "item": "P08",
+   "finMs": 235815.0,
+   "scene": "#065"
+  },
+  {
+   "composant": "CarteFlux",
+   "ancre": 741,
+   "debutMs": 235815.0,
+   "props": {
+    "points": [],
+    "flux": [],
+    "pays": [
+     {
+      "nom": "France",
+      "aMs": 0
+     },
+     {
+      "nom": "Cameroon",
+      "aMs": 0
+     },
+     {
+      "nom": "Senegal",
+      "aMs": 0
+     },
+     {
+      "nom": "Burkina Faso",
+      "aMs": 0
+     },
+     {
+      "nom": "Niger",
+      "aMs": 0
+     },
+     {
+      "nom": "Mauritania",
+      "aMs": 0
+     },
+     {
+      "nom": "Benin",
+      "aMs": 232296,
+      "clic": true
+     },
+     {
+      "nom": "Algeria",
+      "aMs": 233312,
+      "clic": true
+     },
+     {
+      "nom": "Morocco",
+      "aMs": 233934,
+      "clic": true
+     },
+     {
+      "nom": "Madagascar",
+      "aMs": 234489,
+      "clic": true
+     },
+     {
+      "nom": "Dem. Rep. Congo",
+      "aMs": 235247,
+      "clic": true
+     },
+     {
+      "nom": "Angola",
+      "aMs": 235930,
+      "clic": true
+     },
+     {
+      "nom": "Ethiopia",
+      "aMs": 236479,
+      "clic": true
+     }
+    ],
+    "regions": [],
+    "zoom": null,
+    "accent": "vert",
+    "acceleration": true
+   },
+   "minMs": 5969,
+   "finMs": 241784.0,
+   "scene": "#066"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 754,
+   "debutMs": 241784.0,
+   "props": {
+    "centres": [
+     "CASTEL"
+    ],
+    "elements": [
+     {
+      "label": "POPULATION JEUNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "CONSO QUOTIDIENNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "IMPOSSIBLE À IMPORTER",
+      "nouveau": false,
+      "filRouge": false
+     }
+    ],
+    "mode": "ensemble"
+   },
+   "finMs": 245784.0,
+   "scene": "#067"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 765,
+   "debutMs": 245784.0,
+   "props": {
+    "centres": [
+     "CASTEL"
+    ],
+    "elements": [
+     {
+      "label": "POPULATION JEUNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "CONSO QUOTIDIENNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "IMPOSSIBLE À IMPORTER",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "COCA-COLA",
+      "nouveau": true,
+      "filRouge": true
+     }
+    ],
+    "mode": "ajout"
+   },
+   "finMs": 249784.0,
+   "scene": "#068"
+  },
+  {
+   "composant": "Media",
+   "ancre": 769,
+   "debutMs": 249784.0,
+   "props": {
+    "assetId": "V11",
+    "genre": "video",
+    "description": "Ligne d'embouteillage de sodas GÉNÉRIQUE (pas de logo, pas de pub de marque)"
+   },
+   "asset": {
+    "id": "V11",
+    "genre": "video",
+    "description": "Ligne d'embouteillage de sodas GÉNÉRIQUE (pas de logo, pas de pub de marque)",
+    "requetes": "embouteillage soda / soda bottling line",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "item": "V11",
+   "finMs": 251384.0,
+   "scene": "#069"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 776,
+   "debutMs": 251384.0,
+   "props": {
+    "centres": [
+     "CASTEL"
+    ],
+    "elements": [
+     {
+      "label": "POPULATION JEUNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "CONSO QUOTIDIENNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "IMPOSSIBLE À IMPORTER",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "COCA-COLA",
+      "nouveau": false,
+      "filRouge": true
+     },
+     {
+      "label": "SOMDIAA — SUCRE",
+      "nouveau": true,
+      "filRouge": false
+     }
+    ],
+    "mode": "ajout"
+   },
+   "finMs": 255384.0,
+   "scene": "#070"
+  },
+  {
+   "composant": "Media",
+   "ancre": 779,
+   "debutMs": 255384.0,
+   "props": {
+    "assetId": "V12",
+    "genre": "video",
+    "description": "Champ de canne à sucre, récolte, usine sucrière"
+   },
+   "asset": {
+    "id": "V12",
+    "genre": "video",
+    "description": "Champ de canne à sucre, récolte, usine sucrière",
+    "requetes": "canne à sucre récolte / sugarcane harvest",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "item": "V12",
+   "finMs": 256984.0,
+   "scene": "#071"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 789,
+   "debutMs": 256984.0,
+   "props": {
+    "centres": [
+     "CASTEL"
+    ],
+    "elements": [
+     {
+      "label": "POPULATION JEUNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "CONSO QUOTIDIENNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "IMPOSSIBLE À IMPORTER",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "COCA-COLA",
+      "nouveau": false,
+      "filRouge": true
+     },
+     {
+      "label": "SOMDIAA — SUCRE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "SABMILLER",
+      "nouveau": true,
+      "filRouge": true
+     }
+    ],
+    "mode": "ajout"
+   },
+   "finMs": 260984.0,
+   "scene": "#072"
+  },
+  {
+   "composant": "Media",
+   "ancre": 806,
+   "debutMs": 260984.0,
+   "props": {
+    "assetId": "V13",
+    "genre": "video",
+    "description": "Rue commerçante animée d'une grande ville africaine (Abidjan, Douala, Dakar)"
+   },
+   "asset": {
+    "id": "V13",
+    "genre": "video",
+    "description": "Rue commerçante animée d'une grande ville africaine (Abidjan, Douala, Dakar)",
+    "requetes": "Abidjan rue / Lagos street busy",
+    "ou": "Storyblocks, Envato, Pexels",
+    "source": "a-chercher"
+   },
+   "item": "V13",
+   "finMs": 262584.0,
+   "scene": "#073"
+  },
+  {
+   "composant": "ChiffreCle",
+   "ancre": 819,
+   "debutMs": 262584.0,
+   "props": {
+    "items": [
+     {
+      "valeur": 2.0,
+      "texte": "2",
+      "unite": "EN AFRIQUE",
+      "aMs": 256728
+     }
+    ]
+   },
+   "morceau": 807,
+   "finMs": 265384.0,
+   "scene": "#074"
+  },
+  {
+   "composant": "ChiffreCle",
+   "ancre": 820,
+   "debutMs": 265384.0,
+   "props": {
+    "items": [
+     {
+      "valeur": 22.0,
+      "texte": "22",
+      "unite": "PAYS",
+      "aMs": 257336
+     },
+     {
+      "valeur": 61.0,
+      "texte": "61",
+      "unite": "MARQUES",
+      "aMs": 258813
+     },
+     {
+      "valeur": 43000.0,
+      "texte": "43 000",
+      "unite": "000",
+      "aMs": 260454
+     }
+    ]
+   },
+   "morceau": 820,
+   "finMs": 268184.0,
+   "scene": "#075"
+  },
+  {
+   "composant": "CompteurBillets",
+   "ancre": 832,
+   "debutMs": 268184.0,
+   "props": {
+    "montant": 6900000000.0,
+    "devise": "€",
+    "sens": "gain",
+    "emballe": false,
+    "libelle": null
+   },
+   "finMs": 273684.0,
+   "scene": "#076"
+  },
+  {
+   "composant": "Media",
+   "ancre": 870,
+   "debutMs": 273684.0,
+   "finMs": 277484.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Un jour, interrogé sur ses relations avec les chefs d'État africains, il aurait répondu, tranquillement : « Je les connais tous. » »",
+    "mouvement": "auto",
+    "assetId": "S017"
+   },
+   "asset": {
+    "id": "S017",
+    "genre": "video",
+    "description": "Illustrer : « Un jour, interrogé sur ses relations avec les chefs d'État africains, il aurait répondu, tranquillement : « Je les connais tous. » »",
+    "requetes": "jour, interrogé, relations, chefs, d'état",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#077"
+  },
+  {
+   "composant": "Media",
+   "ancre": 883,
+   "debutMs": 277484.0,
+   "finMs": 279812.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Un jour, interrogé sur ses relations avec les chefs d'État africains, il aurait répondu, tranquillement : « Je les connais tous. » »",
+    "mouvement": "auto",
+    "assetId": "S018"
+   },
+   "asset": {
+    "id": "S018",
+    "genre": "video",
+    "description": "Illustrer : « Un jour, interrogé sur ses relations avec les chefs d'État africains, il aurait répondu, tranquillement : « Je les connais tous. » »",
+    "requetes": "jour, interrogé, relations, chefs, d'état",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#078"
+  },
+  {
+   "composant": "Citation",
+   "ancre": 885,
+   "debutMs": 279812,
+   "props": {
+    "texte": "Je les connais tous.",
+    "auteur": "Pierre Castel"
+   },
+   "finMs": 280978,
+   "scene": "#079"
+  },
+  {
+   "composant": "CartonPiece",
+   "ancre": 889,
+   "fixe": true,
+   "debutMs": 280978,
+   "finMs": 283678,
+   "props": {
+    "numero": 3,
+    "titre": "Jésus à Genève"
+   },
+   "scene": "#080"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 899,
+   "debutMs": 287031,
+   "props": {
+    "date": "1981",
+    "precedentes": [
+     "1947",
+     "1949",
+     "1965",
+     "1990"
+    ]
+   },
+   "finMs": 289231.0,
+   "scene": "#081"
+  },
+  {
+   "composant": "Media",
+   "ancre": 899,
+   "debutMs": 289231.0,
+   "props": {
+    "assetId": "P09",
+    "genre": "photo",
+    "description": "François Mitterrand en 1981"
+   },
+   "asset": {
+    "id": "P09",
+    "genre": "photo",
+    "description": "François Mitterrand en 1981",
+    "requetes": "Mitterrand 1981",
+    "ou": "Wikimedia Commons",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "P09",
+   "finMs": 294031.0,
+   "scene": "#082"
+  },
+  {
+   "composant": "Media",
+   "ancre": 920,
+   "debutMs": 294031.0,
+   "finMs": 294652.0,
+   "recadre": true,
+   "props": {
+    "assetId": "P09",
+    "genre": "photo",
+    "description": "François Mitterrand en 1981",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "P09",
+    "genre": "photo",
+    "description": "François Mitterrand en 1981",
+    "requetes": "Mitterrand 1981",
+    "ou": "Wikimedia Commons",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#083"
+  },
+  {
+   "composant": "CarteFlux",
+   "ancre": 921,
+   "debutMs": 294652,
+   "props": {
+    "points": [
+     {
+      "nom": "Bordeaux",
+      "lon": -0.58,
+      "lat": 44.84
+     },
+     {
+      "nom": "Genève",
+      "lon": 6.14,
+      "lat": 46.2
+     }
+    ],
+    "flux": [
+     [
+      0,
+      1
+     ]
+    ],
+    "pays": [
+     {
+      "nom": "Switzerland",
+      "aMs": 296748,
+      "clic": true
+     }
+    ],
+    "regions": [],
+    "zoom": null,
+    "accent": "vert",
+    "acceleration": false
+   },
+   "minMs": 4000.0,
+   "finMs": 298652.0,
+   "scene": "#084"
+  },
+  {
+   "composant": "Media",
+   "ancre": 926,
+   "debutMs": 298652.0,
+   "props": {
+    "assetId": "V14",
+    "genre": "video",
+    "description": "Rue de Genève avec façades de banques privées, plan calme et chic"
+   },
+   "asset": {
+    "id": "V14",
+    "genre": "video",
+    "description": "Rue de Genève avec façades de banques privées, plan calme et chic",
+    "requetes": "Genève banque / Geneva private bank street",
+    "ou": "Pexels, Storyblocks",
+    "source": "a-chercher"
+   },
+   "item": "V14",
+   "finMs": 303561,
+   "scene": "#085"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 948,
+   "debutMs": 303561,
+   "props": {
+    "centres": [
+     "STRUCTURE"
+    ],
+    "elements": [],
+    "mode": "nouveau"
+   },
+   "finMs": 308797,
+   "scene": "#086"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 964,
+   "debutMs": 308797,
+   "props": {
+    "date": "1992",
+    "precedentes": [
+     "1949",
+     "1965",
+     "1990",
+     "1981"
+    ]
+   },
+   "finMs": 310997.0,
+   "scene": "#087"
+  },
+  {
+   "composant": "DocumentCaviarde",
+   "ancre": 964,
+   "debutMs": 310997.0,
+   "props": {
+    "style": "document",
+    "entete": "RENONCIATION AUX PARTS — 1992",
+    "lignes": [
+     {
+      "texte": "En 1992, il affirme avoir renoncé à toutes ses parts dans le groupe Castel.",
+      "caviarde": true,
+      "revelerAMs": 308278,
+      "surligner": true
+     }
+    ],
+    "tampon": "CONFIDENTIEL"
+   },
+   "finMs": 317364,
+   "scene": "#088"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 995,
+   "debutMs": 317364,
+   "props": {
+    "centres": [
+     "STRUCTURE"
+    ],
+    "elements": [
+     {
+      "label": "FONDATION — LIECHTENSTEIN",
+      "nouveau": true,
+      "filRouge": false
+     }
+    ],
+    "mode": "ajout"
+   },
+   "finMs": 321364.0,
+   "scene": "#089"
+  },
+  {
+   "composant": "Media",
+   "ancre": 999,
+   "debutMs": 321364.0,
+   "props": {
+    "assetId": "V15",
+    "genre": "video",
+    "description": "Vaduz et son château sur la colline"
+   },
+   "asset": {
+    "id": "V15",
+    "genre": "video",
+    "description": "Vaduz et son château sur la colline",
+    "requetes": "Vaduz Liechtenstein",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "item": "V15",
+   "finMs": 322964.0,
+   "scene": "#090"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 1004,
+   "debutMs": 322964.0,
+   "props": {
+    "date": "2009",
+    "precedentes": [
+     "1965",
+     "1990",
+     "1981",
+     "1992"
+    ]
+   },
+   "finMs": 325164.0,
+   "scene": "#091"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 1004,
+   "debutMs": 325164.0,
+   "props": {
+    "centres": [
+     "STRUCTURE"
+    ],
+    "elements": [
+     {
+      "label": "FONDATION — LIECHTENSTEIN",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "FONDS IBBF — SINGAPOUR",
+      "nouveau": true,
+      "filRouge": true
+     }
+    ],
+    "mode": "ajout"
+   },
+   "finMs": 329164.0,
+   "scene": "#092"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1011,
+   "debutMs": 329164.0,
+   "props": {
+    "assetId": "V16",
+    "genre": "video",
+    "description": "Skyline de Singapour (Marina Bay), de nuit de préférence"
+   },
+   "asset": {
+    "id": "V16",
+    "genre": "video",
+    "description": "Skyline de Singapour (Marina Bay), de nuit de préférence",
+    "requetes": "Singapour skyline / Singapore skyline night",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "item": "V16",
+   "finMs": 330764.0,
+   "scene": "#093"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 1015,
+   "debutMs": 330764.0,
+   "props": {
+    "centres": [
+     "STRUCTURE"
+    ],
+    "elements": [
+     {
+      "label": "FONDATION — LIECHTENSTEIN",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "FONDS IBBF — SINGAPOUR",
+      "nouveau": false,
+      "filRouge": true
+     },
+     {
+      "label": "HOLDING — GIBRALTAR",
+      "nouveau": true,
+      "filRouge": false
+     }
+    ],
+    "mode": "ajout"
+   },
+   "finMs": 334764.0,
+   "scene": "#094"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1016,
+   "debutMs": 334764.0,
+   "props": {
+    "assetId": "V17",
+    "genre": "video",
+    "description": "Le rocher de Gibraltar"
+   },
+   "asset": {
+    "id": "V17",
+    "genre": "video",
+    "description": "Le rocher de Gibraltar",
+    "requetes": "rocher Gibraltar / Gibraltar rock",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "item": "V17",
+   "finMs": 336364.0,
+   "scene": "#095"
+  },
+  {
+   "composant": "Schema",
+   "ancre": 1043,
+   "debutMs": 336364.0,
+   "props": {
+    "etapes": [
+     "VOUS",
+     "FONDATION"
+    ],
+    "pas": 900
+   },
+   "finMs": 344364.0,
+   "scene": "#096"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1088,
+   "debutMs": 344364.0,
+   "finMs": 347347.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Vous êtes, au mieux… bénéficiaire. »",
+    "mouvement": "auto",
+    "assetId": "S019"
+   },
+   "asset": {
+    "id": "S019",
+    "genre": "video",
+    "description": "Illustrer : « Vous êtes, au mieux… bénéficiaire. »",
+    "requetes": "êtes, mieux, bénéficiaire",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#097"
+  },
+  {
+   "composant": "CarteFlux",
+   "ancre": 1093,
+   "debutMs": 347347,
+   "props": {
+    "points": [
+     {
+      "nom": "Liechtenstein",
+      "lon": 9.52,
+      "lat": 47.14
+     },
+     {
+      "nom": "Singapour",
+      "lon": 103.82,
+      "lat": 1.35
+     },
+     {
+      "nom": "Gibraltar",
+      "lon": -5.35,
+      "lat": 36.14
+     },
+     {
+      "nom": "Genève",
+      "lon": 6.14,
+      "lat": 46.2
+     }
+    ],
+    "flux": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      0
+     ]
+    ],
+    "pays": [
+     {
+      "nom": "Liechtenstein",
+      "aMs": 0
+     },
+     {
+      "nom": "Singapore",
+      "aMs": 0
+     }
+    ],
+    "regions": [],
+    "zoom": null,
+    "accent": "vert",
+    "acceleration": false
+   },
+   "minMs": 4000.0,
+   "finMs": 357347.0,
+   "scene": "#098"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1122,
+   "debutMs": 357347.0,
+   "finMs": 361147.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Attention, tout ça peut être parfaitement légal. »",
+    "mouvement": "auto",
+    "assetId": "S020"
+   },
+   "asset": {
+    "id": "S020",
+    "genre": "video",
+    "description": "Illustrer : « Attention, tout ça peut être parfaitement légal. »",
+    "requetes": "attention, peut, parfaitement, légal",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#099"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1132,
+   "debutMs": 361147.0,
+   "finMs": 364124.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Et c'est exactement là que ça coince. »",
+    "mouvement": "auto",
+    "assetId": "S021"
+   },
+   "asset": {
+    "id": "S021",
+    "genre": "video",
+    "description": "Illustrer : « Et c'est exactement là que ça coince. »",
+    "requetes": "exactement, coince",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#100"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 1140,
+   "debutMs": 364124,
+   "props": {
+    "date": "2017",
+    "precedentes": [
+     "1990",
+     "1981",
+     "1992",
+     "2009"
+    ]
+   },
+   "finMs": 366924.0,
+   "scene": "#101"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1150,
+   "debutMs": 366924.0,
+   "finMs": 367550.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Et d'après la justice genevoise, les autorités fiscales n'auraient compris qui se cachait vraiment derrière ce fameux Jésus… qu'en lisant des articles de presse »",
+    "mouvement": "auto",
+    "assetId": "S022"
+   },
+   "asset": {
+    "id": "S022",
+    "genre": "video",
+    "description": "Illustrer : « Et d'après la justice genevoise, les autorités fiscales n'auraient compris qui se cachait vraiment derrière ce fameux Jésus… qu'en lisant des articles de presse »",
+    "requetes": "d'après, justice, genevoise, autorités, fiscales",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#102"
+  },
+  {
+   "composant": "DocumentCaviarde",
+   "ancre": 1150,
+   "debutMs": 367550,
+   "props": {
+    "style": "journal",
+    "entete": "LA PRESSE EN PARLE",
+    "lignes": [
+     {
+      "texte": "Et d'après la justice genevoise, les autorités fiscales n'auraient compris qui se cachait vraiment derrière ce fameux Jésus… qu'en lisant des articles de presse.",
+      "caviarde": false,
+      "revelerAMs": null,
+      "surligner": true
+     }
+    ],
+    "tampon": null
+   },
+   "finMs": 374928,
+   "scene": "#103"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1174,
+   "debutMs": 374928,
+   "props": {
+    "assetId": "V18",
+    "genre": "video",
+    "description": "Piles de dossiers, classeurs, archives, main qui feuillette des documents"
+   },
+   "asset": {
+    "id": "V18",
+    "genre": "video",
+    "description": "Piles de dossiers, classeurs, archives, main qui feuillette des documents",
+    "requetes": "archives dossiers / paperwork archive office",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "item": "V18",
+   "finMs": 378149,
+   "scene": "#104"
+  },
+  {
+   "composant": "Citation",
+   "ancre": 1187,
+   "debutMs": 378149,
+   "props": {
+    "texte": "Il n'a jamais rien caché",
+    "auteur": "sa défense"
+   },
+   "finMs": 383233,
+   "scene": "#105"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 1206,
+   "debutMs": 383233,
+   "props": {
+    "date": "2022",
+    "precedentes": [
+     "1981",
+     "1992",
+     "2009",
+     "2017"
+    ]
+   },
+   "finMs": 385433.0,
+   "scene": "#106"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1206,
+   "debutMs": 385433.0,
+   "props": {
+    "assetId": "V19",
+    "genre": "video",
+    "description": "Salle d'audience vide, colonnes, bancs en bois (plans génériques, sans marteau de juge)"
+   },
+   "asset": {
+    "id": "V19",
+    "genre": "video",
+    "description": "Salle d'audience vide, colonnes, bancs en bois (plans génériques, sans marteau de juge)",
+    "requetes": "salle d'audience / empty courtroom",
+    "ou": "Pexels, Pixabay",
+    "source": "a-chercher"
+   },
+   "item": "V19",
+   "finMs": 387568,
+   "scene": "#107"
+  },
+  {
+   "composant": "CompteurBillets",
+   "ancre": 1218,
+   "debutMs": 387568,
+   "props": {
+    "montant": 410000000.0,
+    "devise": "CHF",
+    "sens": "perte",
+    "emballe": false,
+    "libelle": null
+   },
+   "finMs": 391168.0,
+   "scene": "#108"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1223,
+   "debutMs": 391168.0,
+   "props": {
+    "assetId": "P10",
+    "genre": "photo",
+    "description": "Bâtiment du Tribunal fédéral suisse à Lausanne"
+   },
+   "asset": {
+    "id": "P10",
+    "genre": "photo",
+    "description": "Bâtiment du Tribunal fédéral suisse à Lausanne",
+    "requetes": "Tribunal fédéral Lausanne",
+    "ou": "Wikimedia Commons",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "P10",
+   "finMs": 393734,
+   "scene": "#109"
+  },
+  {
+   "composant": "DocumentCaviarde",
+   "ancre": 1234,
+   "debutMs": 393734,
+   "props": {
+    "style": "document",
+    "entete": "ARRÊT DU TRIBUNAL FÉDÉRAL RECRÉÉ",
+    "lignes": [
+     {
+      "texte": "Et là… petit retournement.",
+      "caviarde": false,
+      "revelerAMs": null,
+      "surligner": false
+     },
+     {
+      "texte": "Le Tribunal fédéral donne raison au fisc sur les années examinées.",
+      "caviarde": false,
+      "revelerAMs": null,
+      "surligner": false
+     },
+     {
+      "texte": "Et il écrit même, en substance, qu'il voit mal quel autre motif que l'évasion fiscale pourrait expliquer ces déclarations.",
+      "caviarde": false,
+      "revelerAMs": null,
+      "surligner": true
+     }
+    ],
+    "tampon": null
+   },
+   "finMs": 401234.0,
+   "scene": "#110"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1258,
+   "debutMs": 401234.0,
+   "finMs": 405034.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Et il écrit même, en substance, qu'il voit mal quel autre motif que l'évasion fiscale pourrait expliquer ces déclarations. »",
+    "mouvement": "auto",
+    "assetId": "S023"
+   },
+   "asset": {
+    "id": "S023",
+    "genre": "video",
+    "description": "Illustrer : « Et il écrit même, en substance, qu'il voit mal quel autre motif que l'évasion fiscale pourrait expliquer ces déclarations. »",
+    "requetes": "écrit, substance, voit, mal, quel",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#111"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1269,
+   "debutMs": 405034.0,
+   "finMs": 408834.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Cerise sur le gâteau : il trouve la sanction… plutôt légère. »",
+    "mouvement": "auto",
+    "assetId": "S024"
+   },
+   "asset": {
+    "id": "S024",
+    "genre": "video",
+    "description": "Illustrer : « Cerise sur le gâteau : il trouve la sanction… plutôt légère. »",
+    "requetes": "cerise, gâteau, trouve, sanction, plutôt",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#112"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1279,
+   "debutMs": 408834.0,
+   "finMs": 412634.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Presque trop clémente. »",
+    "mouvement": "auto",
+    "assetId": "S025"
+   },
+   "asset": {
+    "id": "S025",
+    "genre": "video",
+    "description": "Illustrer : « Presque trop clémente. »",
+    "requetes": "presque, trop, clémente",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#113"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1293,
+   "debutMs": 412634.0,
+   "finMs": 416434.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Quand la justice suisse vous trouve trop bien traité par le fisc suisse… c'est que vous avez vraiment tiré sur la corde. »",
+    "mouvement": "auto",
+    "assetId": "S026"
+   },
+   "asset": {
+    "id": "S026",
+    "genre": "video",
+    "description": "Illustrer : « Quand la justice suisse vous trouve trop bien traité par le fisc suisse… c'est que vous avez vraiment tiré sur la corde. »",
+    "requetes": "justice, suisse, trouve, trop, traité",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#114"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1308,
+   "debutMs": 416434.0,
+   "finMs": 418653.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Et ce n'est pas le seul dossier sensible. »",
+    "mouvement": "auto",
+    "assetId": "S027"
+   },
+   "asset": {
+    "id": "S027",
+    "genre": "video",
+    "description": "Illustrer : « Et ce n'est pas le seul dossier sensible. »",
+    "requetes": "n'est, seul, dossier, sensible",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#115"
+  },
+  {
+   "composant": "CarteFlux",
+   "ancre": 1311,
+   "debutMs": 418653,
+   "props": {
+    "points": [],
+    "flux": [],
+    "pays": [
+     {
+      "nom": "Central African Rep.",
+      "aMs": 0
+     }
+    ],
+    "regions": [
+     "afrique"
+    ],
+    "zoom": null,
+    "accent": "rouge",
+    "acceleration": false
+   },
+   "minMs": 4000.0,
+   "finMs": 422653.0,
+   "scene": "#116"
+  },
+  {
+   "composant": "DocumentCaviarde",
+   "ancre": 1311,
+   "debutMs": 422653.0,
+   "props": {
+    "style": "rapport",
+    "entete": "RAPPORT THE SENTRY — 2021",
+    "lignes": [
+     {
+      "texte": "En 2021, une ONG américaine, The Sentry, publie un rapport sur la Sucaf, la filiale sucrière du groupe en Centrafrique.",
+      "caviarde": false,
+      "revelerAMs": null,
+      "surligner": true
+     }
+    ],
+    "tampon": null
+   },
+   "finMs": 427653.0,
+   "scene": "#117"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1322,
+   "debutMs": 427653.0,
+   "props": {
+    "assetId": "P11",
+    "genre": "photo",
+    "description": "Bangui ou paysage de Centrafrique"
+   },
+   "asset": {
+    "id": "P11",
+    "genre": "photo",
+    "description": "Bangui ou paysage de Centrafrique",
+    "requetes": "Bangui / Central African Republic",
+    "ou": "Wikimedia Commons",
+    "source": "a-chercher"
+   },
+   "item": "P11",
+   "finMs": 429253.0,
+   "scene": "#118"
+  },
+  {
+   "composant": "FichePersonnage",
+   "ancre": 1331,
+   "debutMs": 429253.0,
+   "props": {
+    "assetId": "S028",
+    "descriptionPhoto": "Portrait ou photo de : UPC",
+    "nom": "UPC",
+    "champs": [
+     {
+      "label": "RÔLE",
+      "valeur": "Groupe armé"
+     },
+     {
+      "label": "DÉTAIL",
+      "valeur": "Centrafrique"
+     }
+    ],
+    "tampon": null
+   },
+   "asset": {
+    "id": "S028",
+    "genre": "photo",
+    "description": "Portrait ou photo de : UPC",
+    "requetes": "UPC",
+    "ou": "Wikimedia Commons",
+    "source": "auto"
+   },
+   "finMs": 435775,
+   "scene": "#119"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 1362,
+   "debutMs": 435775,
+   "props": {
+    "date": "2022",
+    "precedentes": [
+     "1992",
+     "2009",
+     "2017",
+     "2022"
+    ]
+   },
+   "finMs": 437975.0,
+   "scene": "#120"
+  },
+  {
+   "composant": "DocumentCaviarde",
+   "ancre": 1362,
+   "debutMs": 437975.0,
+   "props": {
+    "style": "document",
+    "entete": "PARQUET NATIONAL ANTITERRORISTE",
+    "lignes": [
+     {
+      "texte": "En 2022, la justice française ouvre une enquête préliminaire, suivie par le parquet national antiterroriste.",
+      "caviarde": true,
+      "revelerAMs": 435463,
+      "surligner": true
+     }
+    ],
+    "tampon": "CONFIDENTIEL"
+   },
+   "finMs": 442975.0,
+   "scene": "#121"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 1379,
+   "debutMs": 442975.0,
+   "props": {
+    "date": "2026",
+    "precedentes": [
+     "2009",
+     "2017",
+     "2022",
+     "2022"
+    ]
+   },
+   "finMs": 445775.0,
+   "scene": "#122"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1388,
+   "debutMs": 445775.0,
+   "finMs": 449575.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Les infractions sont jugées « insuffisamment caractérisées ». »",
+    "mouvement": "auto",
+    "assetId": "S029"
+   },
+   "asset": {
+    "id": "S029",
+    "genre": "video",
+    "description": "Illustrer : « Les infractions sont jugées « insuffisamment caractérisées ». »",
+    "requetes": "infractions, jugées, insuffisamment, caractérisées",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#123"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1401,
+   "debutMs": 449575.0,
+   "finMs": 453375.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Les enquêteurs n'ont pas pu accéder aux témoins clés, dans un pays toujours en conflit. »",
+    "mouvement": "auto",
+    "assetId": "S030"
+   },
+   "asset": {
+    "id": "S030",
+    "genre": "video",
+    "description": "Illustrer : « Les enquêteurs n'ont pas pu accéder aux témoins clés, dans un pays toujours en conflit. »",
+    "requetes": "enquêteurs, n'ont, accéder, témoins, clés",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#124"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1414,
+   "debutMs": 453375.0,
+   "finMs": 457024.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Et selon l'organisation à l'origine de la plainte, le principal d'entre eux est mort. »",
+    "mouvement": "auto",
+    "assetId": "S031"
+   },
+   "asset": {
+    "id": "S031",
+    "genre": "video",
+    "description": "Illustrer : « Et selon l'organisation à l'origine de la plainte, le principal d'entre eux est mort. »",
+    "requetes": "selon, l'organisation, l'origine, plainte, principal",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#125"
+  },
+  {
+   "composant": "CartonPiece",
+   "ancre": 1424,
+   "fixe": true,
+   "debutMs": 457024,
+   "finMs": 459724,
+   "props": {
+    "numero": 4,
+    "titre": "La succession"
+   },
+   "scene": "#126"
+  },
+  {
+   "composant": "FichePersonnage",
+   "ancre": 1424,
+   "debutMs": 459724,
+   "props": {
+    "assetId": "P01",
+    "descriptionPhoto": "Portrait de Pierre Castel (âgé). Uniquement photo sous licence libre. Sinon : silhouette de dos, jamais de visage généré par IA",
+    "nom": "Pierre Castel",
+    "champs": [
+     {
+      "label": "RÔLE",
+      "valeur": "Fondateur"
+     },
+     {
+      "label": "DÉTAIL",
+      "valeur": "99 ans"
+     }
+    ],
+    "tampon": null
+   },
+   "asset": {
+    "id": "P01",
+    "genre": "photo",
+    "description": "Portrait de Pierre Castel (âgé). Uniquement photo sous licence libre. Sinon : silhouette de dos, jamais de visage généré par IA",
+    "requetes": "Pierre Castel",
+    "ou": "Wikimedia Commons (vérifier la licence)",
+    "source": "a-chercher"
+   },
+   "finMs": 466031,
+   "scene": "#127"
+  },
+  {
+   "composant": "CarteFlux",
+   "ancre": 1446,
+   "debutMs": 466031,
+   "props": {
+    "points": [],
+    "flux": [],
+    "pays": [
+     {
+      "nom": "France",
+      "aMs": 0
+     },
+     {
+      "nom": "Cameroon",
+      "aMs": 0
+     },
+     {
+      "nom": "Senegal",
+      "aMs": 0
+     },
+     {
+      "nom": "Burkina Faso",
+      "aMs": 0
+     },
+     {
+      "nom": "Niger",
+      "aMs": 0
+     },
+     {
+      "nom": "Mauritania",
+      "aMs": 0
+     },
+     {
+      "nom": "Benin",
+      "aMs": 0
+     },
+     {
+      "nom": "Algeria",
+      "aMs": 0
+     },
+     {
+      "nom": "Morocco",
+      "aMs": 0
+     },
+     {
+      "nom": "Madagascar",
+      "aMs": 0
+     },
+     {
+      "nom": "Dem. Rep. Congo",
+      "aMs": 0
+     },
+     {
+      "nom": "Angola",
+      "aMs": 0
+     },
+     {
+      "nom": "Ethiopia",
+      "aMs": 0
+     },
+     {
+      "nom": "Switzerland",
+      "aMs": 0
+     },
+     {
+      "nom": "Liechtenstein",
+      "aMs": 0
+     },
+     {
+      "nom": "Singapore",
+      "aMs": 0
+     },
+     {
+      "nom": "Central African Rep.",
+      "aMs": 0
+     }
+    ],
+    "regions": [
+     "afrique"
+    ],
+    "zoom": null,
+    "accent": "vert",
+    "acceleration": false
+   },
+   "minMs": 4000.0,
+   "finMs": 473834,
+   "scene": "#128"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1473,
+   "debutMs": 473834,
+   "props": {
+    "assetId": "I02",
+    "genre": "ia",
+    "description": "Fauteuil de direction vide dans un bureau sombre, lumière de fenêtre"
+   },
+   "asset": {
+    "id": "I02",
+    "genre": "ia",
+    "description": "Fauteuil de direction vide dans un bureau sombre, lumière de fenêtre",
+    "requetes": "(prompt IA)",
+    "ou": "Générateur d'images IA",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "I02",
+   "finMs": 478634.0,
+   "scene": "#129"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1490,
+   "debutMs": 478634.0,
+   "finMs": 480997.0,
+   "recadre": true,
+   "props": {
+    "assetId": "I02",
+    "genre": "ia",
+    "description": "Fauteuil de direction vide dans un bureau sombre, lumière de fenêtre",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "I02",
+    "genre": "ia",
+    "description": "Fauteuil de direction vide dans un bureau sombre, lumière de fenêtre",
+    "requetes": "(prompt IA)",
+    "ou": "Générateur d'images IA",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#130"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 1497,
+   "debutMs": 480997,
+   "props": {
+    "date": "2023",
+    "precedentes": [
+     "2017",
+     "2022",
+     "2022",
+     "2026"
+    ]
+   },
+   "finMs": 483197.0,
+   "scene": "#131"
+  },
+  {
+   "composant": "FichePersonnage",
+   "ancre": 1497,
+   "debutMs": 483197.0,
+   "props": {
+    "assetId": "S032",
+    "descriptionPhoto": "Portrait ou photo de : Gregory Clerc",
+    "nom": "Gregory Clerc",
+    "champs": [
+     {
+      "label": "RÔLE",
+      "valeur": "Directeur général"
+     },
+     {
+      "label": "DÉTAIL",
+      "valeur": "Ex-avocat fiscaliste"
+     }
+    ],
+    "tampon": null
+   },
+   "asset": {
+    "id": "S032",
+    "genre": "photo",
+    "description": "Portrait ou photo de : Gregory Clerc",
+    "requetes": "Gregory Clerc",
+    "ou": "Wikimedia Commons",
+    "source": "auto"
+   },
+   "finMs": 488197.0,
+   "scene": "#132"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1507,
+   "debutMs": 488197.0,
+   "props": {
+    "assetId": "V20",
+    "genre": "video",
+    "description": "Salle de conseil d'administration, table longue, réunion (sans visages identifiables)"
+   },
+   "asset": {
+    "id": "V20",
+    "genre": "video",
+    "description": "Salle de conseil d'administration, table longue, réunion (sans visages identifiables)",
+    "requetes": "conseil d'administration / boardroom meeting",
+    "ou": "Pexels, Storyblocks",
+    "source": "a-chercher"
+   },
+   "item": "V20",
+   "finMs": 492997.0,
+   "scene": "#133"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1536,
+   "debutMs": 492997.0,
+   "finMs": 497735.0,
+   "recadre": true,
+   "props": {
+    "assetId": "V20",
+    "genre": "video",
+    "description": "Salle de conseil d'administration, table longue, réunion (sans visages identifiables)",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "V20",
+    "genre": "video",
+    "description": "Salle de conseil d'administration, table longue, réunion (sans visages identifiables)",
+    "requetes": "conseil d'administration / boardroom meeting",
+    "ou": "Pexels, Storyblocks",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#134"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 1552,
+   "debutMs": 497735,
+   "props": {
+    "centres": [
+     "FAMILLE",
+     "CLERC"
+    ],
+    "elements": [],
+    "mode": "nouveau"
+   },
+   "finMs": 504041,
+   "scene": "#135"
+  },
+  {
+   "composant": "GraphiqueAnime",
+   "ancre": 1575,
+   "debutMs": 504041,
+   "props": {
+    "barres": [
+     {
+      "label": "AVANT",
+      "valeur": 43.0,
+      "texte": "43 M€"
+     },
+     {
+      "label": "APRÈS",
+      "valeur": 350.0,
+      "texte": "350 M€"
+     }
+    ],
+    "titre": ""
+   },
+   "finMs": 510541.0,
+   "scene": "#136"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1595,
+   "debutMs": 510541.0,
+   "finMs": 511252.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Romy Castel, la fille du fondateur, qui détient environ 20 % du groupe, part en guerre. »",
+    "mouvement": "auto",
+    "assetId": "S033"
+   },
+   "asset": {
+    "id": "S033",
+    "genre": "video",
+    "description": "Illustrer : « Romy Castel, la fille du fondateur, qui détient environ 20 % du groupe, part en guerre. »",
+    "requetes": "romy, castel, fille, fondateur, détient",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#137"
+  },
+  {
+   "composant": "FichePersonnage",
+   "ancre": 1595,
+   "debutMs": 511252,
+   "props": {
+    "assetId": "I03",
+    "descriptionPhoto": "Silhouette de femme en contre-jour devant une fenêtre, SANS visage",
+    "nom": "Romy Castel",
+    "champs": [
+     {
+      "label": "RÔLE",
+      "valeur": "Fille du fondateur"
+     },
+     {
+      "label": "DÉTAIL",
+      "valeur": "~20 %"
+     }
+    ],
+    "tampon": null
+   },
+   "asset": {
+    "id": "I03",
+    "genre": "ia",
+    "description": "Silhouette de femme en contre-jour devant une fenêtre, SANS visage",
+    "requetes": "(prompt IA)",
+    "ou": "Générateur d'images IA",
+    "source": "a-chercher"
+   },
+   "finMs": 516252.0,
+   "scene": "#138"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1595,
+   "debutMs": 516252.0,
+   "props": {
+    "assetId": "S034",
+    "genre": "ia",
+    "description": "silhouette en contre-jour, pas de visage"
+   },
+   "asset": {
+    "id": "S034",
+    "genre": "ia",
+    "description": "silhouette en contre-jour, pas de visage",
+    "requetes": "silhouette, contre-jour, visage",
+    "ou": "",
+    "source": "auto"
+   },
+   "depuis_balise": true,
+   "finMs": 517852.0,
+   "scene": "#139"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 1611,
+   "debutMs": 517852.0,
+   "props": {
+    "date": "janv. 2026",
+    "precedentes": [
+     "2022",
+     "2022",
+     "2026",
+     "2023"
+    ]
+   },
+   "finMs": 520652.0,
+   "scene": "#140"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1626,
+   "debutMs": 520652.0,
+   "finMs": 522901.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Raté, sur un problème de procédure. »",
+    "mouvement": "auto",
+    "assetId": "S035"
+   },
+   "asset": {
+    "id": "S035",
+    "genre": "video",
+    "description": "Illustrer : « Raté, sur un problème de procédure. »",
+    "requetes": "raté, problème, procédure",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#141"
+  },
+  {
+   "composant": "TimelineMachine",
+   "ancre": 1630,
+   "debutMs": 522901,
+   "props": {
+    "date": "févr. 2026",
+    "precedentes": [
+     "2022",
+     "2026",
+     "2023",
+     "janv. 2026"
+    ]
+   },
+   "finMs": 525701.0,
+   "scene": "#142"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1639,
+   "debutMs": 525701.0,
+   "finMs": 529501.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Plus de 70 % des voix pour le virer. »",
+    "mouvement": "auto",
+    "assetId": "S036"
+   },
+   "asset": {
+    "id": "S036",
+    "genre": "video",
+    "description": "Illustrer : « Plus de 70 % des voix pour le virer. »",
+    "requetes": "voix, virer",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#143"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1650,
+   "debutMs": 529501.0,
+   "finMs": 531347.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Et le conseil d'administration répond… que le vote n'est pas valable. »",
+    "mouvement": "auto",
+    "assetId": "S037"
+   },
+   "asset": {
+    "id": "S037",
+    "genre": "video",
+    "description": "Illustrer : « Et le conseil d'administration répond… que le vote n'est pas valable. »",
+    "requetes": "conseil, d'administration, répond, vote, n'est",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#144"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 1655,
+   "debutMs": 531347,
+   "props": {
+    "centres": [
+     "FAMILLE",
+     "CLERC"
+    ],
+    "elements": [],
+    "mode": "coupe"
+   },
+   "finMs": 535347.0,
+   "scene": "#145"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1659,
+   "debutMs": 535347.0,
+   "props": {
+    "assetId": "V21",
+    "genre": "video",
+    "description": "Bâtiment de la Cour suprême de Singapour ou quartier d'affaires"
+   },
+   "asset": {
+    "id": "V21",
+    "genre": "video",
+    "description": "Bâtiment de la Cour suprême de Singapour ou quartier d'affaires",
+    "requetes": "Singapore Supreme Court / Singapore CBD",
+    "ou": "Pexels, Wikimedia Commons",
+    "source": "a-chercher"
+   },
+   "item": "V21",
+   "finMs": 540147.0,
+   "scene": "#146"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1688,
+   "debutMs": 540147.0,
+   "finMs": 543417.0,
+   "recadre": true,
+   "props": {
+    "assetId": "V21",
+    "genre": "video",
+    "description": "Bâtiment de la Cour suprême de Singapour ou quartier d'affaires",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "V21",
+    "genre": "video",
+    "description": "Bâtiment de la Cour suprême de Singapour ou quartier d'affaires",
+    "requetes": "Singapore Supreme Court / Singapore CBD",
+    "ou": "Pexels, Wikimedia Commons",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#147"
+  },
+  {
+   "composant": "TableauEnquete",
+   "ancre": 1697,
+   "debutMs": 543417,
+   "props": {
+    "centres": [
+     "CASTEL"
+    ],
+    "elements": [
+     {
+      "label": "CASTEL",
+      "nouveau": false,
+      "filRouge": true
+     },
+     {
+      "label": "STRUCTURE",
+      "nouveau": false,
+      "filRouge": true
+     },
+     {
+      "label": "POPULATION JEUNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "CONSO QUOTIDIENNE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "IMPOSSIBLE À IMPORTER",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "COCA-COLA",
+      "nouveau": false,
+      "filRouge": true
+     },
+     {
+      "label": "SOMDIAA — SUCRE",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "SABMILLER",
+      "nouveau": true,
+      "filRouge": true
+     },
+     {
+      "label": "FONDATION — LIECHTENSTEIN",
+      "nouveau": false,
+      "filRouge": false
+     },
+     {
+      "label": "FONDS IBBF — SINGAPOUR",
+      "nouveau": false,
+      "filRouge": true
+     },
+     {
+      "label": "HOLDING — GIBRALTAR",
+      "nouveau": true,
+      "filRouge": false
+     }
+    ],
+    "mode": "ensemble"
+   },
+   "finMs": 547417.0,
+   "scene": "#148"
+  },
+  {
+   "composant": "ChiffreCle",
+   "ancre": 1704,
+   "debutMs": 547417.0,
+   "props": {
+    "items": [
+     {
+      "valeur": 100.0,
+      "texte": "100",
+      "unite": "ANS",
+      "aMs": 546093
+     }
+    ]
+   },
+   "morceau": 1697,
+   "finMs": 550217.0,
+   "scene": "#149"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1706,
+   "debutMs": 550217.0,
+   "props": {
+    "assetId": "V22",
+    "genre": "video",
+    "description": "Vignes au coucher du soleil, plan aérien lent"
+   },
+   "asset": {
+    "id": "V22",
+    "genre": "video",
+    "description": "Vignes au coucher du soleil, plan aérien lent",
+    "requetes": "vignes coucher de soleil / vineyard sunset aerial",
+    "ou": "TES plans drone (idéal), Pexels",
+    "source": "a-chercher"
+   },
+   "depuis_balise": true,
+   "item": "V22",
+   "finMs": 555017.0,
+   "scene": "#150"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1733,
+   "debutMs": 555017.0,
+   "finMs": 558817.0,
+   "recadre": true,
+   "props": {
+    "assetId": "V22",
+    "genre": "video",
+    "description": "Vignes au coucher du soleil, plan aérien lent",
+    "mouvement": "serre"
+   },
+   "asset": {
+    "id": "V22",
+    "genre": "video",
+    "description": "Vignes au coucher du soleil, plan aérien lent",
+    "requetes": "vignes coucher de soleil / vineyard sunset aerial",
+    "ou": "TES plans drone (idéal), Pexels",
+    "source": "a-chercher"
+   },
+   "copie": true,
+   "scene": "#151"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1744,
+   "debutMs": 558817.0,
+   "finMs": 562617.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Les plus grandes fortunes ne sont pas toujours celles qui font le plus de bruit. »",
+    "mouvement": "auto",
+    "assetId": "S038"
+   },
+   "asset": {
+    "id": "S038",
+    "genre": "video",
+    "description": "Illustrer : « Les plus grandes fortunes ne sont pas toujours celles qui font le plus de bruit. »",
+    "requetes": "grandes, fortunes, toujours, celles, font",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#152"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1761,
+   "debutMs": 562617.0,
+   "finMs": 564945.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Ce sont parfois celles qui ont appris… à disparaître. »",
+    "mouvement": "auto",
+    "assetId": "S039"
+   },
+   "asset": {
+    "id": "S039",
+    "genre": "video",
+    "description": "Illustrer : « Ce sont parfois celles qui ont appris… à disparaître. »",
+    "requetes": "parfois, celles, ont, appris, disparaître",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#153"
+  },
+  {
+   "composant": "Teaser",
+   "ancre": 1766,
+   "debutMs": 564945,
+   "props": {
+    "numero": 2,
+    "titre": "Lactalis",
+    "fondAssetId": "V23"
+   },
+   "asset": {
+    "id": "V23",
+    "genre": "video",
+    "description": "Rayon lait et fromages de supermarché, travelling",
+    "requetes": "rayon produits laitiers / dairy aisle supermarket",
+    "ou": "Pexels, Storyblocks",
+    "source": "a-chercher"
+   },
+   "finMs": 576945.0,
+   "scene": "#154"
+  },
+  {
+   "composant": "Media",
+   "ancre": 1806,
+   "debutMs": 576945.0,
+   "finMs": 581885.0,
+   "props": {
+    "genre": "video",
+    "description": "Illustrer : « Abonnez-vous, le dossier N°002 arrive. »",
+    "mouvement": "auto",
+    "assetId": "S040"
+   },
+   "asset": {
+    "id": "S040",
+    "genre": "video",
+    "description": "Illustrer : « Abonnez-vous, le dossier N°002 arrive. »",
+    "requetes": "abonnez-vous, dossier, 002, arrive",
+    "ou": "Pexels, Pixabay",
+    "source": "auto"
+   },
+   "scene": "#155"
+  }
+ ],
+ "calques": [
+  {
+   "composant": "MotCle",
+   "ancre": 29,
+   "debutMs": 14215,
+   "finMs": 15715.0,
+   "props": {
+    "texte": "JÉSUS",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 155,
+   "debutMs": 49637,
+   "finMs": 52237.0,
+   "props": {
+    "texte": "GUERRE",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "ChiffreIncruste",
+   "ancre": 162,
+   "debutMs": 51143,
+   "finMs": 52643.0,
+   "props": {
+    "texte": "100",
+    "unite": "ANS"
+   }
+  },
+  {
+   "composant": "DateIncruste",
+   "ancre": 214,
+   "debutMs": 70239,
+   "finMs": 71739.0,
+   "props": {
+    "texte": "1914"
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 226,
+   "debutMs": 73500,
+   "finMs": 75000.0,
+   "props": {
+    "texte": "9 ENFANTS",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 277,
+   "debutMs": 89816,
+   "finMs": 91316.0,
+   "props": {
+    "texte": "PIERRE",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "ChiffreIncruste",
+   "ancre": 537,
+   "debutMs": 163929,
+   "finMs": 165429.0,
+   "props": {
+    "texte": "5 000",
+    "unite": "KM"
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 556,
+   "debutMs": 172126,
+   "finMs": 174726.0,
+   "props": {
+    "texte": "LA BIÈRE",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 650,
+   "debutMs": 199080,
+   "finMs": 200580.0,
+   "props": {
+    "texte": "PAS DE CONCURRENCE",
+    "surligne": true
+   }
+  },
+  {
+   "composant": "DateIncruste",
+   "ancre": 791,
+   "debutMs": 247269,
+   "finMs": 248769.0,
+   "props": {
+    "texte": "2001"
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 856,
+   "debutMs": 269822,
+   "finMs": 272422.0,
+   "props": {
+    "texte": "SILENCE",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 947,
+   "debutMs": 302982,
+   "finMs": 304482.0,
+   "props": {
+    "texte": "JÉSUS",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 1042,
+   "debutMs": 332156,
+   "finMs": 333656.0,
+   "props": {
+    "texte": "RIEN",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 1092,
+   "debutMs": 346362,
+   "finMs": 347862.0,
+   "props": {
+    "texte": "BÉNÉFICIAIRE",
+    "surligne": true
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 1181,
+   "debutMs": 376788,
+   "finMs": 378288.0,
+   "props": {
+    "texte": "LE JOURNAL",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 1279,
+   "debutMs": 409002,
+   "finMs": 410502.0,
+   "props": {
+    "texte": "TROP CLÉMENTE",
+    "surligne": true
+   }
+  },
+  {
+   "composant": "DateIncruste",
+   "ancre": 1312,
+   "debutMs": 418940,
+   "finMs": 420440.0,
+   "props": {
+    "texte": "2021"
+   }
+  },
+  {
+   "composant": "TamponCalque",
+   "ancre": 1376,
+   "debutMs": 441196,
+   "finMs": 443796.0,
+   "props": {
+    "texte": "CLASSÉ SANS SUITE"
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 1442,
+   "debutMs": 464681,
+   "finMs": 466181.0,
+   "props": {
+    "texte": "QUI ?",
+    "surligne": false
+   }
+  },
+  {
+   "composant": "ChiffreIncruste",
+   "ancre": 1460,
+   "debutMs": 469990,
+   "finMs": 471490.0,
+   "props": {
+    "texte": "43 000",
+    "unite": "SALARIÉS"
+   }
+  },
+  {
+   "composant": "ChiffreIncruste",
+   "ancre": 1466,
+   "debutMs": 471837,
+   "finMs": 473337.0,
+   "props": {
+    "texte": "22",
+    "unite": "PAYS"
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 1534,
+   "debutMs": 492825,
+   "finMs": 495425.0,
+   "props": {
+    "texte": "UN FISCALISTE",
+    "surligne": true
+   }
+  },
+  {
+   "composant": "TamponCalque",
+   "ancre": 1610,
+   "debutMs": 515722,
+   "finMs": 518322.0,
+   "props": {
+    "texte": "REJETÉ"
+   }
+  },
+  {
+   "composant": "TamponCalque",
+   "ancre": 1641,
+   "debutMs": 526709,
+   "finMs": 529309.0,
+   "props": {
+    "texte": "INVALIDE"
+   }
+  },
+  {
+   "composant": "MotCle",
+   "ancre": 1765,
+   "debutMs": 564112,
+   "finMs": 565612.0,
+   "props": {
+    "texte": "DISPARAÎTRE",
+    "surligne": true
+   }
+  },
+  {
+   "composant": "TamponCalque",
+   "ancre": 1766,
+   "debutMs": 564945,
+   "finMs": 567545.0,
+   "props": {
+    "texte": "DOSSIER N°001 — CLOS"
+   }
+  }
+ ],
+ "parole": [
+  [
+   3400,
+   12881
+  ],
+  [
+   14215,
+   19307
+  ],
+  [
+   19892,
+   25876
+  ],
+  [
+   26462,
+   39784
+  ],
+  [
+   40369,
+   51471
+  ],
+  [
+   52038,
+   55309
+  ],
+  [
+   58432,
+   77164
+  ],
+  [
+   77746,
+   101912
+  ],
+  [
+   102507,
+   122784
+  ],
+  [
+   124141,
+   134129
+  ],
+  [
+   134707,
+   141030
+  ],
+  [
+   141621,
+   149659
+  ],
+  [
+   150230,
+   161312
+  ],
+  [
+   162641,
+   165212
+  ],
+  [
+   168351,
+   189273
+  ],
+  [
+   189863,
+   197987
+  ],
+  [
+   198565,
+   217009
+  ],
+  [
+   217619,
+   225821
+  ],
+  [
+   226411,
+   226943
+  ],
+  [
+   227533,
+   228221
+  ],
+  [
+   228805,
+   229646
+  ],
+  [
+   230223,
+   230556
+  ],
+  [
+   231128,
+   236996
+  ],
+  [
+   237603,
+   252934
+  ],
+  [
+   254297,
+   266072
+  ],
+  [
+   266636,
+   268505
+  ],
+  [
+   269822,
+   278639
+  ],
+  [
+   279812,
+   280559
+  ],
+  [
+   283678,
+   293254
+  ],
+  [
+   293834,
+   301135
+  ],
+  [
+   302463,
+   319095
+  ],
+  [
+   319689,
+   323401
+  ],
+  [
+   323976,
+   327139
+  ],
+  [
+   327715,
+   330748
+  ],
+  [
+   331318,
+   345792
+  ],
+  [
+   346362,
+   351779
+  ],
+  [
+   352404,
+   360545
+  ],
+  [
+   361880,
+   372666
+  ],
+  [
+   373241,
+   393965
+  ],
+  [
+   394527,
+   407178
+  ],
+  [
+   407769,
+   412963
+  ],
+  [
+   413542,
+   417319
+  ],
+  [
+   418653,
+   442516
+  ],
+  [
+   443102,
+   456599
+  ],
+  [
+   459724,
+   477190
+  ],
+  [
+   477790,
+   480414
+  ],
+  [
+   480997,
+   495989
+  ],
+  [
+   496571,
+   509932
+  ],
+  [
+   511252,
+   528440
+  ],
+  [
+   529023,
+   541228
+  ],
+  [
+   541803,
+   552173
+  ],
+  [
+   552758,
+   557247
+  ],
+  [
+   558579,
+   563412
+  ],
+  [
+   563989,
+   566719
+  ],
+  [
+   567301,
+   573971
+  ],
+  [
+   574572,
+   578837
+  ]
+ ],
+ "silences": [
+  [
+   12881,
+   14215
+  ],
+  [
+   55309,
+   58432
+  ],
+  [
+   122784,
+   124141
+  ],
+  [
+   161312,
+   162641
+  ],
+  [
+   165212,
+   168351
+  ],
+  [
+   252934,
+   254297
+  ],
+  [
+   268505,
+   269822
+  ],
+  [
+   278639,
+   279812
+  ],
+  [
+   280559,
+   283678
+  ],
+  [
+   301135,
+   302463
+  ],
+  [
+   360545,
+   361880
+  ],
+  [
+   417319,
+   418653
+  ],
+  [
+   456599,
+   459724
+  ],
+  [
+   509932,
+   511252
+  ],
+  [
+   557247,
+   558579
+  ]
+ ],
+ "sections": [
+  {
+   "nom": "HOOK",
+   "debutMs": 3400,
+   "piece": null
+  },
+  {
+   "nom": "PROMESSE",
+   "debutMs": 29642,
+   "piece": null
+  },
+  {
+   "nom": "PIÈCE N°1 — Le petit Jésus de Gironde",
+   "debutMs": 58432,
+   "piece": 1
+  },
+  {
+   "nom": "PIÈCE N°2 — Le roi de la bière",
+   "debutMs": 168351,
+   "piece": 2
+  },
+  {
+   "nom": "PIÈCE N°3 — L'homme qui n'avait rien",
+   "debutMs": 283678,
+   "piece": 3
+  },
+  {
+   "nom": "PIÈCE N°4 — Game of Thrones à Singapour",
+   "debutMs": 459724,
+   "piece": 4
+  },
+  {
+   "nom": "CONCLUSION",
+   "debutMs": 543417,
+   "piece": null
+  }
+ ]
+}

@@ -1,17 +1,22 @@
 import React from 'react';
 import {Composition, Folder} from 'remotion';
 import {
+  CarteFlux,
   CartonPiece,
+  ChiffreCle,
   CompteurBillets,
   DocumentCaviarde,
   FichePersonnage,
   GrainVignette,
+  GraphiqueAnime,
+  Media,
   MotCle,
   OuvertureDossier,
-  PhotoKenBurns,
+  TableauEnquete,
+  TimelineMachine,
 } from './components';
-import {DemoCastel, DUREE_DEMO_CASTEL} from './demos/DemoCastel';
 import {FPS, HAUTEUR, LARGEUR} from './theme/palette';
+import {calculerMetadonnees, Video} from './Video';
 
 const avecGrain = (C: React.FC) => () => (
   <>
@@ -20,52 +25,88 @@ const avecGrain = (C: React.FC) => () => (
   </>
 );
 
-// Galerie : chaque composant seul, pour valider le style dans le Studio.
+// Galerie : chaque composant seul, pour régler le style dans le Studio.
 const galerie: Array<[string, number, React.FC]> = [
-  ['OuvertureDossier', 110, () => <OuvertureDossier numero={1} titre="Castel" sousTitre="L'empire discret" />],
+  ['OuvertureDossier', 110, () => <OuvertureDossier numero={1} titre="Pierre Castel" sousTitre="Le milliardaire qui s'appelait Jésus" />],
   [
     'FichePersonnage',
-    150,
+    180,
     () => (
       <FichePersonnage
-        slug="demo"
-        sceneId="S000"
+        assetId="S000"
         descriptionPhoto="Portrait de la personne"
         nom="Gilbert Chikli"
-        role="Escroc (arnaque au faux président)"
-        fortune="Plusieurs dizaines de M€ détournés"
-        statut="Condamné par la justice française"
+        champs={[
+          {label: 'RÔLE', valeur: 'Escroc (arnaque au faux président)'},
+          {label: 'DÉTAIL', valeur: 'Condamné par la justice française'},
+        ]}
         tampon="CONDAMNÉ"
       />
     ),
   ],
-  ['CompteurBillets-gain', 90, () => <CompteurBillets montant={80_000_000} libelle="BUTIN ESTIMÉ" />],
-  ['CompteurBillets-perte', 90, () => <CompteurBillets montant={5_000_000} sens="perte" libelle="PERTE DE L'ENTREPRISE" />],
+  ['CompteurBillets', 100, () => <CompteurBillets montant={410_000_000} devise="CHF" sens="perte" />],
+  ['ChiffreCle', 120, () => <ChiffreCle items={[{valeur: 22, texte: '22', unite: 'PAYS', aMs: 0}, {valeur: 61, texte: '61', unite: 'MARQUES', aMs: 900}, {valeur: 43000, texte: '43 000', unite: 'SALARIÉS', aMs: 1800}]} />],
   [
     'DocumentCaviarde',
-    120,
+    150,
     () => (
       <DocumentCaviarde
         entete="ORDRE DE VIREMENT"
-        tampon="URGENT"
+        tampon="CONFIDENTIEL"
         lignes={[
-          {texte: 'DONNEUR D\u2019ORDRE : LE PRÉSIDENT'},
-          {texte: 'MONTANT : 5 000 000 €', caviarde: true, revelerA: 30, surligner: true},
-          {texte: 'DESTINATION : HONG KONG', caviarde: true, revelerA: 60},
-          {texte: 'MOTIF : OPÉRATION CONFIDENTIELLE'},
+          {texte: 'Donneur d’ordre : le président.'},
+          {texte: 'Montant : 5 000 000 €.', caviarde: true, revelerAMs: 1000, surligner: true},
+          {texte: 'Destination : Hong Kong.', caviarde: true, revelerAMs: 2200},
         ]}
       />
     ),
   ],
-  ['MotCle', 60, () => <MotCle texte="Évidemment que non." fond="noir" />],
-  ['MotCle-surligne', 60, () => <MotCle texte="Personne n'a rien vu." surligne fond="noir" />],
-  ['PhotoKenBurns-placeholder', 120, () => <PhotoKenBurns slug="demo" sceneId="S027" description="Façade du tribunal de Paris, plan large de jour" legende="Paris, 2015" />],
-  ['CartonPiece', 75, () => <CartonPiece numero={2} titre="L'arnaque" />],
+  ['TimelineMachine', 75, () => <TimelineMachine date="1990" precedentes={['1926', '1947', '1949', '1965']} />],
+  [
+    'CarteFlux',
+    180,
+    () => (
+      <CarteFlux
+        points={[{nom: 'Bordeaux', lon: -0.58, lat: 44.84}, {nom: '', lon: -17.47, lat: 14.72, secondaire: true}, {nom: '', lon: 9.7, lat: 4.05, secondaire: true}]}
+        flux={[[0, 1], [0, 2]]}
+        pays={[{nom: 'Cameroon', aMs: 1500, clic: true}, {nom: 'Senegal', aMs: 2200, clic: true}, {nom: "Côte d'Ivoire", aMs: 2900, clic: true}]}
+        regions={['afrique']}
+      />
+    ),
+  ],
+  [
+    'TableauEnquete',
+    150,
+    () => (
+      <TableauEnquete
+        centres={['CASTEL']}
+        elements={[
+          {label: 'POPULATION JEUNE'},
+          {label: 'CONSO QUOTIDIENNE'},
+          {label: 'IMPOSSIBLE À IMPORTER', nouveau: true, filRouge: true},
+        ]}
+        mode="ajout"
+      />
+    ),
+  ],
+  ['GraphiqueAnime', 120, () => <GraphiqueAnime barres={[{label: 'AVANT', valeur: 43, texte: '43 M€'}, {label: 'APRÈS', valeur: 350, texte: '350 M€'}]} />],
+  ['MotCle', 60, () => <MotCle texte="Trop clémente." surligne fond="noir" />],
+  ['Media-placeholder', 120, () => <Media assetId="V01" genre="video" description="Genève de nuit, vue sur le lac et le jet d'eau" />],
+  ['CartonPiece', 80, () => <CartonPiece numero={2} titre="L'empire africain" />],
 ];
 
 export const Racine: React.FC = () => (
   <>
-    <Composition id="DemoCastel" component={DemoCastel} durationInFrames={DUREE_DEMO_CASTEL} fps={FPS} width={LARGEUR} height={HAUTEUR} />
+    <Composition
+      id="Video"
+      component={Video}
+      calculateMetadata={calculerMetadonnees}
+      defaultProps={{slug: 'castel', apercu: false, plan: null}}
+      durationInFrames={300}
+      fps={FPS}
+      width={LARGEUR}
+      height={HAUTEUR}
+    />
     <Folder name="Galerie">
       {galerie.map(([id, duree, C]) => (
         <Composition key={id} id={id} component={avecGrain(C)} durationInFrames={duree} fps={FPS} width={LARGEUR} height={HAUTEUR} />

@@ -4,18 +4,22 @@
   "private": true,
   "description": "Pipeline de montage de la chaîne YouTube DOSSIERS (Remotion)",
   "scripts": {
+    "video": "node scripts/py.mjs scripts/video.py",
     "studio": "node scripts/preparer-public.mjs && remotion studio src/index.ts",
-    "voix:demo": "node scripts/py.mjs scripts/voix_test.py videos/castel/script.md videos/castel --section HOOK",
-    "demo": "node scripts/preparer-public.mjs && remotion render src/index.ts DemoCastel videos/castel/demo-hook.mp4",
     "sfx": "node scripts/py.mjs scripts/generer_sfx.py",
     "check": "tsc --noEmit"
   },
   "dependencies": {
     "@remotion/cli": "4.0.531",
     "@remotion/fonts": "4.0.531",
+    "@types/d3-geo": "^3.1.1",
+    "@types/topojson-client": "^3.1.5",
+    "d3-geo": "^3.1.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "remotion": "4.0.531"
+    "remotion": "4.0.531",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
   },
   "devDependencies": {
     "@types/react": "19.1.8",

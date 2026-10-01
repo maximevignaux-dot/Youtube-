@@ -7,7 +7,7 @@ import {anton, machine} from '../theme/polices';
  * Remplace une image / vidéo manquante : carton papier crème, description tapée à la machine,
  * numéro de scène. L'aperçu reste regardable, et on voit tout de suite quoi fournir.
  */
-export const Placeholder: React.FC<{sceneId: string; description: string; genre?: 'PHOTO' | 'VIDÉO'}> = ({
+export const Placeholder: React.FC<{sceneId: string; description: string; genre?: 'PHOTO' | 'VIDÉO' | 'IMAGE IA'}> = ({
   sceneId,
   description,
   genre = 'PHOTO',
@@ -34,9 +34,9 @@ export const Placeholder: React.FC<{sceneId: string; description: string; genre?
           {genre} À FOURNIR
         </span>
       </div>
-      <div style={{fontFamily: machine, fontSize: 52, lineHeight: 1.3, color: couleurs.encre}}>{description}</div>
+      <div style={{fontFamily: machine, fontSize: description.length > 120 ? 40 : 50, lineHeight: 1.3, color: couleurs.encre}}>{description}</div>
       <div style={{fontFamily: machine, fontSize: 26, color: couleurs.cartonFonce}}>
-        → déposer le fichier dans assets/ sous le nom {sceneId}.jpg (ou .mp4)
+        → assets/{sceneId}.{genre === 'VIDÉO' ? 'mp4' : genre === 'IMAGE IA' ? 'png' : 'jpg'}
       </div>
     </div>
   </AbsoluteFill>

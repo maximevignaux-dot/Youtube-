@@ -1,21 +1,22 @@
 import React from 'react';
-import {AbsoluteFill, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, staticFile, useCurrentFrame} from 'remotion';
 import {couleurs} from '../theme/palette';
 import {machine} from '../theme/polices';
 
-/** Grain papier + vignettage, posé au-dessus de TOUTE la vidéo. */
+/** Grain papier + vignettage, posé au-dessus de TOUTE la vidéo (textures pré-calculées : rendu rapide). */
 export const GrainVignette: React.FC<{intensite?: number}> = ({intensite = 1}) => {
   const frame = useCurrentFrame();
-  const graine = Math.floor(frame / 2) % 50; // le grain « vit » sans clignoter
+  const n = (Math.floor(frame / 2) % 6) + 1; // le grain « vit » sans clignoter
   return (
     <AbsoluteFill style={{pointerEvents: 'none'}}>
-      <svg width="100%" height="100%" style={{position: 'absolute', opacity: 0.13 * intensite, mixBlendMode: 'overlay'}}>
-        <filter id={`grain-${graine}`}>
-          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed={graine} stitchTiles="stitch" />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter={`url(#grain-${graine})`} />
-      </svg>
+      <AbsoluteFill
+        style={{
+          backgroundImage: `url(${staticFile(`textures/grain${n}.png`)})`,
+          backgroundSize: '384px 384px',
+          opacity: 0.1 * intensite,
+          mixBlendMode: 'overlay',
+        }}
+      />
       <AbsoluteFill
         style={{
           background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 85%, rgba(0,0,0,0.85) 100%)',

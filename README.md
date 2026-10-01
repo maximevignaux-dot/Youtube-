@@ -3,7 +3,8 @@
 Chaîne YouTube « DOSSIERS » : les coulisses de l'argent. Montage automatique avec Remotion.
 
 - Le cahier des charges complet : [CLAUDE.md](CLAUDE.md)
-- Installer sur ton ordinateur : [DEMARRAGE.md](DEMARRAGE.md)
+- Installer sur ton ordinateur : [INSTALLATION.md](INSTALLATION.md)
+- Utilisation au quotidien : [DEMARRAGE.md](DEMARRAGE.md)
 
 ## Où en est-on
 - [x] Session 1 — fondations : palette, polices, grain + vignettage, sons provisoires,
