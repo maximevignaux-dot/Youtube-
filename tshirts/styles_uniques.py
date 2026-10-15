@@ -91,7 +91,7 @@ def illus(d, largeur, hauteur=None):
     for xy in [(0, 0), (work.width - 1, 0), (0, work.height - 1), (work.width - 1, work.height - 1)]:
         ImageDraw.floodfill(work, xy, key, thresh=45)
     diff = ImageChops.difference(work, Image.new("RGB", work.size, key)).convert("L")
-    mask = diff.point(lambda v: 0 if v < 8 else 255)
+    mask = diff.point(lambda v: 0 if v < 8 else 255).filter(ImageFilter.MinFilter(3))  # mange le liseré blanc
     r = largeur / im.width
     if hauteur and im.height * r > hauteur:
         r = hauteur / im.height
@@ -513,7 +513,21 @@ def style_chantier(d, pal):
     return vstack([il, pn, bas], 60)
 
 
-NOUVEAUX = {"etiquette": style_etiquette, "coucher": style_coucher, "recherche": style_recherche,
+# ------------------------------------------------------------------ 14. VISUEL (le dessin fait la blague)
+def style_visuel(d, pal):
+    """u: haut, bas, [chute]. Gros dessin, deux lignes de texte, rien d'autre."""
+    u = d["u"]
+    lignes = lambda v: v if isinstance(v, list) else [v]
+    haut = vstack([T(l.upper(), "bungee", pal["ink"], 3800, 560) for l in lignes(u["haut"])], 40)
+    il = illus(d, 3800, 3000)
+    bas = vstack([T(l, "lobster", pal["accent"], 3800, 600) for l in lignes(u["bas"])], 20)
+    parts = [haut, il, bas]
+    if u.get("chute"):
+        parts.append(T(u["chute"], "marker", pal["accent2"], 2600, 260))
+    return vstack(parts, 70)
+
+
+NOUVEAUX = {"visuel": style_visuel, "etiquette": style_etiquette, "coucher": style_coucher, "recherche": style_recherche,
             "panneau": style_panneau, "bd": style_bd, "graines": style_graines, "tampon": style_tampon,
             "diplome": style_diplome, "college": style_college, "plaque": style_plaque, "dico": style_dico,
             "ticket": style_ticket, "chantier": style_chantier}

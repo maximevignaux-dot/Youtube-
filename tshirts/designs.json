@@ -1071,5 +1071,51 @@
         "niveau": "accent"
       }
     ]
+  },
+  {
+    "id": "caravane-herisson",
+    "tshirt": "noir",
+    "styles": [
+      "visuel"
+    ],
+    "lignes": [
+      {
+        "txt": "Ma maison a des roues",
+        "niveau": "grand"
+      }
+    ],
+    "u": {
+      "haut": [
+        "Ma maison",
+        "a des roues"
+      ],
+      "bas": [
+        "et mon jardin",
+        "change tous les jours"
+      ]
+    }
+  },
+  {
+    "id": "caravane-herisson-jardin",
+    "tshirt": "noir",
+    "styles": [
+      "visuel"
+    ],
+    "lignes": [
+      {
+        "txt": "Ma maison a des roues",
+        "niveau": "grand"
+      }
+    ],
+    "u": {
+      "haut": [
+        "Ma maison",
+        "a des roues"
+      ],
+      "bas": [
+        "et mon jardin",
+        "change tous les jours"
+      ]
+    }
   }
 ]

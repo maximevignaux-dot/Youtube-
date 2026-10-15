@@ -1,0 +1,3 @@
+Illustration en basse définition (aperçu Canva 200 px) : NE PAS IMPRIMER.
+Télécharger l'image HD depuis Canva (voir illustrations/canva.json) vers illustrations/caravane-herisson-jardin.png,
+puis : python3 generate.py --only caravane-herisson-jardin
