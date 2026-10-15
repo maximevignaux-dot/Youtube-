@@ -27,6 +27,22 @@ Pour chaque slogan, ajoute une entrée :
 - Slogan en forme de liste → `titre` + `liste` (`etat` : `ok`, `non` ou `jauge` avec `pct`).
 - **Illustration** : si le slogan gagne à avoir un dessin (un personnage, un objet qui fait la blague), regarde si `illustrations/<id>.png` existe. Si oui, mets `"illustration": "<id>.png"` et `"illustration_apres": true` sur la ligne qui précède le dessin. Sinon, écris le prompt dans le dossier (étape 4) et génère quand même les versions sans illustration.
 
+## 2 bis. Un design UNIQUE par slogan (règle de Maxime)
+Fini les 4 mêmes modèles pour tout le monde. Pour chaque slogan :
+- **Une illustration Canva** propre à la blague (outil `generate-image`), dans un style de dessin qui change
+  d'un design à l'autre (mascotte vintage, BD rétro à trame, gravure western, affiche provençale, sticker…),
+  toujours : fond blanc uni, sans texte, sans logo. Noter l'identifiant Canva dans `illustrations/canva.json`.
+  Récupérer la HD (2048 px mini) dans `illustrations/<id>.png` ; à défaut l'aperçu va dans
+  `illustrations/basse-def/<id>.jpg` (juste pour juger, le script crée alors ATTENTION-BASSE-DEF.txt).
+- **Une mise en page pensée pour la blague** dans `styles_uniques.py`, choisie via `"styles": ["<style>"]`
+  et les textes dans `"u"` : `etiquette` (charcuterie, vin), `coucher` (vacances, camping), `recherche`
+  (le coupable), `panneau` (route), `bd` (une réplique), `graines` (jardin), `tampon` (verdict), `diplome`
+  (retraite, titre), `college` (fierté de métier), `plaque` (lieu culte), `dico` (mot détourné),
+  `ticket` (facture, prix), `chantier` (BTP). Si aucun ne colle, **crée un nouveau style** (menu ardoise,
+  carte postale, notice de montage, ordonnance, bulletin météo…) plutôt que de recycler.
+- Deux designs voisins de la banque ne doivent jamais avoir le même style.
+- Exemples complets : `outils/lots/pilote_uniques.py`.
+
 ## 3. Générer
 `python3 generate.py` — il ne refait que les nouveaux. Pour refaire un design : `python3 generate.py --only <id>`.
 Ouvre `planche-du-jour.jpg` et vérifie toi-même : texte lisible, rien qui déborde, accents corrects. Corrige le découpage et relance si besoin.

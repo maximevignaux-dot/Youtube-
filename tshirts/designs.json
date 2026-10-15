@@ -32,7 +32,16 @@
     "centre": [
       "Ni l'un ni l'autre",
       "Je sers l'apéro"
-    ]
+    ],
+    "styles": [
+      "plaque"
+    ],
+    "u": {
+      "dessus": "Je tire ou je pointe ?",
+      "petit": "Ni l'un ni l'autre",
+      "grand": "Je sers l'apéro",
+      "bas": "Et je compte les points de loin"
+    }
   },
   {
     "id": "camping-car",
@@ -67,7 +76,15 @@
     "centre": [
       "Ma maison",
       "a des roues"
-    ]
+    ],
+    "styles": [
+      "coucher"
+    ],
+    "u": {
+      "haut": "Ma maison a des roues",
+      "bas1": "et mon jardin change",
+      "bas2": "tous les jours"
+    }
   },
   {
     "id": "jardin-tomates",
@@ -101,7 +118,30 @@
     "centre": [
       "Je parle",
       "à mes tomates"
-    ]
+    ],
+    "styles": [
+      "graines"
+    ],
+    "u": {
+      "marque": "Graines du jardinier",
+      "variete": "Variété : tomate confidente",
+      "slogan": "Je parle à mes tomates",
+      "sous": "Elles au moins elles m'écoutent",
+      "infos": [
+        [
+          "Semis",
+          "toute l'année"
+        ],
+        [
+          "Arrosage",
+          "bavardage quotidien"
+        ],
+        [
+          "Récolte",
+          "quand elles ont tout entendu"
+        ]
+      ]
+    }
   },
   {
     "id": "caractere",
@@ -131,7 +171,21 @@
     "centre": [
       "Pas un sale caractère",
       "Du caractère. Sale."
-    ]
+    ],
+    "styles": [
+      "tampon"
+    ],
+    "u": {
+      "tape": [
+        "J'ai pas un sale caractère.",
+        "J'ai du caractère…"
+      ],
+      "tampon": [
+        "Et il est sale",
+        "Certifié conforme"
+      ],
+      "bas": "Merci de me laisser mon café"
+    }
   },
   {
     "id": "retraite",
@@ -161,7 +215,20 @@
     "centre": [
       "Je fais ce que je veux",
       "et surtout rien"
-    ]
+    ],
+    "styles": [
+      "diplome"
+    ],
+    "u": {
+      "titre": "Diplôme",
+      "sous_titre": "de retraité officiel",
+      "decerne": "Décerné pour l'ensemble de sa carrière",
+      "specialite": [
+        "Je fais ce que je veux",
+        "et surtout rien"
+      ],
+      "signature": "Réveil : supprimé"
+    }
   },
   {
     "id": "mode-papy",
@@ -265,7 +332,17 @@
         "niveau": "accent"
       }
     ],
-    "chute": "Végétarien à ma façon"
+    "chute": "Végétarien à ma façon",
+    "styles": [
+      "etiquette"
+    ],
+    "u": {
+      "haut": "Moi aussi je mange des plantes",
+      "nom": "Saucisson",
+      "sous_nom": "aux herbes",
+      "mention": "Appellation végétarienne contrôlée",
+      "bas": "Végétarien à ma façon"
+    }
   },
   {
     "id": "mecano-courroie",
@@ -366,7 +443,41 @@
         "niveau": "accent"
       }
     ],
-    "chute": "Supplément beau-frère : +50 %"
+    "chute": "Supplément beau-frère : +50 %",
+    "styles": [
+      "ticket"
+    ],
+    "u": {
+      "titre": [
+        "Je répare aussi",
+        "ce que ton beau-frère a réparé"
+      ],
+      "entete": [
+        "Garage du coin",
+        "Facture n° 0042",
+        "Client : le beau-frère (encore)"
+      ],
+      "lignes": [
+        [
+          "Réparation moteur",
+          "380,00"
+        ],
+        [
+          "Retrait du scotch",
+          "45,00"
+        ],
+        [
+          "Retrait de la chaussette",
+          "12,00"
+        ],
+        [
+          "Supplément beau-frère",
+          "+50 %"
+        ]
+      ],
+      "total": "ÇA PIQUE",
+      "pied": "Merci de ne plus rien toucher"
+    }
   },
   {
     "id": "mecano-ecologie",
@@ -431,7 +542,15 @@
         "icone_apres": true
       }
     ],
-    "chute": "Et 30 ans de cambouis"
+    "chute": "Et 30 ans de cambouis",
+    "styles": [
+      "bd"
+    ],
+    "u": {
+      "cartouche": "Pas besoin de valise diagnostic…",
+      "bulle": "C'est le roulement.",
+      "bas": "J'ai l'oreille"
+    }
   },
   {
     "id": "plombier-davant",
@@ -461,7 +580,17 @@
         "txt": "d'avant",
         "niveau": "accent"
       }
-    ]
+    ],
+    "styles": [
+      "recherche"
+    ],
+    "u": {
+      "titre": "Avis de recherche",
+      "nom": "Le plombier d'avant",
+      "motif": "Recherché pour : joints au chewing-gum, tuyaux tordus, évacuation à l'envers et siphon monté à l'oreille.",
+      "recompense": "C'est pas moi qui ai fait ça",
+      "bas": "Si vous le voyez, ne le laissez rien toucher"
+    }
   },
   {
     "id": "plombier-fuite",
@@ -553,7 +682,19 @@
         "niveau": "accent"
       }
     ],
-    "chute": "Électricien, pas croupier"
+    "chute": "Électricien, pas croupier",
+    "styles": [
+      "dico"
+    ],
+    "u": {
+      "mot": "Domino",
+      "phonetique": "[do-mi-no] nom masculin",
+      "sens": [
+        "~Jeu de société qui se joue au café.",
+        "Barrette de connexion électrique. Ce n'est pas un jeu."
+      ],
+      "bas": "Électricien, pas croupier"
+    }
   },
   {
     "id": "electricien-1998",
@@ -581,6 +722,352 @@
       },
       {
         "txt": "depuis 1998",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "electricien-tension",
+    "tshirt": "noir",
+    "icone": "bolt",
+    "arc_haut": "Électricien",
+    "arc_bas": "Sous tension 24 h/24",
+    "centre": [
+      "Sous tension",
+      "à la maison aussi"
+    ],
+    "lignes": [
+      {
+        "txt": "Je travaille",
+        "niveau": "grand"
+      },
+      {
+        "txt": "sous tension",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "À la maison",
+        "niveau": "petit"
+      },
+      {
+        "txt": "aussi",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "macon-enduit",
+    "tshirt": "noir",
+    "icone": "wall",
+    "arc_haut": "Maçonnerie générale",
+    "arc_bas": "Maçon, pas magicien",
+    "centre": [
+      "C'est pas droit ?",
+      "L'enduit rattrapera"
+    ],
+    "lignes": [
+      {
+        "txt": "C'est pas droit ?",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "L'enduit",
+        "niveau": "petit"
+      },
+      {
+        "txt": "rattrapera",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Maçon, pas magicien… enfin si",
+    "styles": [
+      "chantier"
+    ],
+    "u": {
+      "titre": "Chantier en cours",
+      "champs": [
+        [
+          "Nature des travaux",
+          "mur pas droit"
+        ],
+        [
+          "Solution",
+          "l'enduit rattrapera"
+        ],
+        [
+          "Fin du chantier",
+          "vendredi (lequel ?)"
+        ]
+      ],
+      "bas": "Maçon, pas magicien… enfin si"
+    }
+  },
+  {
+    "id": "plaquiste-ba13",
+    "tshirt": "noir",
+    "icone": "ruler-2",
+    "arc_haut": "Plaquiste certifié",
+    "arc_bas": "Tout se cache",
+    "centre": [
+      "T'inquiète",
+      "ça sera caché"
+    ],
+    "lignes": [
+      {
+        "txt": "T'inquiète",
+        "niveau": "grand"
+      },
+      {
+        "txt": "ça sera caché",
+        "niveau": "petit",
+        "icone_apres": true
+      },
+      {
+        "txt": "par le",
+        "niveau": "petit"
+      },
+      {
+        "txt": "BA13",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "devis-juste",
+    "tshirt": "kaki",
+    "icone": "receipt",
+    "arc_haut": "Entreprise générale",
+    "arc_bas": "Devis non contractuel",
+    "centre": [
+      "Le devis était juste",
+      "le chantier, non"
+    ],
+    "lignes": [
+      {
+        "txt": "Le devis",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "était juste",
+        "niveau": "petit"
+      },
+      {
+        "txt": "C'est le chantier",
+        "niveau": "petit"
+      },
+      {
+        "txt": "qui s'est trompé",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "chantier-vendredi",
+    "tshirt": "noir",
+    "icone": "clock",
+    "arc_haut": "Bâtiment et travaux",
+    "arc_bas": "Délais indicatifs",
+    "centre": [
+      "Fini vendredi",
+      "on n'a pas dit lequel"
+    ],
+    "lignes": [
+      {
+        "txt": "Le chantier",
+        "niveau": "grand"
+      },
+      {
+        "txt": "finit vendredi",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "On n'a pas dit",
+        "niveau": "petit"
+      },
+      {
+        "txt": "lequel",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "couvreur-flemme",
+    "tshirt": "noir",
+    "icone": "ladder",
+    "arc_haut": "Couvreur zingueur",
+    "arc_bas": "Bureau avec vue",
+    "centre": [
+      "Pas le vertige",
+      "juste la flemme"
+    ],
+    "lignes": [
+      {
+        "txt": "J'ai pas",
+        "niveau": "petit"
+      },
+      {
+        "txt": "le vertige",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "j'ai juste la flemme",
+        "niveau": "petit"
+      },
+      {
+        "txt": "de redescendre",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "couvreur-pigeons",
+    "tshirt": "noir",
+    "icone": "home",
+    "arc_haut": "Couvreur de père en fils",
+    "arc_bas": "Vue imprenable",
+    "centre": [
+      "La plus belle vue",
+      "et des pigeons"
+    ],
+    "lignes": [
+      {
+        "txt": "Mon bureau a",
+        "niveau": "petit"
+      },
+      {
+        "txt": "la plus belle vue",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "de la ville",
+        "niveau": "petit"
+      },
+      {
+        "txt": "et des fientes",
+        "niveau": "accent"
+      },
+      {
+        "txt": "de pigeon",
+        "niveau": "accent"
+      }
+    ],
+    "styles": [
+      "college"
+    ],
+    "u": {
+      "arc": "Couvreur",
+      "sous": "Bureau avec vue depuis toujours",
+      "bas1": "La plus belle vue de la ville",
+      "bas2": "et des fientes de pigeon"
+    }
+  },
+  {
+    "id": "routier-1360",
+    "tshirt": "noir",
+    "icone": "truck",
+    "arc_haut": "Routier national",
+    "arc_bas": "Domicile : 13,60 m",
+    "centre": [
+      "Ma maison : 13,60 m",
+      "Mon salon a un volant"
+    ],
+    "lignes": [
+      {
+        "txt": "Ma maison",
+        "niveau": "petit"
+      },
+      {
+        "txt": "fait 13,60 m",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "Mon salon",
+        "niveau": "petit"
+      },
+      {
+        "txt": "a un volant",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "routier-rondspoints",
+    "tshirt": "noir",
+    "icone": "steering-wheel",
+    "arc_haut": "Routier en colère",
+    "arc_bas": "Anti ronds-points",
+    "centre": [
+      "Les ronds-points",
+      "se moquent de moi"
+    ],
+    "lignes": [
+      {
+        "txt": "Les ronds-points",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "ont été inventés",
+        "niveau": "petit"
+      },
+      {
+        "txt": "pour se moquer",
+        "niveau": "petit"
+      },
+      {
+        "txt": "de moi",
+        "niveau": "accent"
+      }
+    ],
+    "styles": [
+      "panneau"
+    ],
+    "u": {
+      "panonceau": "Sur 800 km",
+      "lignes": [
+        "Les ronds-points",
+        "ont été inventés"
+      ],
+      "accent": "pour se moquer de moi"
+    }
+  },
+  {
+    "id": "agriculteur-70h",
+    "tshirt": "kaki",
+    "icone": "tractor",
+    "arc_haut": "Agriculteur fier",
+    "arc_bas": "Je nourris la France",
+    "centre": [
+      "70 heures par semaine",
+      "et je pollue"
+    ],
+    "lignes": [
+      {
+        "txt": "Je bosse",
+        "niveau": "petit"
+      },
+      {
+        "txt": "70 heures",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "par semaine",
+        "niveau": "petit"
+      },
+      {
+        "txt": "pour qu'on me dise",
+        "niveau": "petit"
+      },
+      {
+        "txt": "que je pollue",
         "niveau": "accent"
       }
     ]

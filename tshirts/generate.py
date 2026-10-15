@@ -409,6 +409,10 @@ def style_illustre(d, pal):
 
 STYLES = {"empile": style_empile, "mix": style_mix, "badge": style_badge, "retro": style_retro, "fiche": style_fiche, "illustre": style_illustre}
 
+# styles uniques (étiquette, affiche, panneau…) : voir styles_uniques.py
+import styles_uniques
+STYLES.update(styles_uniques.charger(sys.modules[__name__]))
+
 
 # ------------------------------------------------------------------ aperçu t-shirt
 def tee_mockup(print_img, tee_color, size=900):
@@ -479,6 +483,14 @@ def main():
             mk.save(os.path.join(folder, f"apercu_{st}.jpg"), quality=88)
             thumbs.append((f'{d["id"]} · {st}', mk))
             print("ok", d["id"], st)
+        alerte = os.path.join(folder, "ATTENTION-BASSE-DEF.txt")
+        if d["id"] in styles_uniques.BASSE_DEF:
+            open(alerte, "w", encoding="utf-8").write(
+                "Illustration en basse définition (aperçu Canva 200 px) : NE PAS IMPRIMER.\n"
+                f"Télécharger l'image HD depuis Canva (voir illustrations/canva.json) vers illustrations/{d['id']}.png,\n"
+                f"puis : python3 generate.py --only {d['id']}\n")
+        elif os.path.exists(alerte):
+            os.remove(alerte)
         contact_sheet(thumbs, os.path.join(folder, "planche.jpg"))
         day += thumbs
     if day:
