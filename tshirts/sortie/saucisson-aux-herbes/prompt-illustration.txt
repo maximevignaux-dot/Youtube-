@@ -1,0 +1,3 @@
+T-shirt print illustration, vintage cartoon mascot style with thick black outlines and flat limited colors (cream, mustard yellow, brick red, dark brown): a muscular dry saucisson sausage character flexing tiny biceps, wearing black sunglasses and a small beret, smug satisfied smile, standing on a wooden cutting board. Isolated on plain white background, centered, no text, no lettering, clean screen-print look.
+
+→ Dépose l'image dans illustrations/saucisson-aux-herbes.png puis relance /tshirts.

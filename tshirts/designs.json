@@ -1,0 +1,588 @@
+[
+  {
+    "id": "petanque-apero",
+    "tshirt": "noir",
+    "icone": "petanque",
+    "arc_haut": "Club des tireurs du dimanche",
+    "arc_bas": "Fondé à l'heure de l'apéro",
+    "lignes": [
+      {
+        "txt": "Je tire ou je pointe ?",
+        "niveau": "petit"
+      },
+      {
+        "txt": "Ni l'un",
+        "niveau": "grand"
+      },
+      {
+        "txt": "ni l'autre",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "Je sers",
+        "niveau": "petit"
+      },
+      {
+        "txt": "L'APÉRO",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Et je compte les points de loin",
+    "centre": [
+      "Ni l'un ni l'autre",
+      "Je sers l'apéro"
+    ]
+  },
+  {
+    "id": "camping-car",
+    "tshirt": "marine",
+    "icone": "caravan",
+    "arc_haut": "Ma maison a des roues",
+    "arc_bas": "Et mon jardin change tous les jours",
+    "lignes": [
+      {
+        "txt": "Ma maison",
+        "niveau": "petit"
+      },
+      {
+        "txt": "a des roues",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "et mon jardin",
+        "niveau": "petit"
+      },
+      {
+        "txt": "change tous",
+        "niveau": "accent"
+      },
+      {
+        "txt": "les jours",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Camping-cariste, pas SDF",
+    "centre": [
+      "Ma maison",
+      "a des roues"
+    ]
+  },
+  {
+    "id": "jardin-tomates",
+    "tshirt": "kaki",
+    "icone": "plant",
+    "arc_haut": "Je parle à mes tomates",
+    "arc_bas": "Elles au moins elles m'écoutent",
+    "lignes": [
+      {
+        "txt": "Je parle",
+        "niveau": "grand"
+      },
+      {
+        "txt": "à mes",
+        "niveau": "petit"
+      },
+      {
+        "txt": "TOMATES",
+        "niveau": "accent",
+        "icone_apres": true
+      },
+      {
+        "txt": "Elles au moins",
+        "niveau": "petit"
+      },
+      {
+        "txt": "elles m'écoutent",
+        "niveau": "grand"
+      }
+    ],
+    "centre": [
+      "Je parle",
+      "à mes tomates"
+    ]
+  },
+  {
+    "id": "caractere",
+    "tshirt": "blanc",
+    "icone": "coffee",
+    "arc_haut": "Certifiée 100 % caractère",
+    "arc_bas": "Approche à vos risques",
+    "lignes": [
+      {
+        "txt": "J'ai pas un",
+        "niveau": "petit"
+      },
+      {
+        "txt": "sale caractère",
+        "niveau": "grand"
+      },
+      {
+        "txt": "J'ai du caractère",
+        "niveau": "petit"
+      },
+      {
+        "txt": "et il est sale",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Merci de me laisser mon café",
+    "centre": [
+      "Pas un sale caractère",
+      "Du caractère. Sale."
+    ]
+  },
+  {
+    "id": "retraite",
+    "tshirt": "noir",
+    "icone": "armchair",
+    "arc_haut": "Retraité officiel",
+    "arc_bas": "Horaires : quand je veux",
+    "lignes": [
+      {
+        "txt": "Retraité",
+        "niveau": "petit"
+      },
+      {
+        "txt": "Je fais ce",
+        "niveau": "grand"
+      },
+      {
+        "txt": "que je veux",
+        "niveau": "grand"
+      },
+      {
+        "txt": "et surtout rien",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Réveil : supprimé",
+    "centre": [
+      "Je fais ce que je veux",
+      "et surtout rien"
+    ]
+  },
+  {
+    "id": "mode-papy",
+    "tshirt": "noir",
+    "titre": "Mode papy activé",
+    "lignes": [
+      {
+        "txt": "Mode papy activé",
+        "niveau": "grand"
+      }
+    ],
+    "liste": [
+      {
+        "label": "Sieste",
+        "etat": "ok",
+        "valeur": "faite"
+      },
+      {
+        "label": "Apéro",
+        "etat": "ok",
+        "valeur": "fait"
+      },
+      {
+        "label": "Jardin",
+        "etat": "ok",
+        "valeur": "inspecté"
+      },
+      {
+        "label": "Ménage",
+        "etat": "non",
+        "valeur": "en réflexion"
+      },
+      {
+        "label": "Patience",
+        "etat": "jauge",
+        "pct": 12,
+        "valeur": "critique"
+      }
+    ],
+    "chute": "Merci de ne pas déranger"
+  },
+  {
+    "id": "ne-pour-rien-faire",
+    "tshirt": "sable",
+    "arc_haut": "Daron certifié",
+    "arc_bas": "Râleur depuis toujours",
+    "centre": [
+      "Je fais rien",
+      "et je le fais bien"
+    ],
+    "lignes": [
+      {
+        "txt": "Je ne suis pas",
+        "niveau": "petit"
+      },
+      {
+        "txt": "fainéant",
+        "niveau": "grand"
+      },
+      {
+        "txt": "Je suis",
+        "niveau": "petit"
+      },
+      {
+        "txt": "en mode économie",
+        "niveau": "accent"
+      },
+      {
+        "txt": "d'énergie",
+        "niveau": "petit"
+      },
+      {
+        "txt": "Comme la planète",
+        "niveau": "grand",
+        "bandeau": true
+      }
+    ],
+    "chute": "Daron, et fier de l'être"
+  },
+  {
+    "id": "saucisson-aux-herbes",
+    "tshirt": "noir",
+    "icone": "grill",
+    "lignes": [
+      {
+        "txt": "Moi aussi",
+        "niveau": "petit"
+      },
+      {
+        "txt": "je mange des plantes",
+        "niveau": "grand",
+        "illustration_apres": true,
+        "icone_apres": true
+      },
+      {
+        "txt": "du saucisson",
+        "niveau": "accent"
+      },
+      {
+        "txt": "aux herbes",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Végétarien à ma façon"
+  },
+  {
+    "id": "mecano-courroie",
+    "tshirt": "noir",
+    "icone": "engine",
+    "arc_haut": "Mécano certifié",
+    "arc_bas": "Atelier du cambouis",
+    "centre": [
+      "Ma courroie baigne",
+      "dans l'huile"
+    ],
+    "lignes": [
+      {
+        "txt": "Si la vie était",
+        "niveau": "petit"
+      },
+      {
+        "txt": "une voiture",
+        "niveau": "grand"
+      },
+      {
+        "txt": "je serais ton",
+        "niveau": "petit"
+      },
+      {
+        "txt": "1.2 essence",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "ma courroie baigne",
+        "niveau": "petit"
+      },
+      {
+        "txt": "dans l'huile",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Les vrais savent"
+  },
+  {
+    "id": "mecano-tuto",
+    "tshirt": "noir",
+    "icone": "tool",
+    "arc_haut": "Atelier mécanique",
+    "arc_bas": "Réparations après tuto",
+    "centre": [
+      "Il a rien touché",
+      "Juste regardé un tuto"
+    ],
+    "lignes": [
+      {
+        "txt": "Il a rien",
+        "niveau": "grand"
+      },
+      {
+        "txt": "touché",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "Il a juste regardé",
+        "niveau": "petit"
+      },
+      {
+        "txt": "un tuto",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Mécano, je répare aussi les tutos"
+  },
+  {
+    "id": "beau-frere-repare",
+    "tshirt": "noir",
+    "icone": "tools",
+    "arc_haut": "Mécano diplômé",
+    "arc_bas": "Supplément beau-frère",
+    "centre": [
+      "Je répare",
+      "le beau-frère"
+    ],
+    "lignes": [
+      {
+        "txt": "Je répare aussi",
+        "niveau": "petit"
+      },
+      {
+        "txt": "ce que ton",
+        "niveau": "petit"
+      },
+      {
+        "txt": "beau-frère",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "a réparé",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Supplément beau-frère : +50 %"
+  },
+  {
+    "id": "mecano-ecologie",
+    "tshirt": "noir",
+    "icone": "engine",
+    "arc_haut": "Mécano diesel",
+    "arc_bas": "Spécialiste des pannes",
+    "centre": [
+      "Merci l'écologie",
+      "Je vis de vos pannes"
+    ],
+    "lignes": [
+      {
+        "txt": "FAP · EGR · injecteurs",
+        "niveau": "petit"
+      },
+      {
+        "txt": "Merci",
+        "niveau": "grand"
+      },
+      {
+        "txt": "l'écologie",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "je vis de",
+        "niveau": "petit"
+      },
+      {
+        "txt": "vos pannes",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "mecano-oreille",
+    "tshirt": "noir",
+    "icone": "ear",
+    "arc_haut": "Mécano à l'ancienne",
+    "arc_bas": "Trente ans de cambouis",
+    "centre": [
+      "Pas de valise",
+      "J'ai l'oreille"
+    ],
+    "lignes": [
+      {
+        "txt": "J'ai pas besoin de",
+        "niveau": "petit"
+      },
+      {
+        "txt": "valise diagnostic",
+        "niveau": "grand"
+      },
+      {
+        "txt": "J'ai",
+        "niveau": "petit"
+      },
+      {
+        "txt": "l'oreille",
+        "niveau": "accent",
+        "icone_apres": true
+      }
+    ],
+    "chute": "Et 30 ans de cambouis"
+  },
+  {
+    "id": "plombier-davant",
+    "tshirt": "noir",
+    "icone": "droplet",
+    "arc_haut": "Plomberie générale",
+    "arc_bas": "Garantie : pas moi",
+    "centre": [
+      "C'est pas moi",
+      "C'est celui d'avant"
+    ],
+    "lignes": [
+      {
+        "txt": "C'est pas moi",
+        "niveau": "grand"
+      },
+      {
+        "txt": "qui ai fait ça",
+        "niveau": "petit"
+      },
+      {
+        "txt": "C'est le plombier",
+        "niveau": "petit",
+        "icone_apres": true
+      },
+      {
+        "txt": "d'avant",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "plombier-fuite",
+    "tshirt": "marine",
+    "icone": "droplet",
+    "arc_haut": "Plombier de confiance",
+    "arc_bas": "Fuites comprises",
+    "centre": [
+      "Ça fuyait",
+      "juste pas encore"
+    ],
+    "lignes": [
+      {
+        "txt": "Ça fuyait pas",
+        "niveau": "grand"
+      },
+      {
+        "txt": "avant que je vienne",
+        "niveau": "petit",
+        "icone_apres": true
+      },
+      {
+        "txt": "Ça fuyait juste",
+        "niveau": "petit"
+      },
+      {
+        "txt": "pas encore",
+        "niveau": "accent"
+      }
+    ]
+  },
+  {
+    "id": "plombier-secrets",
+    "tshirt": "noir",
+    "icone": "eye",
+    "arc_haut": "Plombier officiel",
+    "arc_bas": "Secret professionnel",
+    "centre": [
+      "J'en ai vu",
+      "des choses"
+    ],
+    "lignes": [
+      {
+        "txt": "Plombier",
+        "niveau": "petit"
+      },
+      {
+        "txt": "Je vois",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "des choses",
+        "niveau": "grand"
+      },
+      {
+        "txt": "que tu ne veux",
+        "niveau": "petit"
+      },
+      {
+        "txt": "pas savoir",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Lave-toi les mains"
+  },
+  {
+    "id": "electricien-domino",
+    "tshirt": "noir",
+    "icone": "plug",
+    "arc_haut": "Électricien certifié",
+    "arc_bas": "Pas croupier",
+    "centre": [
+      "Le domino",
+      "c'est pas un jeu"
+    ],
+    "lignes": [
+      {
+        "txt": "Le domino",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "c'est pas",
+        "niveau": "petit"
+      },
+      {
+        "txt": "un jeu",
+        "niveau": "accent"
+      }
+    ],
+    "chute": "Électricien, pas croupier"
+  },
+  {
+    "id": "electricien-1998",
+    "tshirt": "noir",
+    "icone": "bolt",
+    "arc_haut": "Électricien depuis 1998",
+    "arc_bas": "Spécialiste beau-frère",
+    "centre": [
+      "Le beau-frère",
+      "depuis 1998"
+    ],
+    "lignes": [
+      {
+        "txt": "Je refais",
+        "niveau": "grand"
+      },
+      {
+        "txt": "l'installation",
+        "niveau": "petit"
+      },
+      {
+        "txt": "du beau-frère",
+        "niveau": "grand",
+        "icone_apres": true
+      },
+      {
+        "txt": "depuis 1998",
+        "niveau": "accent"
+      }
+    ]
+  }
+]
