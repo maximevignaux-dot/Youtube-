@@ -1117,5 +1117,74 @@
         "change tous les jours"
       ]
     }
+  },
+  {
+    "id": "corse-klaxon",
+    "tshirt": "noir",
+    "styles": [
+      "visuel"
+    ],
+    "lignes": [
+      {
+        "txt": "En Corse",
+        "niveau": "grand"
+      }
+    ],
+    "u": {
+      "haut": [
+        "En Corse",
+        "on est très accueillants…"
+      ],
+      "bas": [
+        "mais si tu klaxonnes dans un virage,",
+        "tu repars à la nage"
+      ]
+    }
+  },
+  {
+    "id": "corse-repartez",
+    "tshirt": "noir",
+    "styles": [
+      "visuel"
+    ],
+    "lignes": [
+      {
+        "txt": "On est hyper",
+        "niveau": "grand"
+      }
+    ],
+    "u": {
+      "haut": [
+        "On est hyper",
+        "accueillants"
+      ],
+      "bas": [
+        "C'est juste qu'on préfère",
+        "quand vous repartez"
+      ]
+    }
+  },
+  {
+    "id": "corse-gr20",
+    "tshirt": "noir",
+    "styles": [
+      "visuel"
+    ],
+    "lignes": [
+      {
+        "txt": "En Corse",
+        "niveau": "grand"
+      }
+    ],
+    "u": {
+      "haut": [
+        "En Corse",
+        "on est très accueillants…"
+      ],
+      "bas": [
+        "mais garde tes tongs pour la plage,",
+        "pas pour le GR20"
+      ]
+    }
   }
 ]
