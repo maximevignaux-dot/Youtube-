@@ -1,0 +1,13 @@
+{
+  "name": "boutique",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/test_paiement.mjs",
+    "verifier": "wrangler pages functions build --outdir .wrangler/verif",
+    "local": "wrangler pages dev public"
+  },
+  "devDependencies": {
+    "wrangler": "4.42.0"
+  }
+}

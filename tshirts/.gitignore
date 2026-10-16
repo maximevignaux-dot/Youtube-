@@ -1,1 +1,6 @@
 __pycache__/
+.env
+.dev.vars
+site/public/
+site/node_modules/
+site/.wrangler/

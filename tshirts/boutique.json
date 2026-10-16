@@ -1,0 +1,38 @@
+{
+  "_aide": "Infos de la boutique. Les champs vides s'affichent en rouge « À COMPLÉTER » sur l'aperçu et bloquent la mise en ligne. TVA : si ta SARL est en franchise de TVA, mets societe.tva_taux à 0 et mention_tva à « TVA non applicable, article 293 B du CGI ». livraison.mode : « offerte » (incluse dans le prix) ou « forfait ».",
+  "nom": "",
+  "accroche": "Des t-shirts qui disent tout haut ce que tout le monde pense au comptoir.",
+  "domaine": "",
+  "societe": {
+    "raison_sociale": "",
+    "forme": "SARL",
+    "capital": "",
+    "adresse": "",
+    "siren": "",
+    "rcs_ville": "",
+    "tva_intracom": "",
+    "mention_tva": "Prix TTC, TVA française incluse.",
+    "email": "",
+    "telephone": "",
+    "directeur_publication": "",
+    "mediateur_nom": "",
+    "mediateur_site": "",
+    "tva_taux": 0.2
+  },
+  "hebergeur": "Cloudflare, Inc. — 101 Townsend St, San Francisco, CA 94107, États-Unis — cloudflare.com",
+  "livraison": {
+    "mode": "forfait",
+    "forfait": 4.9,
+    "fabrication": "2 à 5 jours ouvrés",
+    "transport": "3 à 7 jours ouvrés en France, 5 à 10 jours dans l'Union européenne"
+  },
+  "niches": [
+    "Apéro",
+    "Pétanque",
+    "Métiers",
+    "Daron",
+    "Femmes",
+    "Régions",
+    "Vacances"
+  ]
+}
