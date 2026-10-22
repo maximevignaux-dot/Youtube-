@@ -1,10 +1,10 @@
 {
   "_aide": "Infos de la boutique. Les champs vides s'affichent en rouge « À COMPLÉTER » sur l'aperçu et bloquent la mise en ligne. TVA : si ta SARL est en franchise de TVA, mets societe.tva_taux à 0 et mention_tva à « TVA non applicable, article 293 B du CGI ». livraison.mode : « offerte » (incluse dans le prix) ou « forfait ».",
-  "nom": "",
-  "accroche": "Des t-shirts qui disent tout haut ce que tout le monde pense au comptoir.",
+  "nom": "Zigoto & Cie",
+  "accroche": "Des t-shirts pour les drôles de zigotos. Apéro, métiers, régions, daron… chacun le sien.",
   "domaine": "",
   "societe": {
-    "raison_sociale": "",
+    "raison_sociale": "LM DRONE",
     "forme": "SARL",
     "capital": "",
     "adresse": "",

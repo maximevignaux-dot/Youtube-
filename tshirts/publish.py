@@ -217,7 +217,7 @@ def mettre_en_vente(qui):
 
 def envoyer_secrets():
     from dotenv import dotenv_values
-    v = dotenv_values(os.path.join(ROOT, ".env"))
+    v = {**dotenv_values(os.path.join(ROOT, ".env")), **{k: x for k, x in os.environ.items() if x}}  # réglages de l'environnement prioritaires
     for k in ("STRIPE_SECRET_KEY", "STRIPE_WEBHOOK_SECRET", "PRINTFUL_TOKEN", "PRINTFUL_STORE_ID", "SITE_URL",
               "PRINTFUL_AUTO_CONFIRM", "RESEND_API_KEY", "EMAIL_MAXIME"):
         if v.get(k):
