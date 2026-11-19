@@ -4,7 +4,26 @@
 la pente et la surface réelle (rampant) de chaque pan. Il utilise les données ouvertes de l'IGN
 (LiDAR HD, BD TOPO, géocodage de la Géoplateforme, licence Etalab 2.0), sans clé d'API.
 
-## Installation (une seule fois)
+## Le plus simple : l'interface de test
+
+**Double-cliquez** sur `lancer_interface.bat` (Windows) ou `lancer_interface.command` (Mac).
+La première fois, il installe ce qu'il faut (1 à 3 minutes, Python 3 doit être installé :
+python.org), puis la page s'ouvre dans votre navigateur à l'adresse http://localhost:5000.
+Pour arrêter : fermez la fenêtre noire (ou Ctrl+C).
+
+Dans la page :
+1. **Tapez une adresse** (des suggestions apparaissent) → le toit est métré automatiquement.
+2. Si l'adresse tombe à côté : **zoomez sur la photo et cliquez sur le bon toit**.
+   La couche « Cadastre » (bouton en haut à droite de la carte) aide à repérer les bâtiments.
+3. Si le bâtiment est mal découpé (maisons mitoyennes regroupées…) : **« Dessiner l'emprise »**,
+   cliquez sur chaque angle du toit, puis « Terminer et calculer ».
+4. Les pans s'affichent en couleur sur la photo (cliquez sur un pan pour son détail), avec le tableau,
+   les deux surfaces totales et un **indice de fiabilité** (bonne / moyenne / à vérifier) expliqué.
+5. **« Comparer avec ma mesure »** : saisissez la vraie surface → l'écart s'affiche, et un bouton
+   ajoute ce toit à `toits_reference.csv`. Quand vous en avez 10 : **« Lancer le test de précision »**
+   donne le verdict GO / NO-GO directement dans la page.
+
+## Installation à la main (si vous préférez le terminal)
 
 Il faut Python 3.10 ou plus récent. Dans un terminal, depuis le dossier `metretoit/` :
 
@@ -15,7 +34,10 @@ python3 -m venv .venv
 
 L'ordinateur doit pouvoir joindre `data.geopf.fr` (données IGN).
 
-## Les 2 commandes
+## Les commandes (terminal)
+
+**0. Interface de test** : `.venv/bin/python interface.py` puis ouvrir http://localhost:5000
+
 
 **1. Métrer un toit**
 
@@ -68,22 +90,31 @@ Résultat : `resultats/test_precision.md` (tableau toit par toit, images, verdic
    Filtres ajoutés : un plan de moins de 2 m², un plan surtout hors de l'emprise (arbre, toit du voisin),
    un plan « flottant » au-dessus d'un autre pan (branches) ou caché dessous (façade) est écarté.
    Pente < 3° = « toit plat ».
-5. **Surfaces** : grille de 25 cm sur l'emprise, chaque cellule attribuée au pan le plus proche ;
-   surface réelle = surface projetée ÷ cos(pente). Deux totaux :
+5. **Surfaces** : grille fine (6,25 cm) sur l'emprise. Chaque cellule va au pan, présent tout près,
+   dont le plan passe à la hauteur réellement mesurée à cet endroit (faîtages et noues bien droits) ;
+   un îlot de moins de 0,5 m² est rendu au pan qui l'entoure.
+   Surface réelle = surface projetée ÷ cos(pente). Deux totaux :
    - **selon emprise** : limité au contour BD TOPO ;
    - **selon nuage de points** : limité à l'étendue réelle des points (inclut les débords visibles).
 
+   Le cahier des charges prévoyait des cellules de 25 cm : avec un faîtage parallèle à la grille,
+   une rangée entière de cellules basculait d'un côté (jusqu'à 2 % d'erreur sur un pan). D'où 6,25 cm.
+   Sur les très grands bâtiments (> 3 000 m²), les cellules grossissent automatiquement pour rester rapides.
+6. **Fiabilité** : vert / orange / rouge selon le score de géocodage, la part non mesurée, l'écart entre
+   les deux surfaces, l'irrégularité des pans, les pans très raides et l'âge du relevé LiDAR.
+
 ## Validation sur toits simulés
 
-4 toits (2 pans 35°, 4 pans 30°, en L, plat), 10 points/m², bruit 5 cm, cheminée, branches d'arbre
-et bout de mur parasites, 60 tirages aléatoires chacun (240 toits) :
+5 toits (2 pans 35°, 4 pans 30°, en L, plat, 2 pans asymétriques 40°/25°), 10 points/m², bruit 5 cm,
+cheminée, branches d'arbre et bout de mur parasites, 60 tirages aléatoires chacun (300 toits) :
 
 | Critère | Résultat |
 |---|---|
-| Bon nombre de pans | 240 / 240 |
+| Bon nombre de pans | 300 / 300 |
 | Erreur de pente | 0,4° au maximum |
-| Erreur de surface, variante emprise | 0,2 % au maximum |
-| Erreur de surface, variante nuage | 0,5 % en moyenne, 2,6 % au maximum |
+| Erreur de surface totale, variante emprise | 0,2 % au maximum |
+| Erreur de surface totale, variante nuage | 0,6 % en moyenne, 2,6 % au maximum |
+| Erreur de surface de chaque pan (toit asymétrique) | 0,2 % en moyenne, 1,1 % au maximum |
 
 La variante « nuage » est un peu moins précise : avec 10 points/m², le bord exact du toit tombe
 entre deux points (environ ±10 cm). Le test automatique exige donc < 2 % pour la variante emprise
@@ -105,4 +136,6 @@ sur chaque toit, et pour la variante nuage < 3 % par toit et < 2 % en moyenne.
 - **Vérandas et verrières** : le verre renvoie peu de points LiDAR.
 - **Géocodage** : une adresse imprécise peut tomber sur le mauvais bâtiment (le score est affiché ;
   vérifier `toit.png` et corriger avec `--xy`).
-- Prototype de test : pas d'interface web.
+- **Grands bâtiments** (commerces, entrepôts) : le calcul fonctionne (≈ 10 s pour 7 000 m²) mais les
+  toits techniques (équipements, sheds) donnent des dizaines de pans ; MétréToit vise d'abord les maisons.
+- L'interface tourne sur votre ordinateur (pas de site en ligne) : c'est un outil de test.

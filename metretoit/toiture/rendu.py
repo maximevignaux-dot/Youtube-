@@ -40,11 +40,17 @@ def dessiner(res: dict, titre: str, fichier):
         ax.contour(*gn.centres(), (gn.etiquettes >= 0).astype(float), levels=[0.5],
                    colors="#333333", linestyles="--", linewidths=1)
         pts = res["points_locaux"]
+        if len(pts) > 15000:      # grand toit : on n'affiche qu'un échantillon des points
+            pts = pts[np.random.default_rng(0).choice(len(pts), 15000, replace=False)]
         ax.scatter(pts[:, 0], pts[:, 1], s=0.3, c="k", alpha=0.25)
         X, Y = g.centres()
+        # toit très complexe : on ne numérote que les 30 plus grands pans (tous restent colorés)
+        a_numeroter = set(range(len(res["pans"])))
+        if len(res["pans"]) > 25:
+            a_numeroter = set(sorted(range(len(res["pans"])), key=lambda k: -res["pans"][k]["surface_projetee_m2"])[:30])
         for k, (p, q) in enumerate(zip(res["pans"], res["objets_pans"])):
             m = g.etiquettes == k
-            if not m.any():
+            if not m.any() or k not in a_numeroter:
                 continue
             # point d'étiquette : la cellule du pan la plus éloignée de son bord
             dist = ndimage.distance_transform_edt(m)
@@ -52,7 +58,8 @@ def dessiner(res: dict, titre: str, fichier):
             cx, cy = X[i], Y[i]
             if p["azimut_deg"] is not None:
                 a = np.radians(p["azimut_deg"])
-                L = min(2.0, 0.8 * dist[i] * g.cellule + 0.6)
+                etendue = max(g.nx, g.ny) * g.cellule
+                L = min(max(2.0, 0.03 * etendue), 0.8 * dist[i] * g.cellule + 0.6)
                 ax.annotate("", xy=(cx + L * np.sin(a), cy + L * np.cos(a)),
                             xytext=(cx - 0.3 * L * np.sin(a), cy - 0.3 * L * np.cos(a)),
                             arrowprops=dict(arrowstyle="-|>", color="k", lw=1.6))

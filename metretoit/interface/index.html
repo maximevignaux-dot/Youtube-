@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MétréToit — test</title>
+<link rel="stylesheet" href="/static/leaflet/leaflet.css">
+<script src="/static/leaflet/leaflet.js"></script>
+<style>
+:root{--fond:#f6f7f9;--carte:#fff;--texte:#1d2330;--doux:#667085;--ligne:#e3e6eb;--accent:#1f6feb;
+--vert:#1a7f37;--orange:#c4610b;--rouge:#c62828}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--texte);background:var(--fond)}
+#app{display:flex;height:100%}
+#panneau{width:440px;max-width:100%;overflow-y:auto;padding:16px;border-right:1px solid var(--ligne);background:var(--fond)}
+#carte{flex:1;min-height:300px}
+h1{font-size:20px;margin:0 0 2px}
+.sous{color:var(--doux);margin:0 0 14px;font-size:13px}
+.bloc{background:var(--carte);border:1px solid var(--ligne);border-radius:10px;padding:12px;margin-bottom:12px}
+.bloc h2{font-size:14px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em;color:var(--doux)}
+input,select,textarea{font:inherit;padding:8px 10px;border:1px solid #cfd4dc;border-radius:7px;width:100%;background:#fff;color:inherit}
+button{font:inherit;padding:8px 12px;border-radius:7px;border:1px solid #cfd4dc;background:#fff;cursor:pointer;color:inherit}
+button.prim{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button:disabled{opacity:.5;cursor:default}
+.ligne{display:flex;gap:8px;align-items:center;margin-top:8px}
+.ligne>*{flex:1}
+#recherche{position:relative}
+#sugg{position:absolute;left:0;right:0;top:100%;z-index:1000;background:#fff;border:1px solid var(--ligne);border-radius:7px;box-shadow:0 6px 18px rgba(0,0,0,.12);display:none;max-height:260px;overflow:auto}
+#sugg div{padding:8px 10px;cursor:pointer}
+#sugg div:hover,#sugg div.actif{background:#eef4ff}
+.aide{color:var(--doux);font-size:12.5px;margin-top:6px}
+.modes{display:flex;gap:6px;margin-top:8px}
+.modes button{flex:1;font-size:13px}
+.modes button.on{background:#eef4ff;border-color:var(--accent);color:var(--accent);font-weight:600}
+.totaux{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.total{background:var(--fond);border-radius:8px;padding:8px 10px}
+.total b{display:block;font-size:22px}
+.total span{color:var(--doux);font-size:12px}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-weight:700;font-size:12px;color:#fff}
+.badge.vert{background:var(--vert)}.badge.orange{background:var(--orange)}.badge.rouge{background:var(--rouge)}
+ul.alertes{margin:6px 0 0;padding-left:18px}
+ul.alertes li{margin:2px 0}
+li.a2{color:var(--rouge)}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{padding:4px 5px;border-bottom:1px solid var(--ligne);text-align:right;white-space:nowrap}
+th{color:var(--doux);font-weight:600}
+td:first-child,th:first-child{text-align:left}
+.pastille{display:inline-block;width:18px;height:18px;border-radius:50%;color:#fff;font-weight:700;text-align:center;line-height:18px;font-size:11px}
+.meta{font-size:12.5px;color:var(--doux)}
+.meta div{margin:2px 0}
+#attente{display:none;position:fixed;inset:0;background:rgba(255,255,255,.6);z-index:5000;align-items:center;justify-content:center;flex-direction:column;gap:10px;font-weight:600}
+.roue{width:38px;height:38px;border:4px solid #cfd4dc;border-top-color:var(--accent);border-radius:50%;animation:t 1s linear infinite}
+@keyframes t{to{transform:rotate(360deg)}}
+.erreur{background:#fdecec;border:1px solid #f5c2c2;color:#8a1c1c;border-radius:8px;padding:10px;margin-bottom:12px;display:none}
+.ecart{font-size:18px;font-weight:700;margin-top:8px}
+.ok{color:var(--vert)}.ko{color:var(--rouge)}
+.histo div{padding:6px 4px;border-bottom:1px solid var(--ligne);cursor:pointer;font-size:13px}
+.histo div:hover{background:#eef4ff}
+.ref div{display:flex;justify-content:space-between;gap:6px;padding:5px 0;border-bottom:1px solid var(--ligne);font-size:13px}
+.ref button{padding:2px 8px;font-size:12px}
+#rapportTest{font-size:13px;overflow-x:auto}
+#rapportTest img{max-width:100%}
+.etiq{background:#fff;border:1.5px solid #000;border-radius:50%;width:24px;height:24px;line-height:21px;text-align:center;font-weight:700;font-size:13px}
+details summary{cursor:pointer;color:var(--doux);font-size:13px}
+img.apercu{width:100%;border-radius:8px;border:1px solid var(--ligne);margin-top:8px}
+@media (max-width:800px){#app{flex-direction:column-reverse}#panneau{width:100%;border-right:0;height:55%}#carte{height:45%;flex:none}}
+</style>
+</head>
+<body>
+<div id="app">
+ <div id="panneau">
+  <h1>MétréToit</h1>
+  <p class="sous">Métré de toiture à partir du LiDAR HD de l'IGN — interface de test</p>
+
+  <div class="bloc">
+   <h2>1. Choisir le toit</h2>
+   <div id="recherche">
+    <input id="adresse" placeholder="Tapez une adresse… (ex. 12 rue Victor Hugo, Tours)" autocomplete="off">
+    <div id="sugg"></div>
+   </div>
+   <div class="ligne"><button class="prim" id="btnCalcul">Calculer</button></div>
+   <div class="modes">
+    <button id="modeClic" class="on" title="Cliquez sur la carte pour métrer le bâtiment sous le clic">🖱️ Cliquer sur un bâtiment</button>
+    <button id="modeDessin" title="Dessinez le contour du toit point par point">✏️ Dessiner l'emprise</button>
+   </div>
+   <div id="aideDessin" class="aide" style="display:none">Cliquez sur chaque angle du toit (touche ⌫ pour retirer le dernier), puis
+     <button id="finDessin" style="padding:2px 8px">Terminer et calculer</button>
+     <button id="annulDessin" style="padding:2px 8px">Annuler</button></div>
+   <div class="aide">Astuce : si l'adresse tombe à côté, zoomez sur la photo et cliquez directement sur le bon toit.</div>
+  </div>
+
+  <div class="erreur" id="erreur"></div>
+
+  <div id="resultat" style="display:none">
+   <div class="bloc">
+    <h2>2. Résultat</h2>
+    <div id="titreRes" style="font-weight:600;margin-bottom:8px"></div>
+    <div class="totaux">
+     <div class="total"><span>Surface selon emprise BD TOPO</span><b id="sEmp"></b><span id="sEmpProj"></span></div>
+     <div class="total"><span>Surface selon nuage de points</span><b id="sNua"></b><span id="sNuaProj"></span></div>
+    </div>
+    <div style="margin-top:10px">Fiabilité : <span id="fiab" class="badge"></span>
+     <ul class="alertes" id="alertes"></ul></div>
+   </div>
+   <div class="bloc">
+    <h2>Pans</h2>
+    <table id="tabPans"><thead><tr><th>Pan</th><th>Pente</th><th>Orient.</th><th>S. projetée</th><th>S. réelle</th><th>Écart</th></tr></thead><tbody></tbody></table>
+    <div class="aide">S. réelle = surface en rampant (projetée ÷ cos pente). Écart = dispersion des points autour du plan (indice de confiance).</div>
+   </div>
+   <div class="bloc meta" id="meta"></div>
+   <div class="bloc">
+    <details><summary>Vue de dessus (image) et fichiers</summary>
+     <img class="apercu" id="imgToit" alt="Vue de dessus">
+     <div class="ligne"><a id="lienImg" target="_blank">Ouvrir toit.png</a><a id="lienJson" target="_blank">rapport.json</a></div>
+    </details>
+   </div>
+   <div class="bloc">
+    <h2>3. Comparer avec ma mesure</h2>
+    <div class="ligne"><input id="vraie" type="number" step="0.1" placeholder="Surface réelle mesurée (m²)">
+     <select id="debords"><option value="non">Débords non inclus</option><option value="oui">Débords inclus</option></select></div>
+    <div id="ecart" class="ecart"></div>
+    <details style="margin-top:8px"><summary>Ajouter ce toit aux toits de référence (test GO / NO-GO)</summary>
+     <div class="ligne"><input id="refNom" placeholder="Nom (ex. Maison Dupont)"></div>
+     <div class="ligne"><input id="refPente" type="number" step="0.5" placeholder="Pente réelle (°) — facultatif">
+      <input id="refPans" type="number" placeholder="Nb de pans — facultatif"></div>
+     <div class="ligne"><input id="refSource" placeholder="Source de la mesure (devis, plan, mètre…)"></div>
+     <div class="ligne"><input id="refNotes" placeholder="Notes (travaux récents, véranda…)"></div>
+     <div class="ligne"><button class="prim" id="btnRef">Ajouter aux toits de référence</button></div>
+    </details>
+   </div>
+  </div>
+
+  <div class="bloc">
+   <h2>Toits de référence <span id="nbRef"></span></h2>
+   <div class="ref" id="listeRef"></div>
+   <div class="ligne"><button id="btnTest">Lancer le test de précision</button></div>
+   <div class="aide">Verdict GO si l'écart de surface est &lt; 5 % sur au moins 8 toits sur 10.</div>
+   <div id="rapportTest"></div>
+  </div>
+
+  <div class="bloc">
+   <h2>Derniers calculs</h2>
+   <div class="histo" id="histo"></div>
+  </div>
+  <div class="aide">Données © IGN — LiDAR HD, BD TOPO, géocodage, orthophotographies (licence Etalab 2.0).</div>
+ </div>
+ <div id="carte"></div>
+</div>
+<div id="attente"><div class="roue"></div><div id="attenteTxte">Calcul en cours… (5 à 20 s)</div></div>
+
+<script>
+const COULEURS=["#4E79A7","#F28E2B","#59A14F","#E15759","#B07AA1","#76B7B2","#EDC948","#FF9DA7","#9C755F","#86BCB6","#D37295","#A0CBE8","#8CD17D","#F1CE63"];
+const $=id=>document.getElementById(id);
+const fmt=(v,d=1)=>v==null?"—":Number(v).toLocaleString("fr-FR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const wmts=(couche,format)=>`https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=${couche}&STYLE=normal&TILEMATRIXSET=PM&FORMAT=${format}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}`;
+const ortho=L.tileLayer(wmts("ORTHOIMAGERY.ORTHOPHOTOS","image/jpeg"),{maxZoom:21,maxNativeZoom:19,attribution:"© IGN"});
+const plan=L.tileLayer(wmts("GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2","image/png"),{maxZoom:21,maxNativeZoom:18,attribution:"© IGN"});
+const carte=L.map("carte",{layers:[ortho],zoomControl:true}).setView([46.6,2.4],6);
+const cadastre=L.tileLayer(wmts("CADASTRALPARCELS.PARCELLAIRE_EXPRESS","image/png"),{maxZoom:21,maxNativeZoom:19,opacity:.8,attribution:"© IGN"});
+const bati=L.tileLayer(wmts("BUILDINGS.BUILDINGS","image/png"),{maxZoom:21,maxNativeZoom:18,opacity:.7,attribution:"© IGN"});
+L.control.layers({"Photo aérienne":ortho,"Plan IGN":plan},{"Cadastre (parcelles et bâtiments)":cadastre,"Bâtiments":bati},{position:"topright"}).addTo(carte);
+let couche=null, mode="clic", sommets=[], traceDessin=null, marqueur=null, dernier=null;
+
+function attente(on,txt){$("attente").style.display=on?"flex":"none";if(txt)$("attenteTxte").textContent=txt}
+function erreur(t){$("erreur").style.display=t?"block":"none";$("erreur").textContent=t||""}
+async function api(url,opt){const r=await fetch(url,opt);const j=await r.json().catch(()=>({erreur:"Réponse illisible du serveur"}));if(!r.ok)throw new Error(j.erreur||("Erreur "+r.status));return j}
+
+// ---------- recherche d'adresse ----------
+let minuteur=null, choix=-1, suggs=[];
+$("adresse").addEventListener("input",()=>{clearTimeout(minuteur);minuteur=setTimeout(suggerer,250)});
+$("adresse").addEventListener("keydown",e=>{
+  const items=[...$("sugg").children];
+  if(e.key==="ArrowDown"){choix=Math.min(choix+1,items.length-1);e.preventDefault()}
+  else if(e.key==="ArrowUp"){choix=Math.max(choix-1,0);e.preventDefault()}
+  else if(e.key==="Enter"){e.preventDefault();if(choix>=0&&suggs[choix])choisir(suggs[choix]);else calculer({adresse:$("adresse").value});return}
+  else if(e.key==="Escape"){$("sugg").style.display="none";return}
+  items.forEach((d,i)=>d.classList.toggle("actif",i===choix));
+});
+document.addEventListener("click",e=>{if(!$("recherche").contains(e.target))$("sugg").style.display="none"});
+async function suggerer(){
+  const q=$("adresse").value.trim(); if(q.length<3){$("sugg").style.display="none";return}
+  suggs=await api("/api/suggestions?q="+encodeURIComponent(q)).catch(()=>[]); choix=-1;
+  $("sugg").innerHTML=""; suggs.forEach(s=>{const d=document.createElement("div");d.textContent=s.texte;d.onclick=()=>choisir(s);$("sugg").appendChild(d)});
+  $("sugg").style.display=suggs.length?"block":"none";
+}
+function choisir(s){$("adresse").value=s.texte;$("sugg").style.display="none";carte.setView([s.lat,s.lon],19);calculer({adresse:s.texte})}
+$("btnCalcul").onclick=()=>{$("sugg").style.display="none";calculer({adresse:$("adresse").value})};
+
+// ---------- modes clic / dessin ----------
+function setMode(m){mode=m;$("modeClic").classList.toggle("on",m==="clic");$("modeDessin").classList.toggle("on",m==="dessin");
+  $("aideDessin").style.display=m==="dessin"?"block":"none";carte.getContainer().style.cursor=m==="dessin"?"crosshair":"";
+  if(m!=="dessin")effacerDessin();
+  else{carte.closePopup();if(couche){carte.removeLayer(couche);couche=null}}}
+$("modeClic").onclick=()=>setMode("clic");$("modeDessin").onclick=()=>{setMode("dessin");if(carte.getZoom()<18)erreur("Zoomez au plus près du toit avant de dessiner.");else erreur("")};
+function effacerDessin(){sommets=[];if(traceDessin){carte.removeLayer(traceDessin);traceDessin=null}}
+function tracer(){if(traceDessin)carte.removeLayer(traceDessin);traceDessin=L.layerGroup().addTo(carte);
+  L.polygon(sommets,{color:"#ffeb3b",weight:2.5,dashArray:"5 5",fillOpacity:.12,interactive:false}).addTo(traceDessin);
+  sommets.forEach(p=>L.circleMarker(p,{radius:4,color:"#000",weight:1,fillColor:"#ffeb3b",fillOpacity:1,interactive:false}).addTo(traceDessin))}
+$("annulDessin").onclick=()=>effacerDessin();
+document.addEventListener("keydown",e=>{if(mode!=="dessin")return;
+  if(e.key==="Backspace"&&document.activeElement.tagName!=="INPUT"){sommets.pop();tracer();e.preventDefault()}
+  if(e.key==="Escape")setMode("clic")});
+$("finDessin").onclick=()=>{if(sommets.length<3){erreur("Il faut au moins 3 angles.");return}
+  const ring=sommets.map(p=>[p.lng,p.lat]);ring.push(ring[0]);
+  calculer({adresse:$("adresse").value||null,emprise:{type:"Polygon",coordinates:[ring]}});setMode("clic")};
+carte.on("click",e=>{
+  if(mode==="dessin"){sommets.push(e.latlng);tracer();return}
+  if(carte.getZoom()<16){carte.setView(e.latlng,18);erreur("Zoomez puis cliquez sur le toit voulu.");return}
+  calculer({lat:e.latlng.lat,lon:e.latlng.lng,adresse:null});
+});
+
+// ---------- calcul ----------
+async function calculer(params){
+  if(!params.adresse&&params.lat==null&&!params.emprise){erreur("Tapez une adresse ou cliquez sur un toit.");return}
+  erreur("");attente(true,"Calcul en cours… lecture du LiDAR IGN (5 à 20 s)");
+  try{const r=await api("/api/calcul",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(params)});afficher(r);chargerHisto()}
+  catch(e){erreur(e.message)} finally{attente(false)}
+}
+function fleche(lat,lon,az,longueurM){const r=az*Math.PI/180,dlat=longueurM/111320,dlon=longueurM/(111320*Math.cos(lat*Math.PI/180));
+  const fin=[lat+dlat*Math.cos(r),lon+dlon*Math.sin(r)],deb=[lat-0.25*dlat*Math.cos(r),lon-0.25*dlon*Math.sin(r)];
+  const a1=r+Math.PI*0.85,a2=r-Math.PI*0.85,t=0.35;
+  return [[deb,fin],[fin,[fin[0]+t*dlat*Math.cos(a1),fin[1]+t*dlon*Math.sin(a1)]],[fin,[fin[0]+t*dlat*Math.cos(a2),fin[1]+t*dlon*Math.sin(a2)]]]}
+function afficher(r){
+  dernier=r;$("resultat").style.display="block";
+  if(couche)carte.removeLayer(couche);if(marqueur){carte.removeLayer(marqueur);marqueur=null}
+  couche=L.layerGroup().addTo(carte);
+  const feats=(r.geojson_wgs84||{features:[]}).features;
+  feats.forEach(f=>{const p=f.properties;
+    if(p.role==="emprise")L.geoJSON(f,{style:{color:"#000",weight:2.5,fill:false}}).addTo(couche);
+    else if(p.role==="nuage")L.geoJSON(f,{style:{color:"#fff",weight:1.5,dashArray:"5 5",fill:false}}).addTo(couche);
+    else{const c=COULEURS[(p.numero-1)%COULEURS.length];
+      L.geoJSON(f,{style:{color:c,weight:1.5,opacity:.9,fillColor:c,fillOpacity:.5}}).bindPopup(
+        `<b>Pan ${p.numero}</b> — ${p.type}<br>Pente ${fmt(p.pente_deg)}° (${fmt(p.pente_pct,0)} %)<br>Orientation ${p.orientation}${p.azimut_deg!=null?" ("+p.azimut_deg+"°)":""}<br>Surface réelle <b>${fmt(p.surface_reelle_m2,2)} m²</b><br>Projetée ${fmt(p.surface_projetee_m2,2)} m²<br>${p.nb_points} points, écart ${fmt(p.ecart_moyen_cm)} cm`).addTo(couche);
+      const [lon,lat]=p.etiquette;
+      if(p.azimut_deg!=null)L.polyline(fleche(lat,lon,p.azimut_deg,1.8),{color:"#000",weight:2.5}).addTo(couche);
+      L.marker([lat,lon],{icon:L.divIcon({className:"",html:`<div class="etiq">${p.numero}</div>`,iconSize:[24,24],iconAnchor:[12,12]}),interactive:false}).addTo(couche);}
+  });
+  const emp=feats.find(f=>f.properties.role==="emprise");
+  if(emp)carte.fitBounds(L.geoJSON(emp).getBounds(),{maxZoom:21,padding:[60,60]});
+  const loc=r.localisation||{};
+  $("titreRes").textContent=loc.adresse_trouvee||r.adresse_demandee||("Point "+(r.x_l93||"")+" / "+(r.y_l93||""));
+  $("sEmp").textContent=fmt(r.surface_emprise_m2)+" m²";$("sEmpProj").textContent="vue de dessus : "+fmt(r.surface_projetee_emprise_m2)+" m²";
+  $("sNua").textContent=fmt(r.surface_nuage_m2)+" m²";$("sNuaProj").textContent="vue de dessus : "+fmt(r.surface_projetee_nuage_m2)+" m²";
+  const fi=r.fiabilite||{niveau:"orange",alertes:[],remarques:[]};
+  $("fiab").className="badge "+fi.niveau;$("fiab").textContent={vert:"BONNE",orange:"MOYENNE",rouge:"À VÉRIFIER"}[fi.niveau];
+  $("alertes").innerHTML=fi.alertes.map(t=>`<li class="a2">${esc(t)}</li>`).join("")+fi.remarques.map(t=>`<li>${esc(t)}</li>`).join("");
+  $("tabPans").querySelector("tbody").innerHTML=(r.pans||[]).map(p=>`<tr><td><span class="pastille" style="background:${COULEURS[(p.numero-1)%COULEURS.length]}">${p.numero}</span> ${p.type==="toit plat"?"plat":""}</td>
+    <td>${fmt(p.pente_deg)}° <span class="meta">${fmt(p.pente_pct,0)}%</span></td><td>${p.orientation}</td><td>${fmt(p.surface_projetee_m2,2)}</td><td><b>${fmt(p.surface_reelle_m2,2)}</b></td><td>${fmt(p.ecart_moyen_cm)} cm</td></tr>`).join("")
+    ||`<tr><td colspan="6">Aucun pan détecté</td></tr>`;
+  const li=r.lidar||{},em=r.emprise||{};
+  $("meta").innerHTML=`<div>📅 Relevé LiDAR : <b>${esc(li.date_releve||"?")}</b> (${li.nb_dalles||"?"} dalle(s), ${r.densite_points_m2??"?"} points/m²)</div>
+    <div>🏠 Bâtiment : ${esc(em.source||"")}${em.id?" — "+esc(em.id):""} — emprise ${fmt(em.aire_m2)} m²${em.usage?" — "+esc(em.usage):""}</div>
+    <div>📍 ${loc.source?esc(loc.source):""}${loc.score!=null?" — score "+fmt(loc.score,2):""} — Lambert-93 : ${r.x_l93??""} / ${r.y_l93??""}</div>
+    <div>Zone non mesurée : ${fmt(r.non_mesure_pct)} %</div>`;
+  $("imgToit").src=r.image;$("lienImg").href=r.image;$("lienJson").href=r.json;
+  $("refNom").value="";majEcart();
+}
+function esc(t){return String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+// ---------- comparaison ----------
+function majEcart(){
+  const v=parseFloat($("vraie").value);if(!dernier||!v){$("ecart").textContent="";return}
+  const deb=$("debords").value==="oui", calc=deb?dernier.surface_nuage_m2:dernier.surface_emprise_m2, e=100*(calc-v)/v;
+  $("ecart").innerHTML=`<span class="${Math.abs(e)<5?"ok":"ko"}">Écart ${e>0?"+":""}${fmt(e)} %</span> <span class="meta">(${fmt(calc)} m² calculés, variante ${deb?"nuage":"emprise"})</span>`;
+}
+$("vraie").oninput=majEcart;$("debords").onchange=majEcart;
+$("btnRef").onclick=async()=>{
+  if(!dernier)return; const v=$("vraie").value; if(!v){erreur("Indiquez d'abord la surface réelle mesurée.");return}
+  const loc=dernier.localisation||{};
+  const corps={nom:$("refNom").value||loc.adresse_trouvee||dernier.nom_dossier,adresse:loc.adresse_trouvee||dernier.adresse_demandee||"",
+    surface_reelle_m2:v,pente_reelle_deg:$("refPente").value,nb_pans:$("refPans").value,debords_inclus:$("debords").value,
+    source_mesure:$("refSource").value,notes:$("refNotes").value,x_l93:dernier.x_l93,y_l93:dernier.y_l93};
+  try{await api("/api/reference",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(corps)});erreur("");chargerRef()}catch(e){erreur(e.message)}
+};
+
+// ---------- toits de référence et test ----------
+async function chargerRef(){
+  const l=await api("/api/reference").catch(()=>[]);$("nbRef").textContent=`(${l.length}/10)`;
+  $("listeRef").innerHTML=l.length?"":`<div class="meta">Aucun toit pour l'instant : calculez un toit, saisissez sa vraie mesure puis « Ajouter ».</div>`;
+  l.forEach((t,i)=>{const d=document.createElement("div");
+    d.innerHTML=`<span>${esc(t.nom)} — ${esc(t.surface_reelle_m2)} m² ${t.debords_inclus==="oui"?"(débords)":""}</span>`;
+    const b=document.createElement("button");b.textContent="✕";b.title="Retirer";b.onclick=async()=>{if(confirm("Retirer « "+t.nom+" » ?")){await api("/api/reference/"+i,{method:"DELETE"});chargerRef()}};
+    d.appendChild(b);$("listeRef").appendChild(d)});
+}
+$("btnTest").onclick=async()=>{
+  attente(true,"Test de précision en cours… (environ 10 s par toit)");
+  try{const r=await api("/api/test_precision",{method:"POST"});$("rapportTest").innerHTML=markdown(r.rapport||r.journal)}
+  catch(e){erreur(e.message)}finally{attente(false)}
+};
+function markdown(md){
+  const out=[];let tab=null;
+  const inl=t=>esc(t).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/`(.+?)`/g,"<code>$1</code>")
+    .replace(/!\[(.*?)\]\((.+?)\)/g,(m,a,s)=>`<img src="/resultats/${s}" alt="${a}">`);
+  for(const l of md.split("\n")){
+    if(l.startsWith("|")){const c=l.split("|").slice(1,-1).map(x=>x.trim());if(c.every(x=>/^-+$/.test(x)))continue;
+      if(!tab){tab=[];out.push(null)}tab.push(c);continue}
+    if(tab){out[out.indexOf(null)]="<div style='overflow-x:auto'><table>"+tab.map((r,i)=>"<tr>"+r.map(x=>i?`<td>${inl(x)}</td>`:`<th>${inl(x)}</th>`).join("")+"</tr>").join("")+"</table></div>";tab=null}
+    if(/^### /.test(l))out.push(`<h4>${inl(l.slice(4))}</h4>`);else if(/^## /.test(l))out.push(`<h3>${inl(l.slice(3))}</h3>`);
+    else if(/^# /.test(l))continue;else if(/^- /.test(l))out.push(`<div>• ${inl(l.slice(2))}</div>`);
+    else if(/^> /.test(l))out.push(`<div class="meta">${inl(l.slice(2))}</div>`);else if(l.trim())out.push(`<p>${inl(l)}</p>`);
+  }
+  if(tab)out[out.indexOf(null)]="<table>"+tab.map((r,i)=>"<tr>"+r.map(x=>i?`<td>${inl(x)}</td>`:`<th>${inl(x)}</th>`).join("")+"</tr>").join("")+"</table>";
+  return out.join("");
+}
+
+// ---------- historique ----------
+async function chargerHisto(){
+  const l=await api("/api/historique").catch(()=>[]);$("histo").innerHTML=l.length?"":`<div class="meta">Aucun calcul.</div>`;
+  l.forEach(h=>{const d=document.createElement("div");d.textContent=`${h.adresse} — ${fmt(h.surface_emprise_m2)} m² · ${h.nb_pans} pans`;
+    d.onclick=async()=>{attente(true,"Chargement…");try{afficher(await api("/api/rapport/"+encodeURIComponent(h.nom)))}catch(e){erreur(e.message)}finally{attente(false)}};
+    $("histo").appendChild(d)});
+}
+chargerRef();chargerHisto();
+</script>
+</body>
+</html>

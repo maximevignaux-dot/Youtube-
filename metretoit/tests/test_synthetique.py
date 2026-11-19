@@ -105,8 +105,21 @@ def toit_plat():
     return emp, z, 1, [pente], emp.area / np.cos(np.radians(pente)), (7, 5)
 
 
+def toit_asymetrique():
+    """2 pans de pentes différentes (40° au sud, 25° au nord) : le faîtage n'est pas
+    au milieu, et une mauvaise répartition des cellules fausse la surface totale."""
+    t1, t2 = np.tan(np.radians(40)), np.tan(np.radians(25))
+    L, W = 12.0, 10.0
+    y0 = t2 * W / (t1 + t2)                     # position du faîtage
+    emp = box(0, 0, L, W)
+    z = lambda x, y: H_GOUTTIERE + min(t1 * y, t2 * (W - y))
+    vraie = L * y0 / np.cos(np.radians(40)) + L * (W - y0) / np.cos(np.radians(25))
+    return emp, z, 2, [40, 25], vraie, (5, 7)
+
+
 CAS = {"2 pans 35°": toit_2_pans, "4 pans 30°": toit_4_pans,
-       "en L 2 ailes": toit_en_L, "toit plat": toit_plat}
+       "en L 2 ailes": toit_en_L, "toit plat": toit_plat,
+       "2 pans 40°/25°": toit_asymetrique}
 
 
 GRAINES = range(1, 11)
@@ -139,6 +152,14 @@ def test_toit(nom, graine):
     assert abs(err_nua) < 0.03, f"surface nuage : écart {100 * err_nua:.2f} %"
     if nom == "toit plat":
         assert res["pans"][0]["type"] == "toit plat"
+    if nom == "2 pans 40°/25°":
+        # surface de CHAQUE pan (le faîtage n'est pas au milieu)
+        t1, t2 = np.tan(np.radians(40)), np.tan(np.radians(25))
+        y0 = t2 * 10 / (t1 + t2)
+        attendu = {40: 12 * y0 / np.cos(np.radians(40)), 25: 12 * (10 - y0) / np.cos(np.radians(25))}
+        for p in res["pans"]:
+            v = attendu[min(attendu, key=lambda a: abs(a - p["pente_deg"]))]
+            assert abs(p["surface_reelle_m2"] - v) / v < 0.02, (p["pente_deg"], p["surface_reelle_m2"], v)
 
 
 @pytest.mark.parametrize("nom", list(CAS))

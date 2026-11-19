@@ -72,9 +72,19 @@ def _composantes(xy: np.ndarray, taille: float = GRILLE_CONNEXITE) -> np.ndarray
     return lab[ij[:, 0], ij[:, 1]]
 
 
+ECHANTILLON_MAX = 20000      # points utilisés pour noter les plans candidats (grands toits)
+
+
 def _ransac_meilleur_plan(pts, arbre, rng, seuil, n_essais=600, rayon=2.5):
-    """Échantillonnage local : 3 points voisins, on garde le plan avec le plus d'inliers."""
+    """Échantillonnage local : 3 points voisins, on garde le plan avec le plus d'inliers.
+    Sur un grand toit, les candidats sont notés sur un échantillon de 20 000 points
+    (le nombre d'inliers est extrapolé)."""
     n = len(pts)
+    if n > ECHANTILLON_MAX:
+        ech = pts[rng.choice(n, ECHANTILLON_MAX, replace=False)]
+        facteur = n / ECHANTILLON_MAX
+    else:
+        ech, facteur = pts, 1.0
     graines = rng.integers(0, n, n_essais)
     voisins = arbre.query_ball_point(pts[graines, :2], r=rayon)
     triplets = []
@@ -99,12 +109,12 @@ def _ransac_meilleur_plan(pts, arbre, rng, seuil, n_essais=600, rayon=2.5):
     meilleur, score = None, -1
     for k in range(0, len(nrm), 64):     # par paquets pour limiter la mémoire
         nk, pk = nrm[k:k + 64], p0[k:k + 64]
-        d = np.abs(nk @ pts.T - np.einsum("kj,kj->k", nk, pk)[:, None])
+        d = np.abs(nk @ ech.T - np.einsum("kj,kj->k", nk, pk)[:, None])
         cpt = (d < seuil).sum(axis=1)
         i = int(cpt.argmax())
         if cpt[i] > score:
             score, meilleur = int(cpt[i]), (nrm[k + i], p0[k + i])
-    return meilleur, score
+    return meilleur, int(score * facteur)
 
 
 def detecter_pans(pts: np.ndarray, seuil: float = SEUIL_DISTANCE, min_points: int = MIN_POINTS,
@@ -156,21 +166,19 @@ def _retirer_flottants(pts, pans: list[Pan], rayon=0.35, dz=0.5, part_max=0.3) -
     Idem pour un plan majoritairement CACHÉ sous un autre pan (façade, mur)."""
     if len(pans) < 2:
         return pans
-    garde = []
-    for k, p in enumerate(pans):
-        autres = np.concatenate([q.indices for j, q in enumerate(pans) if j != k])
-        arbre = cKDTree(pts[autres, :2])
-        voisins = arbre.query_ball_point(pts[p.indices, :2], r=rayon)
-        z = pts[p.indices, 2]
-        dessous = np.array([len(v) > 0 and (pts[autres[v], 2] < zi - dz).any()
-                            for v, zi in zip(voisins, z)])
-        # Inversement, une surface qui a un autre pan AU-DESSUS d'elle (façade sous
-        # un débord, mur d'une lucarne…) n'est pas le dessus du toit.
-        dessus = np.array([len(v) > 0 and (pts[autres[v], 2] > zi + dz).any()
-                           for v, zi in zip(voisins, z)])
-        if dessous.mean() <= part_max and dessus.mean() <= part_max:
-            garde.append(p)
-    return garde
+    idx = np.concatenate([p.indices for p in pans])
+    lab = np.concatenate([np.full(len(p.indices), k) for k, p in enumerate(pans)])
+    xy, z = pts[idx, :2], pts[idx, 2]
+    d, v = cKDTree(xy).query(xy, k=min(16, len(xy)), distance_upper_bound=rayon)
+    ok = np.isfinite(d)
+    v = np.where(ok, v, 0)
+    autre = ok & (lab[v] != lab[:, None])
+    dessous = (autre & (z[v] < z[:, None] - dz)).any(axis=1)
+    dessus = (autre & (z[v] > z[:, None] + dz)).any(axis=1)
+    n = np.bincount(lab, minlength=len(pans))
+    f_dessous = np.bincount(lab, weights=dessous, minlength=len(pans)) / n
+    f_dessus = np.bincount(lab, weights=dessus, minlength=len(pans)) / n
+    return [p for k, p in enumerate(pans) if f_dessous[k] <= part_max and f_dessus[k] <= part_max]
 
 
 def _faire_pan(pts, idx) -> Pan | None:
@@ -192,25 +200,36 @@ def _reattribuer(pts, pans: list[Pan], seuil, min_points) -> list[Pan]:
     best_k = np.full(len(pts), -1)
     compatible = np.zeros((len(pans), len(pts)), dtype=bool)
     for k, p in enumerate(pans):
-        arbre = cKDTree(pts[p.indices, :2])
-        dxy, _ = arbre.query(pts[:, :2], distance_upper_bound=1.0)
-        d = np.abs(distances(pts, p.normale, p.centre))
-        compatible[k] = (dxy < np.inf) & (d < seuil)
-        ok = compatible[k] & (d < best_d)
-        best_d[ok], best_k[ok] = d[ok], k
+        pp = pts[p.indices, :2]
+        mn, mx = pp.min(axis=0) - 1.0, pp.max(axis=0) + 1.0
+        zone = np.where((pts[:, 0] >= mn[0]) & (pts[:, 0] <= mx[0]) & (pts[:, 1] >= mn[1]) & (pts[:, 1] <= mx[1]))[0]
+        d = np.abs(distances(pts[zone], p.normale, p.centre))
+        proche = d < seuil
+        zone, d = zone[proche], d[proche]
+        dxy, _ = cKDTree(pp).query(pts[zone, :2], distance_upper_bound=1.0)
+        zone, d = zone[dxy < np.inf], d[dxy < np.inf]
+        compatible[k, zone] = True
+        ok = d < best_d[zone]
+        best_d[zone[ok]], best_k[zone[ok]] = d[ok], k
     # Lissage : près de la ligne où deux plans se croisent, un point est compatible
     # avec les deux. Il rejoint alors le pan majoritaire parmi ses 10 voisins.
-    if len(pans) > 1:
-        _, vois = cKDTree(pts[:, :2]).query(pts[:, :2], k=min(11, len(pts)))
+    ambigus = np.where(compatible.sum(axis=0) >= 2)[0]
+    if len(pans) > 1 and len(ambigus):
+        _, vois = cKDTree(pts[:, :2]).query(pts[ambigus, :2], k=min(11, len(pts)))
+        vois = vois[:, 1:]
         for _ in range(3):
-            lab_v = best_k[vois[:, 1:]]
+            lab_v = best_k[vois]
+            actuel = best_k[ambigus]
+            autre = np.where(actuel >= 0, (lab_v == actuel[:, None]).sum(axis=1), 0)
             change = 0
-            for k in range(len(pans)):
+            for k in np.unique(np.nonzero(compatible[:, ambigus])[0]):
                 votes = (lab_v == k).sum(axis=1)
-                autre = np.where(best_k >= 0, (lab_v == best_k[:, None]).sum(axis=1), 0)
-                bascule = compatible[k] & (best_k != k) & (votes > autre) & (votes >= 4)
-                best_k[bascule] = k
-                change += int(bascule.sum())
+                bascule = compatible[k, ambigus] & (actuel != k) & (votes > autre) & (votes >= 4)
+                if bascule.any():
+                    actuel = np.where(bascule, k, actuel)
+                    autre = np.where(bascule, votes, autre)
+                    change += int(bascule.sum())
+            best_k[ambigus] = actuel
             if change == 0:
                 break
     nouveaux = []
@@ -229,30 +248,48 @@ def _reattribuer(pts, pans: list[Pan], seuil, min_points) -> list[Pan]:
     return nouveaux
 
 
-def _voisins(pts, a: Pan, b: Pan, dist=1.0) -> bool:
-    ta = cKDTree(pts[a.indices, :2])
-    d, _ = ta.query(pts[b.indices, :2], distance_upper_bound=dist)
-    return bool(np.isfinite(d).any())
+def _cellules(pts, p: Pan, taille=GRILLE_CONNEXITE):
+    return set(map(tuple, np.unique(np.floor(pts[p.indices, :2] / taille).astype(np.int64), axis=0)))
+
+
+def _sont_voisins(ca: set, cb: set) -> bool:
+    """Deux pans sont voisins si des cellules de 0,5 m sont à moins de ~1 m (2 cellules)."""
+    if len(ca) > len(cb):
+        ca, cb = cb, ca
+    for (i, j) in ca:
+        for di in range(-2, 3):
+            for dj in range(-2, 3):
+                if (i + di, j + dj) in cb:
+                    return True
+    return False
 
 
 def _fusionner(pts, pans: list[Pan]) -> list[Pan]:
     cos_lim = np.cos(np.radians(FUSION_ANGLE))
+    cell = [_cellules(pts, p) for p in pans]
+    vivants = list(range(len(pans)))
+    pans = list(pans)
+
+    def fusionnables(a, b):
+        A, B = pans[a], pans[b]
+        if A.normale @ B.normale < cos_lim:
+            return False
+        dec = 0.5 * (abs(distances(B.centre[None], A.normale, A.centre)[0])
+                     + abs(distances(A.centre[None], B.normale, B.centre)[0]))
+        return dec < FUSION_DECALAGE and _sont_voisins(cell[a], cell[b])
+
     change = True
     while change:
         change = False
-        for i in range(len(pans)):
-            for j in range(i + 1, len(pans)):
-                a, b = pans[i], pans[j]
-                if a.normale @ b.normale < cos_lim:
-                    continue
-                dec = 0.5 * (abs(distances(b.centre[None], a.normale, a.centre)[0])
-                             + abs(distances(a.centre[None], b.normale, b.centre)[0]))
-                if dec >= FUSION_DECALAGE or not _voisins(pts, a, b):
-                    continue
-                fus = _faire_pan(pts, np.concatenate([a.indices, b.indices]))
-                pans = [p for k, p in enumerate(pans) if k not in (i, j)] + [fus]
-                change = True
-                break
+        for x in range(len(vivants)):
+            for y in range(x + 1, len(vivants)):
+                a, b = vivants[x], vivants[y]
+                if fusionnables(a, b):
+                    pans.append(_faire_pan(pts, np.concatenate([pans[a].indices, pans[b].indices])))
+                    cell.append(cell[a] | cell[b])
+                    vivants = [v for v in vivants if v not in (a, b)] + [len(pans) - 1]
+                    change = True
+                    break
             if change:
                 break
-    return pans
+    return [pans[v] for v in vivants]

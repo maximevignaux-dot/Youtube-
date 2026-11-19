@@ -24,6 +24,7 @@ sys.path.insert(0, str(RACINE))
 
 from toiture import donnees  # noqa: E402
 from toiture.analyse import analyser, pour_json  # noqa: E402
+from toiture.export import fiabilite, geojson_pans  # noqa: E402
 from toiture.rendu import dessiner, tableau  # noqa: E402
 
 CLASSE_BATIMENT = 6
@@ -54,16 +55,20 @@ def calculer(adresse: str | None = None, xy=None, emprise_fichier=None, laz=None
         dire(f"Adresse trouvée : {geo['adresse_trouvee']} (score {geo['score']:.2f}, type {geo['type']})")
         if geo["score"] is not None and geo["score"] < 0.6:
             dire("  ⚠ Score de géocodage faible : vérifiez l'adresse ou utilisez --xy.")
-    elif not emprise_fichier:
+    elif emprise_fichier is None:
         raise SystemExit("Donnez une adresse, --xy X Y ou --emprise fichier.geojson")
     else:
         x = y = None
 
     # Étape 2 : emprise
     voisins = None
-    if emprise_fichier:
-        emprise = donnees.lire_emprise(emprise_fichier)
-        rapport["emprise"] = {"source": f"fichier {emprise_fichier}"}
+    if emprise_fichier is not None:
+        if isinstance(emprise_fichier, (str, Path)):
+            emprise = donnees.lire_emprise(emprise_fichier)
+            rapport["emprise"] = {"source": f"fichier {emprise_fichier}"}
+        else:   # géométrie shapely déjà en Lambert-93 (dessinée dans l'interface)
+            emprise = emprise_fichier
+            rapport["emprise"] = {"source": "dessinée à la main"}
         if x is None:
             x, y = emprise.centroid.x, emprise.centroid.y
         try:
@@ -94,6 +99,8 @@ def calculer(adresse: str | None = None, xy=None, emprise_fichier=None, laz=None
     res = analyser(pts6, emprise, voisins=voisins)
     rapport.update(pour_json(res))
     rapport["densite_points_m2"] = round(res["nb_points_classe6"] / max(emprise.buffer(1).area, 1), 1)
+    rapport["fiabilite"] = fiabilite(rapport)
+    rapport["geojson_wgs84"] = geojson_pans(res)
 
     # Étape 6 : sorties
     nom = nom or slug(adresse or f"{x:.0f}-{y:.0f}")
@@ -115,6 +122,10 @@ def calculer(adresse: str | None = None, xy=None, emprise_fichier=None, laz=None
               f"   (projetée {res.get('surface_projetee_nuage_m2', 0):.2f} m²)")
         print(f"Partie de l'emprise non mesurée (aucun point à moins de 1,5 m) : {res['non_mesure_pct']:.1f} %")
         print(f"Date du relevé LiDAR : {infos['date_releve']}")
+        fi = rapport["fiabilite"]
+        print(f"Fiabilité : {fi['niveau'].upper()}")
+        for t in fi["alertes"] + fi["remarques"]:
+            print(f"  - {t}")
         print(f"\nRésultats : {dossier}/rapport.json et toit.png")
     return rapport
 
