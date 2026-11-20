@@ -49,6 +49,10 @@ Le tableau des pans s'affiche, et le dossier `resultats/12-rue-exemple-49000-ang
 - `rapport.json` : toutes les valeurs (pans, pentes, surfaces, date du relevé LiDAR, bâtiment retenu…) ;
 - `toit.png` : vue de dessus, pans en couleur et numérotés, flèche dans le sens de la pente,
   contour noir = emprise BD TOPO, pointillés = étendue réelle des points LiDAR, gris = zone non mesurée.
+- `toit.kml` : les pans en 3D (vraie pente, hauteur au-dessus du sol mesurée par le LiDAR), à ouvrir
+  dans Google Earth (Pro sur ordinateur, ou earth.google.com → Projets → Importer un fichier KML).
+  Utile pour **contrôler** : bon bâtiment, débords, et avec l'historique des images de Google Earth Pro,
+  travaux faits depuis la date du relevé LiDAR. Cela n'améliore pas la précision du calcul lui-même.
 
 Options utiles si l'adresse tombe à côté :
 - `--xy 432559 6713935` : position en Lambert-93 (on la lit par exemple sur geoportail.gouv.fr) ;

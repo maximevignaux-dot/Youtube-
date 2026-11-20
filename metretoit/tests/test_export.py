@@ -47,3 +47,18 @@ def test_fiabilite():
     assert fiabilite(mauvais)["niveau"] == "rouge"
     arbre = {**base, "non_mesure_pct": 25.0}
     assert fiabilite(arbre)["niveau"] == "rouge"
+
+
+def test_kml_google_earth():
+    import xml.etree.ElementTree as ET
+    from toiture.export import kml_pans
+    emp, z, n, _, _, para = T.toit_2_pans()
+    pts, emp_l93 = T.fabriquer(emp, z, np.random.default_rng(2), para)
+    res = analyser(pts, emp_l93)
+    racine = ET.fromstring(kml_pans(res, "Essai", z_sol=0.0, date_releve="2025-01-14").encode())
+    ns = {"k": "http://www.opengis.net/kml/2.2"}
+    assert len(racine.findall(".//k:Placemark", ns)) == n + 1        # pans + emprise
+    h = np.concatenate([[float(v.split(",")[2]) for v in c.text.split()]
+                        for c in racine.findall(".//k:Polygon//k:coordinates", ns)])
+    # gouttière à 6 m, faîtage à 6 + tan(35°) × 4,5 ≈ 9,15 m
+    assert 5.5 < h.min() < 6.5 and 8.7 < h.max() < 9.6, (h.min(), h.max())

@@ -109,9 +109,9 @@ img.apercu{width:100%;border-radius:8px;border:1px solid var(--ligne);margin-top
    </div>
    <div class="bloc meta" id="meta"></div>
    <div class="bloc">
-    <details><summary>Vue de dessus (image) et fichiers</summary>
+    <details><summary>Vue de dessus (image) et fichiers, dont l'export Google Earth</summary>
      <img class="apercu" id="imgToit" alt="Vue de dessus">
-     <div class="ligne"><a id="lienImg" target="_blank">Ouvrir toit.png</a><a id="lienJson" target="_blank">rapport.json</a></div>
+     <div class="ligne"><a id="lienImg" target="_blank">Ouvrir toit.png</a><a id="lienJson" target="_blank">rapport.json</a><a id="lienKml" download>toit.kml (Google Earth)</a></div>
     </details>
    </div>
    <div class="bloc">
@@ -254,7 +254,7 @@ function afficher(r){
     <div>🏠 Bâtiment : ${esc(em.source||"")}${em.id?" — "+esc(em.id):""} — emprise ${fmt(em.aire_m2)} m²${em.usage?" — "+esc(em.usage):""}</div>
     <div>📍 ${loc.source?esc(loc.source):""}${loc.score!=null?" — score "+fmt(loc.score,2):""} — Lambert-93 : ${r.x_l93??""} / ${r.y_l93??""}</div>
     <div>Zone non mesurée : ${fmt(r.non_mesure_pct)} %</div>`;
-  $("imgToit").src=r.image;$("lienImg").href=r.image;$("lienJson").href=r.json;
+  $("imgToit").src=r.image;$("lienImg").href=r.image;$("lienJson").href=r.json;$("lienKml").href=r.json.replace("rapport.json","toit.kml");
   $("refNom").value="";majEcart();
 }
 function esc(t){return String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}

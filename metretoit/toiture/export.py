@@ -107,3 +107,87 @@ def fiabilite(rapport: dict) -> dict:
         pass
     niveau = "rouge" if alertes else ("orange" if len(info) >= 2 else "vert")
     return {"niveau": niveau, "alertes": alertes, "remarques": info}
+
+
+# ---------------- Export Google Earth (KML 3D) ----------------
+
+COULEURS_KML = ["#4E79A7", "#F28E2B", "#59A14F", "#E15759", "#B07AA1", "#76B7B2", "#EDC948",
+                "#FF9DA7", "#9C755F", "#86BCB6", "#D37295", "#A0CBE8", "#8CD17D", "#F1CE63"]
+
+
+def _abgr(hexa: str, alpha: int) -> str:
+    """Couleur KML : aabbggrr."""
+    r, g, b = hexa[1:3], hexa[3:5], hexa[5:7]
+    return f"{alpha:02x}{b}{g}{r}".lower()
+
+
+def _esc(t) -> str:
+    return str(t).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def kml_pans(res: dict, titre: str, z_sol: float, date_releve: str = "") -> str:
+    """Fichier KML à ouvrir dans Google Earth : chaque pan est un polygone 3D posé à sa
+    vraie pente et à sa hauteur au-dessus du sol (mesurée par le LiDAR)."""
+    g = res.get("grille_emprise")
+    ox, oy = res["origine"][0], res["origine"][1]
+
+    def anneau(coords, plan=None, h_fixe=None):
+        xy = np.asarray(coords)[:, :2]
+        if plan is not None:
+            nx, ny, nz = plan.normale
+            cx, cy, cz = plan.centre
+            z = cz - (nx * (xy[:, 0] - cx) + ny * (xy[:, 1] - cy)) / nz
+        else:
+            z = np.full(len(xy), h_fixe)
+        lon, lat = VERS_WGS84.transform(xy[:, 0] + ox, xy[:, 1] + oy)
+        h = np.maximum(z - z_sol, 0.0)
+        return " ".join(f"{a:.8f},{b:.8f},{c:.2f}" for a, b, c in zip(lon, lat, h))
+
+    def polygones(geom, **kw):
+        out = []
+        for p in getattr(geom, "geoms", [geom]):
+            if p.is_empty or p.geom_type != "Polygon":
+                continue
+            s = f"<Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><coordinates>{anneau(p.exterior.coords, **kw)}</coordinates></LinearRing></outerBoundaryIs>"
+            for t in p.interiors:
+                s += f"<innerBoundaryIs><LinearRing><coordinates>{anneau(t.coords, **kw)}</coordinates></LinearRing></innerBoundaryIs>"
+            out.append(s + "</Polygon>")
+        return out
+
+    styles, marques = [], []
+    if g is not None:
+        for k, (p, q) in enumerate(zip(res["pans"], res["objets_pans"])):
+            m = g.etiquettes == k
+            if not m.any():
+                continue
+            poly = _contour_cellules(g, m, 0.15)
+            if poly.is_empty:
+                continue
+            coul = COULEURS_KML[k % len(COULEURS_KML)]
+            styles.append(f'<Style id="pan{k}"><LineStyle><color>{_abgr("#000000", 255)}</color><width>1</width></LineStyle>'
+                          f'<PolyStyle><color>{_abgr(coul, 200)}</color></PolyStyle></Style>')
+            desc = (f"{_esc(p['type'])}<br>Pente : {p['pente_deg']}° ({p['pente_pct']} %)<br>"
+                    f"Orientation : {_esc(p['orientation'])}" + (f" ({p['azimut_deg']}°)" if p['azimut_deg'] is not None else "")
+                    + f"<br>Surface réelle : <b>{p['surface_reelle_m2']} m²</b><br>Surface vue de dessus : {p['surface_projetee_m2']} m²"
+                    f"<br>{p['nb_points']} points LiDAR, écart moyen {p['ecart_moyen_cm']} cm")
+            geoms = polygones(poly, plan=q)
+            corps = geoms[0] if len(geoms) == 1 else "<MultiGeometry>" + "".join(geoms) + "</MultiGeometry>"
+            marques.append(f'<Placemark><name>Pan {p["numero"]} — {p["surface_reelle_m2"]} m²</name>'
+                           f'<description><![CDATA[{desc}]]></description><styleUrl>#pan{k}</styleUrl>{corps}</Placemark>')
+    # contour de l'emprise BD TOPO, au sol
+    emp = res["emprise_locale"]
+    lignes = []
+    for p in getattr(emp, "geoms", [emp]):
+        lignes.append(f"<LineString><altitudeMode>clampToGround</altitudeMode><coordinates>{anneau(p.exterior.coords, h_fixe=z_sol)}</coordinates></LineString>")
+    styles.append('<Style id="emprise"><LineStyle><color>ff00ffff</color><width>2</width></LineStyle></Style>')
+    marques.append('<Placemark><name>Emprise BD TOPO (au sol)</name><styleUrl>#emprise</styleUrl><MultiGeometry>'
+                   + "".join(lignes) + "</MultiGeometry></Placemark>")
+    lon, lat = VERS_WGS84.transform(emp.centroid.x + ox, emp.centroid.y + oy)
+    resume = (f"Surface selon emprise : {res.get('surface_emprise_m2')} m²<br>"
+              f"Surface selon nuage de points : {res.get('surface_nuage_m2')} m²<br>"
+              f"Relevé LiDAR HD : {_esc(date_releve)}<br>Données © IGN (LiDAR HD, BD TOPO), licence Etalab 2.0")
+    vue = (f"<LookAt><longitude>{lon:.7f}</longitude><latitude>{lat:.7f}</latitude><altitude>0</altitude>"
+           f"<heading>0</heading><tilt>50</tilt><range>{max(40.0, 3 * np.sqrt(emp.area)):.0f}</range></LookAt>")
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2"><Document>'
+            f"<name>{_esc(titre)}</name><description><![CDATA[{resume}]]></description><open>1</open>{vue}"
+            + "".join(styles) + "".join(marques) + "</Document></kml>\n")

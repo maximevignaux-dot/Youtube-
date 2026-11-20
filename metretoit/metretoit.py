@@ -24,7 +24,7 @@ sys.path.insert(0, str(RACINE))
 
 from toiture import donnees  # noqa: E402
 from toiture.analyse import analyser, pour_json  # noqa: E402
-from toiture.export import fiabilite, geojson_pans  # noqa: E402
+from toiture.export import fiabilite, geojson_pans, kml_pans  # noqa: E402
 from toiture.rendu import dessiner, tableau  # noqa: E402
 
 CLASSE_BATIMENT = 6
@@ -110,6 +110,12 @@ def calculer(adresse: str | None = None, xy=None, emprise_fichier=None, laz=None
              f"Surface selon emprise : {res['surface_emprise_m2']:.1f} m² — selon nuage : {res['surface_nuage_m2']:.1f} m²"
              f" — relevé LiDAR {infos['date_releve']}")
     dessiner(res, titre, dossier / "toit.png")
+    # sol : points LiDAR classés « sol » (classe 2) autour du bâtiment
+    sol = xyz[cls == 2, 2]
+    z_sol = float(np.median(sol)) if len(sol) >= 10 else float(np.percentile(xyz[:, 2], 2)) if len(xyz) else 0.0
+    rapport["altitude_sol_m"] = round(z_sol, 2)
+    (dossier / "toit.kml").write_text(kml_pans(res, rapport.get("localisation", {}).get("adresse_trouvee") or adresse or nom,
+                                               z_sol, infos["date_releve"]), encoding="utf-8")
     (dossier / "rapport.json").write_text(json.dumps(rapport, ensure_ascii=False, indent=2, default=_json))
     rapport["dossier"] = str(dossier)
 
@@ -126,7 +132,7 @@ def calculer(adresse: str | None = None, xy=None, emprise_fichier=None, laz=None
         print(f"Fiabilité : {fi['niveau'].upper()}")
         for t in fi["alertes"] + fi["remarques"]:
             print(f"  - {t}")
-        print(f"\nRésultats : {dossier}/rapport.json et toit.png")
+        print(f"\nRésultats : {dossier}/rapport.json, toit.png et toit.kml (à ouvrir dans Google Earth)")
     return rapport
 
 
