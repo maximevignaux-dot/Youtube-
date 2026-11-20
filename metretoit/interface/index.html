@@ -102,6 +102,27 @@ img.apercu{width:100%;border-radius:8px;border:1px solid var(--ligne);margin-top
     <div style="margin-top:10px">Fiabilité : <span id="fiab" class="badge"></span>
      <ul class="alertes" id="alertes"></ul></div>
    </div>
+   <div class="bloc" id="blocDevis">
+    <h2>Devis : partie à couvrir</h2>
+    <div class="modes" id="choixPartie">
+     <button data-p="tout" class="on">Toute la toiture</button>
+     <button data-p="pans">Choisir des pans</button>
+     <button data-p="zone">Dessiner une zone</button>
+    </div>
+    <div class="aide" id="aidePartie"></div>
+    <div id="aideZone" class="aide" style="display:none">Cliquez sur la photo pour tracer la zone à refaire (⌫ retire le dernier point), puis
+     <button id="finZone" style="padding:2px 8px">Calculer la zone</button> <button id="annulZone" style="padding:2px 8px">Effacer</button></div>
+    <div class="ligne" id="ligneDebords"><label class="meta" style="flex:0 0 auto">Débords :</label>
+     <select id="baseDevis"><option value="emprise">non — contour du bâtiment (BD TOPO)</option><option value="nuage">oui — étendue mesurée par le LiDAR</option></select></div>
+    <div class="totaux" style="margin-top:10px">
+     <div class="total"><span>Surface réelle (rampant)</span><b id="dSurf">—</b><span id="dProj"></span></div>
+     <div class="total"><span>À commander, avec <input id="maj" type="number" value="10" min="0" max="50" style="width:50px;padding:1px 4px"> % de chutes</span><b id="dCmd">—</b></div>
+    </div>
+    <div id="dPentes" class="meta" style="margin-top:8px"></div>
+    <table id="tabLin" style="margin-top:8px"><thead><tr><th>Ligne</th><th>Longueur réelle</th></tr></thead><tbody></tbody></table>
+    <div class="ligne"><button class="prim" id="btnCopier">Copier le récapitulatif pour le devis</button></div>
+    <div class="aide">Rives, arêtiers et noues sont mesurés le long de la pente. Métré indicatif issu du LiDAR IGN : à confirmer sur place avant commande.</div>
+   </div>
    <div class="bloc">
     <h2>Pans</h2>
     <table id="tabPans"><thead><tr><th>Pan</th><th>Pente</th><th>Orient.</th><th>S. projetée</th><th>S. réelle</th><th>Écart</th></tr></thead><tbody></tbody></table>
@@ -199,14 +220,14 @@ function tracer(){if(traceDessin)carte.removeLayer(traceDessin);traceDessin=L.la
   L.polygon(sommets,{color:"#ffeb3b",weight:2.5,dashArray:"5 5",fillOpacity:.12,interactive:false}).addTo(traceDessin);
   sommets.forEach(p=>L.circleMarker(p,{radius:4,color:"#000",weight:1,fillColor:"#ffeb3b",fillOpacity:1,interactive:false}).addTo(traceDessin))}
 $("annulDessin").onclick=()=>effacerDessin();
-document.addEventListener("keydown",e=>{if(mode!=="dessin")return;
+document.addEventListener("keydown",e=>{if(mode!=="dessin"&&partie!=="zone")return;
   if(e.key==="Backspace"&&document.activeElement.tagName!=="INPUT"){sommets.pop();tracer();e.preventDefault()}
-  if(e.key==="Escape")setMode("clic")});
+  if(e.key==="Escape"){if(partie==="zone")effacerDessin();else setMode("clic")}});
 $("finDessin").onclick=()=>{if(sommets.length<3){erreur("Il faut au moins 3 angles.");return}
   const ring=sommets.map(p=>[p.lng,p.lat]);ring.push(ring[0]);
   calculer({adresse:$("adresse").value||null,emprise:{type:"Polygon",coordinates:[ring]}});setMode("clic")};
 carte.on("click",e=>{
-  if(mode==="dessin"){sommets.push(e.latlng);tracer();return}
+  if(mode==="dessin"||partie==="zone"){sommets.push(e.latlng);tracer();return}
   if(carte.getZoom()<16){carte.setView(e.latlng,18);erreur("Zoomez puis cliquez sur le toit voulu.");return}
   calculer({lat:e.latlng.lat,lon:e.latlng.lng,adresse:null});
 });
@@ -223,20 +244,30 @@ function fleche(lat,lon,az,longueurM){const r=az*Math.PI/180,dlat=longueurM/1113
   const a1=r+Math.PI*0.85,a2=r-Math.PI*0.85,t=0.35;
   return [[deb,fin],[fin,[fin[0]+t*dlat*Math.cos(a1),fin[1]+t*dlon*Math.sin(a1)]],[fin,[fin[0]+t*dlat*Math.cos(a2),fin[1]+t*dlon*Math.sin(a2)]]]}
 function afficher(r){
-  dernier=r;$("resultat").style.display="block";
+  dernier=r;$("resultat").style.display="block";calquesPans={};selection=new Set();zoneRes=null;effacerDessin();
   if(couche)carte.removeLayer(couche);if(marqueur){carte.removeLayer(marqueur);marqueur=null}
   couche=L.layerGroup().addTo(carte);
   const feats=(r.geojson_wgs84||{features:[]}).features;
   feats.forEach(f=>{const p=f.properties;
     if(p.role==="emprise")L.geoJSON(f,{style:{color:"#000",weight:2.5,fill:false}}).addTo(couche);
     else if(p.role==="nuage")L.geoJSON(f,{style:{color:"#fff",weight:1.5,dashArray:"5 5",fill:false}}).addTo(couche);
+    else if(p.role==="ligne")return;
     else{const c=COULEURS[(p.numero-1)%COULEURS.length];
-      L.geoJSON(f,{style:{color:c,weight:1.5,opacity:.9,fillColor:c,fillOpacity:.5}}).bindPopup(
-        `<b>Pan ${p.numero}</b> — ${p.type}<br>Pente ${fmt(p.pente_deg)}° (${fmt(p.pente_pct,0)} %)<br>Orientation ${p.orientation}${p.azimut_deg!=null?" ("+p.azimut_deg+"°)":""}<br>Surface réelle <b>${fmt(p.surface_reelle_m2,2)} m²</b><br>Projetée ${fmt(p.surface_projetee_m2,2)} m²<br>${p.nb_points} points, écart ${fmt(p.ecart_moyen_cm)} cm`).addTo(couche);
+      const texte=`<b>Pan ${p.numero}</b> — ${p.type}<br>Pente ${fmt(p.pente_deg)}° (${fmt(p.pente_pct,0)} %)<br>Orientation ${p.orientation}${p.azimut_deg!=null?" ("+p.azimut_deg+"°)":""}<br>Surface réelle <b>${fmt(p.surface_reelle_m2,2)} m²</b><br>Projetée ${fmt(p.surface_projetee_m2,2)} m²<br>${p.nb_points} points, écart ${fmt(p.ecart_moyen_cm)} cm`;
+      const lay=L.geoJSON(f,{style:{color:c,weight:1.5,opacity:.9,fillColor:c,fillOpacity:.5}}).addTo(couche);
+      lay.on("click",e=>{L.DomEvent.stopPropagation(e);
+        if(mode==="dessin"||partie==="zone"){sommets.push(e.latlng);tracer();return}
+        if(partie==="pans"){selection.has(p.numero)?selection.delete(p.numero):selection.add(p.numero);majDevis();return}
+        L.popup().setLatLng(e.latlng).setContent(texte).openOn(carte)});
+      calquesPans[p.numero]={lay,c};
       const [lon,lat]=p.etiquette;
       if(p.azimut_deg!=null)L.polyline(fleche(lat,lon,p.azimut_deg,1.8),{color:"#000",weight:2.5}).addTo(couche);
       L.marker([lat,lon],{icon:L.divIcon({className:"",html:`<div class="etiq">${p.numero}</div>`,iconSize:[24,24],iconAnchor:[12,12]}),interactive:false}).addTo(couche);}
   });
+  feats.filter(f=>f.properties.role==="ligne").forEach(f=>{const p=f.properties;
+    L.geoJSON(f,{style:{color:COUL_LIGNES[p.type]||"#000",weight:4,opacity:.95,dashArray:p.type==="solin"?"6 5":null}})
+      .bindTooltip(`${p.type} — ${fmt(p.longueur_m,2)} m`,{sticky:true})
+      .on("click",e=>{L.DomEvent.stopPropagation(e);if(mode==="dessin"||partie==="zone"){sommets.push(e.latlng);tracer()}}).addTo(couche)});
   const emp=feats.find(f=>f.properties.role==="emprise");
   if(emp)carte.fitBounds(L.geoJSON(emp).getBounds(),{maxZoom:21,padding:[60,60]});
   const loc=r.localisation||{};
@@ -255,8 +286,78 @@ function afficher(r){
     <div>📍 ${loc.source?esc(loc.source):""}${loc.score!=null?" — score "+fmt(loc.score,2):""} — Lambert-93 : ${r.x_l93??""} / ${r.y_l93??""}</div>
     <div>Zone non mesurée : ${fmt(r.non_mesure_pct)} %</div>`;
   $("imgToit").src=r.image;$("lienImg").href=r.image;$("lienJson").href=r.json;$("lienKml").href=r.json.replace("rapport.json","toit.kml");
-  $("refNom").value="";majEcart();
+  $("refNom").value="";majEcart();choisirPartie("tout");
 }
+// ---------- devis : partie à couvrir ----------
+const COUL_LIGNES={"égout":"#1565C0","faîtage":"#C62828","rive":"#EF6C00","arêtier":"#6A1B9A","noue":"#00897B","solin":"#5D4037","haut de pan":"#AD1457","raccord":"#757575","bord de toit plat":"#37474F"};
+const ORDRE_LIGNES=Object.keys(COUL_LIGNES);
+let partie="tout", selection=new Set(), zoneRes=null, calquesPans={};
+document.querySelectorAll("#choixPartie button").forEach(b=>b.onclick=()=>choisirPartie(b.dataset.p));
+function choisirPartie(pt){
+  partie=pt;document.querySelectorAll("#choixPartie button").forEach(b=>b.classList.toggle("on",b.dataset.p===pt));
+  if(pt!=="zone"){effacerDessin();zoneRes=null}
+  if(pt==="zone"&&mode==="dessin")setMode("clic");
+  carte.closePopup();
+  $("aideZone").style.display=pt==="zone"?"block":"none";
+  $("ligneDebords").style.display=pt==="zone"?"none":"flex";
+  $("aidePartie").textContent={tout:"Toute la toiture du bâtiment.",pans:"Cliquez sur les pans à refaire sur la photo (re-cliquez pour retirer).",
+    zone:"Pour une partie de pan (une extension, un morceau de versant…). La zone peut déborder un peu du toit."}[pt];
+  carte.getContainer().style.cursor=pt==="zone"?"crosshair":"";
+  majDevis();
+}
+$("finZone").onclick=async()=>{
+  if(!dernier)return; if(sommets.length<3){erreur("Il faut au moins 3 points pour la zone.");return}
+  const ring=sommets.map(p=>[p.lng,p.lat]);ring.push(ring[0]);
+  try{zoneRes=await api("/api/zone",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({nom_dossier:dernier.nom_dossier,zone:{type:"Polygon",coordinates:[ring]}})});erreur("");majDevis()}
+  catch(e){erreur(e.message)}
+};
+$("annulZone").onclick=()=>{effacerDessin();zoneRes=null;majDevis()};
+$("maj").oninput=majDevis;$("baseDevis").onchange=majDevis;
+function partieCourante(){
+  const r=dernier; if(!r)return null; const nuage=$("baseDevis").value==="nuage";
+  const sr=p=>nuage?p.surface_reelle_nuage_m2:p.surface_reelle_m2, sp=p=>nuage?p.surface_projetee_nuage_m2:p.surface_projetee_m2;
+  const lin=sel=>{const t={};(r.lignes||[]).forEach(l=>{if(!sel||l.pans.some(n=>sel.has(n)))t[l.type]=(t[l.type]||0)+l.longueur_m});return t};
+  if(partie==="tout")return{libelle:"toute la toiture",pans:r.pans||[],surf:(r.pans||[]).reduce((a,p)=>a+sr(p),0),
+    proj:(r.pans||[]).reduce((a,p)=>a+sp(p),0),lin:lin(null)};
+  if(partie==="pans"){const ps=(r.pans||[]).filter(p=>selection.has(p.numero));
+    return{libelle:ps.length?"pan"+(ps.length>1?"s ":" ")+ps.map(p=>p.numero).join(", "):"aucun pan choisi",pans:ps,
+      surf:ps.reduce((a,p)=>a+sr(p),0),proj:ps.reduce((a,p)=>a+sp(p),0),lin:ps.length?lin(selection):{}}}
+  if(!zoneRes)return{libelle:"zone à dessiner",pans:[],surf:0,proj:0,lin:{}};
+  return{libelle:"zone dessinée",pans:zoneRes.pans,surf:zoneRes.surface_reelle_m2,proj:zoneRes.surface_projetee_m2,lin:zoneRes.lineaires_m,zone:true};
+}
+function majDevis(){
+  const d=partieCourante(); if(!d)return;
+  // surbrillance des pans choisis
+  Object.entries(calquesPans).forEach(([n,{lay,c}])=>{const choisi=partie==="pans"?selection.has(+n):partie==="zone"?(zoneRes&&zoneRes.pans.some(p=>p.numero==n)):true;
+    lay.setStyle({fillOpacity:choisi?.6:.12,opacity:choisi?1:.4,weight:choisi&&partie!=="tout"?3:1.5,color:choisi&&partie!=="tout"?"#ffeb3b":c})});
+  const maj=Math.max(0,parseFloat($("maj").value)||0);
+  $("dSurf").textContent=d.surf?fmt(d.surf)+" m²":"—";
+  $("dProj").textContent=d.surf?`vue de dessus : ${fmt(d.proj)} m² — ${d.libelle}`:d.libelle;
+  $("dCmd").textContent=d.surf?fmt(d.surf*(1+maj/100))+" m²":"—";
+  $("dPentes").innerHTML=d.pans.map(p=>`<div><span class="pastille" style="background:${COULEURS[(p.numero-1)%COULEURS.length]}">${p.numero}</span> ${p.type==="toit plat"?"toit plat":fmt(p.pente_deg)+"° ("+fmt(p.pente_pct,0)+" %) "+p.orientation}
+    — ${fmt(d.zone?p.surface_reelle_m2:($("baseDevis").value==="nuage"?p.surface_reelle_nuage_m2:p.surface_reelle_m2))} m²${d.zone&&p.part_du_pan_pct<98?` <span class="meta">(${fmt(p.part_du_pan_pct,0)} % du pan)</span>`:""}</div>`).join("");
+  const types=ORDRE_LIGNES.filter(t=>d.lin[t]);
+  $("tabLin").querySelector("tbody").innerHTML=types.map(t=>`<tr><td><span class="pastille" style="background:${COUL_LIGNES[t]};width:12px;height:12px"></span> ${t}</td><td><b>${fmt(d.lin[t],1)} m</b></td></tr>`).join("")
+    ||`<tr><td colspan="2" class="meta">—</td></tr>`;
+}
+function texteDevis(){
+  const d=partieCourante(),r=dernier,maj=Math.max(0,parseFloat($("maj").value)||0),l=[];
+  l.push(`MÉTRÉ TOITURE — ${(r.localisation||{}).adresse_trouvee||r.adresse_demandee||r.nom_dossier}`);
+  l.push(`Partie : ${d.libelle}${partie!=="zone"&&$("baseDevis").value==="nuage"?" (débords compris)":""}`);
+  l.push(`Surface réelle (rampant) : ${fmt(d.surf)} m² (vue de dessus ${fmt(d.proj)} m²)`);
+  l.push(`À commander avec ${fmt(maj,0)} % de chutes : ${fmt(d.surf*(1+maj/100))} m²`);
+  d.pans.forEach(p=>l.push(`  - pan ${p.numero} : ${p.type==="toit plat"?"toit plat":fmt(p.pente_deg)+"° ("+fmt(p.pente_pct,0)+" %), "+p.orientation}, ${fmt(d.zone?p.surface_reelle_m2:($("baseDevis").value==="nuage"?p.surface_reelle_nuage_m2:p.surface_reelle_m2))} m²`));
+  ORDRE_LIGNES.filter(t=>d.lin[t]).forEach(t=>l.push(`${t[0].toUpperCase()+t.slice(1)} : ${fmt(d.lin[t],1)} ml`));
+  l.push(`Source : LiDAR HD IGN, relevé du ${(r.lidar||{}).date_releve||"?"} — métré indicatif, à vérifier sur place.`);
+  return l.join("\n");
+}
+$("btnCopier").onclick=async()=>{
+  if(!dernier)return; const t=texteDevis();
+  try{await navigator.clipboard.writeText(t);$("btnCopier").textContent="Copié ✓";setTimeout(()=>$("btnCopier").textContent="Copier le récapitulatif pour le devis",1800)}
+  catch(e){window.prompt("Copiez le texte :",t)}
+};
+
 function esc(t){return String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 
 // ---------- comparaison ----------

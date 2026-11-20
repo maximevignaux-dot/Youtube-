@@ -115,6 +115,22 @@ def api_calcul():
     return _repondre(rap)
 
 
+@app.post("/api/zone")
+def api_zone():
+    """Métré d'une partie du toit : zone dessinée sur un calcul déjà fait."""
+    from toiture.partiel import metre_zone
+    d = request.get_json(force=True)
+    nom = d.get("nom_dossier", "")
+    dossier = (RESULTATS / nom).resolve()
+    if RESULTATS.resolve() not in dossier.parents or not (dossier / "grille.npz").exists():
+        return _repondre({"erreur": "Calcul introuvable : relancez le calcul du toit."}, 404)
+    g = shape(d["zone"])
+    zone = shapely.transform(g, lambda c: np.c_[donnees.VERS_L93.transform(c[:, 0], c[:, 1])])
+    if not zone.is_valid:
+        zone = zone.buffer(0)
+    return _repondre(metre_zone(dossier, zone))
+
+
 # ---------- fichier de référence (pour le test de précision) ----------
 
 def _lire_ref():

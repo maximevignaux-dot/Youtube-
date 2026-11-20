@@ -19,7 +19,12 @@ Dans la page :
    cliquez sur chaque angle du toit, puis « Terminer et calculer ».
 4. Les pans s'affichent en couleur sur la photo (cliquez sur un pan pour son détail), avec le tableau,
    les deux surfaces totales et un **indice de fiabilité** (bonne / moyenne / à vérifier) expliqué.
-5. **« Comparer avec ma mesure »** : saisissez la vraie surface → l'écart s'affiche, et un bouton
+5. **Devis partiel** (bloc « Devis : partie à couvrir ») : « Toute la toiture », « Choisir des pans »
+   (cliquez sur les pans à refaire) ou « Dessiner une zone » (un morceau de versant, une extension…).
+   Vous obtenez la surface réelle, la surface à commander avec un % de chutes réglable, la pente de
+   chaque pan, et les **mètres linéaires** : égout, faîtage, rives, arêtiers, noues, solins.
+   Le bouton « Copier le récapitulatif » donne un texte prêt à coller dans votre logiciel de devis.
+6. **« Comparer avec ma mesure »** : saisissez la vraie surface → l'écart s'affiche, et un bouton
    ajoute ce toit à `toits_reference.csv`. Quand vous en avez 10 : **« Lancer le test de précision »**
    donne le verdict GO / NO-GO directement dans la page.
 
@@ -104,7 +109,13 @@ Résultat : `resultats/test_precision.md` (tableau toit par toit, images, verdic
    Le cahier des charges prévoyait des cellules de 25 cm : avec un faîtage parallèle à la grille,
    une rangée entière de cellules basculait d'un côté (jusqu'à 2 % d'erreur sur un pan). D'où 6,25 cm.
    Sur les très grands bâtiments (> 3 000 m²), les cellules grossissent automatiquement pour rester rapides.
-6. **Fiabilité** : vert / orange / rouge selon le score de géocodage, la part non mesurée, l'écart entre
+6. **Mètres linéaires** : entre deux pans, la ligne commune est l'intersection des deux plans :
+   faîtage (horizontale, en haut des deux pans), arêtier (inclinée, en haut), noue (en bas des deux),
+   raccord (changement de pente). Si les deux pans ne se rejoignent pas en hauteur (marche > 30 cm),
+   le pan du dessous a un solin, celui du dessus garde son égout ou sa rive. Sur le pourtour :
+   égout (bord horizontal bas), rive (bord dans le sens de la pente), haut de pan (bord horizontal haut).
+   Longueurs réelles en 3D (le long de la pente pour rives, arêtiers et noues).
+7. **Fiabilité** : vert / orange / rouge selon le score de géocodage, la part non mesurée, l'écart entre
    les deux surfaces, l'irrégularité des pans, les pans très raides et l'âge du relevé LiDAR.
 
 ## Validation sur toits simulés
@@ -119,6 +130,7 @@ cheminée, branches d'arbre et bout de mur parasites, 60 tirages aléatoires cha
 | Erreur de surface totale, variante emprise | 0,2 % au maximum |
 | Erreur de surface totale, variante nuage | 0,6 % en moyenne, 2,6 % au maximum |
 | Erreur de surface de chaque pan (toit asymétrique) | 0,2 % en moyenne, 1,1 % au maximum |
+| Mètres linéaires (égouts, faîtages, rives, arêtiers, noues) | quelques cm en général, 0,6 m au maximum |
 
 La variante « nuage » est un peu moins précise : avec 10 points/m², le bord exact du toit tombe
 entre deux points (environ ±10 cm). Le test automatique exige donc < 2 % pour la variante emprise

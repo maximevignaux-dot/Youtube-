@@ -12,6 +12,11 @@ PALETTE = ["#4E79A7", "#F28E2B", "#59A14F", "#E15759", "#B07AA1", "#76B7B2", "#E
            "#FF9DA7", "#9C755F", "#86BCB6", "#D37295", "#A0CBE8", "#8CD17D", "#F1CE63"]
 
 
+COULEURS_LIGNES = {"égout": "#1565C0", "faîtage": "#C62828", "rive": "#EF6C00", "arêtier": "#6A1B9A",
+                   "noue": "#00897B", "solin": "#5D4037", "haut de pan": "#AD1457", "raccord": "#757575",
+                   "bord de toit plat": "#37474F"}
+
+
 def _contours(ax, geom, **kw):
     polys = getattr(geom, "geoms", [geom])
     for i, p in enumerate(polys):
@@ -66,12 +71,24 @@ def dessiner(res: dict, titre: str, fichier):
             ax.text(cx, cy, str(p["numero"]), ha="center", va="center", fontsize=12, weight="bold",
                     bbox=dict(boxstyle="circle,pad=0.25", fc="white", ec="k", lw=0.8))
     _contours(ax, res["emprise_locale"], color="k", lw=2, label="emprise BD TOPO")
+    # mètres linéaires, une couleur par type
+    ox, oy = res["origine"][0], res["origine"][1]
+    vus = set()
+    for l in res.get("lignes") or []:
+        c = np.asarray(l["coords_l93"]) - [ox, oy]
+        coul = COULEURS_LIGNES.get(l["type"], "#000")
+        solin = l["type"] == "solin"
+        ax.plot(c[:, 0], c[:, 1], color=coul, lw=2.2 if solin else 3.2, ls=(0, (2, 1.5)) if solin else "-",
+                solid_capstyle="round", zorder=6 if solin else 5,
+                label=None if l["type"] in vus else f"{l['type']} ({res['lineaires_m'][l['type']]:.1f} m)"
+                if res.get("lineaires_m") else l["type"])
+        vus.add(l["type"])
     ax.plot([], [], "--", color="#333333", label="étendue du nuage de points")
     ax.set_aspect("equal")
     ax.set_xlabel("Est (m)")
     ax.set_ylabel("Nord (m)")
     ax.set_title(titre, fontsize=10)
-    ax.legend(loc="upper right", fontsize=8)
+    ax.legend(loc="upper right", fontsize=7.5, framealpha=0.9)
     ax.annotate("N", xy=(0.04, 0.96), xytext=(0.04, 0.88), xycoords="axes fraction",
                 arrowprops=dict(arrowstyle="-|>", color="k"), ha="center", fontsize=11, weight="bold")
     fig.tight_layout()

@@ -25,6 +25,8 @@ sys.path.insert(0, str(RACINE))
 from toiture import donnees  # noqa: E402
 from toiture.analyse import analyser, pour_json  # noqa: E402
 from toiture.export import fiabilite, geojson_pans, kml_pans  # noqa: E402
+from toiture.lignes import calculer_lignes, totaux  # noqa: E402
+from toiture.partiel import enregistrer_grille  # noqa: E402
 from toiture.rendu import dessiner, tableau  # noqa: E402
 
 CLASSE_BATIMENT = 6
@@ -100,7 +102,20 @@ def calculer(adresse: str | None = None, xy=None, emprise_fichier=None, laz=None
     rapport.update(pour_json(res))
     rapport["densite_points_m2"] = round(res["nb_points_classe6"] / max(emprise.buffer(1).area, 1), 1)
     rapport["fiabilite"] = fiabilite(rapport)
+    # mètres linéaires (égouts, faîtages, rives, arêtiers, noues, solins…)
+    ox, oy = res["origine"][0], res["origine"][1]
+    lignes = calculer_lignes(res)
+    for l in lignes:
+        l["coords_l93"] = [[round(x + ox, 3), round(y + oy, 3)] for x, y in l.pop("coords")]
+    res["lignes"] = lignes
+    rapport["lignes"] = lignes
+    rapport["lineaires_m"] = totaux(lignes)
     rapport["geojson_wgs84"] = geojson_pans(res)
+    for l in lignes:
+        lon, lat = donnees.VERS_WGS84.transform(*np.array(l["coords_l93"]).T)
+        rapport["geojson_wgs84"]["features"].append({
+            "type": "Feature", "geometry": {"type": "LineString", "coordinates": np.c_[lon, lat].round(8).tolist()},
+            "properties": {"role": "ligne", "type": l["type"], "longueur_m": l["longueur_m"], "pans": l["pans"]}})
 
     # Étape 6 : sorties
     nom = nom or slug(adresse or f"{x:.0f}-{y:.0f}")
@@ -110,6 +125,7 @@ def calculer(adresse: str | None = None, xy=None, emprise_fichier=None, laz=None
              f"Surface selon emprise : {res['surface_emprise_m2']:.1f} m² — selon nuage : {res['surface_nuage_m2']:.1f} m²"
              f" — relevé LiDAR {infos['date_releve']}")
     dessiner(res, titre, dossier / "toit.png")
+    enregistrer_grille(dossier, res)
     # sol : points LiDAR classés « sol » (classe 2) autour du bâtiment
     sol = xyz[cls == 2, 2]
     z_sol = float(np.median(sol)) if len(sol) >= 10 else float(np.percentile(xyz[:, 2], 2)) if len(xyz) else 0.0
@@ -126,6 +142,8 @@ def calculer(adresse: str | None = None, xy=None, emprise_fichier=None, laz=None
               f"   (projetée {res['surface_projetee_emprise_m2']:.2f} m², emprise {emprise.area:.2f} m²)")
         print(f"Surface réelle totale selon nuage de points : {res['surface_nuage_m2']:8.2f} m²"
               f"   (projetée {res.get('surface_projetee_nuage_m2', 0):.2f} m²)")
+        if rapport["lineaires_m"]:
+            print("Mètres linéaires : " + " · ".join(f"{k} {v:.1f} m" for k, v in rapport["lineaires_m"].items()))
         print(f"Partie de l'emprise non mesurée (aucun point à moins de 1,5 m) : {res['non_mesure_pct']:.1f} %")
         print(f"Date du relevé LiDAR : {infos['date_releve']}")
         fi = rapport["fiabilite"]
