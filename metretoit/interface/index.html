@@ -172,14 +172,16 @@ $("adresse").addEventListener("keydown",e=>{
   const items=[...$("sugg").children];
   if(e.key==="ArrowDown"){choix=Math.min(choix+1,items.length-1);e.preventDefault()}
   else if(e.key==="ArrowUp"){choix=Math.max(choix-1,0);e.preventDefault()}
-  else if(e.key==="Enter"){e.preventDefault();if(choix>=0&&suggs[choix])choisir(suggs[choix]);else calculer({adresse:$("adresse").value});return}
+  else if(e.key==="Enter"){e.preventDefault();clearTimeout(minuteur);$("sugg").style.display="none";if(choix>=0&&suggs[choix])choisir(suggs[choix]);else calculer({adresse:$("adresse").value});return}
   else if(e.key==="Escape"){$("sugg").style.display="none";return}
   items.forEach((d,i)=>d.classList.toggle("actif",i===choix));
 });
 document.addEventListener("click",e=>{if(!$("recherche").contains(e.target))$("sugg").style.display="none"});
 async function suggerer(){
   const q=$("adresse").value.trim(); if(q.length<3){$("sugg").style.display="none";return}
-  suggs=await api("/api/suggestions?q="+encodeURIComponent(q)).catch(()=>[]); choix=-1;
+  const res=await api("/api/suggestions?q="+encodeURIComponent(q)).catch(()=>[]);
+  if($("adresse").value.trim()!==q||$("attente").style.display==="flex")return;   // saisie dépassée ou calcul lancé
+  suggs=res; choix=-1;
   $("sugg").innerHTML=""; suggs.forEach(s=>{const d=document.createElement("div");d.textContent=s.texte;d.onclick=()=>choisir(s);$("sugg").appendChild(d)});
   $("sugg").style.display=suggs.length?"block":"none";
 }
